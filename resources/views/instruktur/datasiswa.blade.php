@@ -121,42 +121,115 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-clr-white hover-box" style="margin-bottom: 10px">
-                                <div class="row">
-                                    <div class="col-12" style="padding: 5%">
-                                        <br>
-                                        <div class="text-center text-uppercase"><h5>Latihan Soal </h5></div>
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 5%">#</th>
-                                                    <th>Kuis</th>
-                                                    <th class="text-right">status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                
-                                                @foreach ($data_kursus->kuis as$key=>$item)
-                                                <?php $sudah_dikerjakan = App\Result::where('profile_id', $profiles->user->id)->where('kuis_id', $item->id)->first()?>
-                                                <?php $hasil = App\Nilai::where('profile_id', $profiles->user->id)->where('kuis_id', $item->id)->get()?>
-                                                <tr>
-                                                    <td style="width: 5%">{{ $key+1 }}</td>
-                                                    <td>{{ $item->kuis_name }}</td>
-                                                    @if ($sudah_dikerjakan==null)
-                                                        <td class="text-right"> <span class="badge badge-danger"> BELUM </span></td>
-                                                    @else
-                                                        <td class="text-right">
-                                                            @foreach ($hasil as$key=>$items)
-                                                                <ul>
-                                                                    <li>#{{ $key+1 }}. nilai : <span @if($items->nilai > 70) class="badge badge-primary" @else class="badge badge-danger" @endif> <a href="/detail-nilai/{{ $item->slug }}/{{ $items->ke }}/{{ $profiles->user->id }}/{{ $data_kursus->slug }}" class="text-white"> {{ $items->nilai }} </a></span> </li>
-                                                                </ul>
+                            <div class="w3l-homeblock2 w3l-homeblock6 " id="daftarvideo">
+                                <div class="container-fluid px-sm-5 py-lg-5 py-md-4 mb-200">
+                                    <div class="js-filter" data-speed="400">
+                                        <!--filter-->
+                                        <div class="p-10 bg-white">
+                                            <div class="block-header border-bottom push">
+                                                <div class="col-3 col-xl-3 nav nav-pills">
+                                                    <div class="nav-item text-center" style="width: 100%">
+                                                        <a class="nav-link" href="#" data-category-link="latihansoal">
+                                                        <i class="fa fa-fw fa-edit mr-5"></i>pilihan</a>
+                                                    </div>                    
+                                                </div>
+                                                <div class="col-3 col-xl-3 nav nav-pills">
+                                                    <div class="nav-item text-center" style="width: 100%">
+                                                        <a class="nav-link" href="#" data-category-link="uraian">
+                                                        <i class="fa fa-fw fa-newspaper mr-5"></i>uraian</a>
+                                                    </div>                    
+                                                </div>                                                                               
+                                            </div>                                              
+                                        </div>
+                                        {{-- multiple --}}
+                                        <div class="bg-clr-white hover-box" style="margin-bottom: 10px; margin-top:10px" data-category="latihansoal">
+                                            <div class="row">
+                                                <div class="col-12" style="padding: 5%">
+                                                    <br>
+                                                    <div class="text-center text-uppercase"><h5>Latihan Soal Pilihan Ganda </h5></div>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 5%">#</th>
+                                                                <th>Kuis</th>
+                                                                <th class="text-right">status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            @foreach ($data_kursus->kuis as$key=>$item)
+                                                            <?php $sudah_dikerjakan = App\Result::where('profile_id', $profiles->user->id)->where('kuis_id', $item->id)->first()?>
+                                                            <?php $hasil = App\Nilai::where('profile_id', $profiles->user->id)->where('kuis_id', $item->id)->get()?>
+                                                            <tr>
+                                                                <td style="width: 5%">{{ $key+1 }}</td>
+                                                                <td>{{ $item->kuis_name }}</td>
+                                                                @if ($sudah_dikerjakan==null)
+                                                                    <td class="text-right"> <span class="badge badge-danger"> BELUM </span></td>
+                                                                @else
+                                                                    <td class="text-right">
+                                                                        @foreach ($hasil as$key=>$items)
+                                                                            <ul>
+                                                                                <li>#{{ $key+1 }}. nilai : <span @if($items->nilai > 70) class="badge badge-primary" @else class="badge badge-danger" @endif> <a href="/detail-nilai/{{ $item->slug }}/{{ $items->ke }}/{{ $profiles->user->id }}/{{ $data_kursus->slug }}" class="text-white"> {{ $items->nilai }} </a></span> </li>
+                                                                            </ul>
+                                                                        @endforeach
+                                                                    </td>
+                                                                @endif
+                                                            </tr>
                                                             @endforeach
-                                                        </td>
-                                                    @endif
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                                        </tbody>
+                                                    </table> 
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- uraian --}}
+                                        <div class="bg-clr-white hover-box" style="margin-bottom: 10px; margin-top:10px; display: none" data-category="uraian">
+                                            <div class="row">
+                                                <div class="col-12" style="padding: 5%">
+                                                    <br>
+                                                    <div class="text-center text-uppercase"><h5>Latihan Soal Uraian</h5></div>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 5%">#</th>
+                                                                <th>Judul Uraian</th>
+                                                                <th class="text-right">status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            @foreach ($data_kursus->uraian as$key=>$item)
+                                                            <?php $sudah_dikerjakan = App\Jawaburai::where('profile_id', $profiles->id)->where('uraian_id', $item->id)->first();
+                                                                  $blmdinilai     = App\Nilaiurai::where('user_id', auth()->user()->id)->where('profile_id', $profiles->id)->where('uraian_id',$item->id)->first();
+                                                            ?>
+                                                            {{--  --}}
+                                                            <tr>
+                                                                <td style="width: 5%">{{ $key+1 }}</td>
+                                                                <td>
+                                                                    @if ($sudah_dikerjakan==null)
+                                                                    <a href="#belum-dikerjakan"> {{ $item->judul }}</a>
+                                                                    @else
+                                                                    <a href="/menilai-uraian-ganda/{{ $data_kursus->slug }}/{{ $profiles->id }}/{{ $item->id }}"> {{ $item->judul }}</a>
+                                                                    @endif
+                                                                </td>
+                                                                @if ($sudah_dikerjakan==null)
+                                                                    <td class="text-right"> <span class="badge badge-danger"> BELUM </span></td>
+                                                                @else
+                                                                    <td class="text-right">
+                                                                        @if ($blmdinilai==null)
+                                                                        <span class="badge badge-success"> SELESAI </span> <span class="badge badge-warning"> BELUM DINILAI </span>
+                                                                        @else
+                                                                        <span class="badge badge-success"> SELESAI </span> <span class="badge badge-primary"> SUDAH DINILAI </span>
+                                                                        @endif
+                                                                    </td>
+                                                                @endif
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table> 
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

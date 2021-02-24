@@ -136,7 +136,7 @@
             @elseif(auth()->user()->role=='siswa')
                 @foreach (auth()->user()->profile->kursus as $key=>$item)
                 <div class="col-lg-3 col-6 grids-feature" style="margin-bottom: 10px">
-                    <a href="#premium">
+                    <a href="/forums-daftar-pertanyaan/premium/{{ $item->kelas->slug }}/{{ $item->mapel->slug }}">
                         <div class="area-box">
                             <span class="fa fa-university"></span>
                             <h4 class="title-head text-uppercase">{{ $item->mapel->mapel_name }} {{ $item->kelas->kelas_name }}</h4>
@@ -148,7 +148,7 @@
                 @foreach ($data_mapel as $item_m)
                     @foreach ($item_m->kelas as $item_k)
                     <div class="col-lg-3 col-6 grids-feature" style="margin-bottom: 10px">
-                        <a href="#premium">
+                        <a href="/forums-daftar-pertanyaan/premium/{{ $item->kelas->slug }}/{{ $item->mapel->slug }}">
                             <div class="area-box">
                                 <span class="fa fa-university"></span>
                                 <h4 class="title-head text-uppercase">{{ $item_m->mapel_name }} {{ $item_k->kelas_name }}</h4>

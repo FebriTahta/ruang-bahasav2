@@ -92,12 +92,18 @@
 							@endif
 						</li>
 						@if (auth()->user()->role=='instruktur')
-						<?php $resets = App\reset::where('user_id', auth()->user()->id)->get()?>
-							@if (count($resets)!==0)
+						<?php 
+							  $notif = App\Notifurai::where('user_id', auth()->user()->id)->where('dinilai',0)->get();
+						
+						?>
+						
+							{{-- @if (count($nilai2)==0) --}}
 							<li class="nav-item @@contact__active">
-								<a class="nav-link fa fa-bell text-danger" href="{{ route('formreset') }}">{{ $resets->count() }}</a>
+								<a class="nav-link fa fa-bell text-danger" href="{{ route('formreset') }}">
+								{{ count($notif) }}
+								</a>
 							</li>
-							@endif
+							{{-- @endif --}}
 						@endif
 					@else
 						<li class="nav-item @@pages__active">

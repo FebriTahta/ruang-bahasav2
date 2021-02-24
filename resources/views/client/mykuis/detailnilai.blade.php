@@ -85,7 +85,7 @@
                                 </td>
                             </tr><?php $a++?>
                             @endforeach
-                        </table>
+                        </table> 
                     </div>
                 </div>
                 

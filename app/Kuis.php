@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kuis extends Model
 {
-    protected $fillable = ['user_id','kelas_id','mapel_id','kuis_name','kuis_desc','slug'];
+    protected $fillable = ['user_id','kelas_id','mapel_id','kuis_name','kuis_desc','times','timee','slug'];
 
     public function pertanyaan()
     {

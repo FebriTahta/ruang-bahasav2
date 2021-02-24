@@ -8,7 +8,7 @@
 @section('content')
 <div class="w3l-homeblock2 w3l-homeblock6 py-5">
     <div class="container-fluid px-sm-5 py-lg-5 py-md-4">
-        <h3 class="section-title-left mb-4 text-uppercase"> Pilihan Ganda</h3>
+        <h3 class="section-title-left mb-4 text-uppercase"> Uraian Soal</h3>
         {{-- content header --}}
         @if (Session::has('pesan'))
         <div class="alert alert-info text-bold">{{ Session::get('pesan') }}</div>
@@ -80,9 +80,8 @@
                                 <th class="d-none d-sm-table-cell" style="width: 5%">#</th>
                                 <th>Kuis</th>
                                 <th>kategori</th>
-                                <th>start</th>
-                                <th>end</th>
-                                <th class="d-none d-sm-table-cell">Soal</th>
+                                <th class="d-none d-sm-table-cell">start</th>
+                                <th class="d-none d-sm-table-cell">end</th>
                                 <th class="text-right">opsi</th>
                             </tr>
                         </thead>
@@ -90,23 +89,22 @@
                             @foreach ($kuis as $key=>$kuis_item)
                             <tr>
                                 <td class="d-none d-sm-table-cell" style="width: 5%">{{ $key+1 }}</td>
-                                <td><a href="/detail-latihan-soal/{{ $kuis_item->slug }}" class="text-primary">{{ $kuis_item->kuis_name }}</a></td>
+                                <td><a href="/detail-latihan-soal-uraian/{{ $kuis_item->slug }}" class="text-primary"> <u> ( {{ $kuis_item->soalurai->count() }} Soal )</u> {{ $kuis_item->judul }}</a></td>
                                 <td>{{ $kuis_item->mapel->mapel_name }} | {{ $kuis_item->kelas->kelas_name }}</th>
-                                <td>{{ $kuis_item->times }}</td>
-                                <td>{{ $kuis_item->timee }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $kuis_item->pertanyaan->count() }} Soal</td>
+                                <td class="d-none d-sm-table-cell">{{ $kuis_item->tgls }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $kuis_item->tgle }}</td>
                                 <td class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary hover-box" type="button" data-toggle="modal" data-target="#modal-fromleft-edit" data-id="{{ $kuis_item->id }}" data-times="{{ $kuis_item->times }}" data-timee="{{ $kuis_item->timee }}"
-                                        data-kuis_name="{{ $kuis_item->kuis_name }}" data-user_id="{{ $kuis_item->user_id }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-kelas_id="{{ $kuis_item->kelas->id }}" data-mapel_id="{{ $kuis_item->mapel->id }}"><i class="fa fa-pencil"></i> 
+                                    <a href="#" class="btn btn-sm btn-primary hover-box" type="button" data-toggle="modal" data-target="#modal-fromleft-edit" data-id="{{ $kuis_item->id }}"
+                                        data-kuis_name="{{ $kuis_item->judul }}" data-user_id="{{ $kuis_item->user_id }}" data-kuis_desc="{{ $kuis_item->keterangan }}" data-kelas_id="{{ $kuis_item->kelas->id }}" data-mapel_id="{{ $kuis_item->mapel->id }}" data-tgls="{{ $kuis_item->tgls }}" data-tgle="{{ $kuis_item->tgle }}"><i class="fa fa-pencil"></i> 
                                     </a>
                                     <a href="#" class="btn btn-sm btn-danger text-white hover-box" type="button" data-toggle="modal" data-target="#modal-fromleft-remove" data-id="{{ $kuis_item->id }}"
-                                        data-kuis_name="{{ $kuis_item->kuis_name }}" data-user_id="{{ $kuis_item->user_id }}"><i class="fa fa-trash"></i> 
+                                        data-kuis_name="{{ $kuis_item->judul }}" data-user_id="{{ $kuis_item->user_id }}"><i class="fa fa-trash"></i> 
                                     </a>
-                                    <a href="/buat-soal/{{ $kuis_item->id }}/{{ $kuis_item->slug }}" class="fa fa-plus text-uppercase btn btn-sm btn-success hover-box" type="button"> </a>
-                                    <a href="#" class="fa fa-warning btn btn-sm btn-warning text-uppercase hover-box" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}"> </a>
+                                    <a href="/buat-soal-uraian/{{ $kuis_item->id }}/{{ $kuis_item->slug }}" class="fa fa-plus text-uppercase btn btn-sm btn-success hover-box" type="button"> </a>
+                                    {{-- <a href="#" class="fa fa-warning btn btn-sm btn-warning text-uppercase hover-box" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->judul }}" data-kuis_desc="{{ $kuis_item->keterangan }}" data-slug="{{ $kuis_item->slug }}"> </a> --}}
                                 </td>
                             </tr>
-                            @endforeach                            
+                            @endforeach
                         </tbody>
                     </table>
                 </div>                
@@ -120,7 +118,7 @@
 <div class="modal fade" id="modal-fromleft" tabindex="-1" role="dialog" aria-labelledby="modal-fromleft" aria-hidden="true">
     <div class="modal-dialog modal-dialog-fromleft" role="document">                            
         <div class="modal-content">
-            <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('tambahkuis') }}" method="POST" enctype="multipart/form-data">@csrf                    
+            <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('tambahkuisuraian') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-light">
                         <h3 class="block-title">UPLOAD</h3>
@@ -143,23 +141,23 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="name" class="control-label">Kuis name</label>
+                                <label for="name" class="control-label">Judul</label>
                             
-                                <input type="text" class="form-control" id="kuis_name" name="kuis_name"
+                                <input type="text" class="form-control" id="judul" name="judul"
                                     value="" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="name" class="control-label">Deskripsi singkat / catatan</label>
-                                <textarea class="form-control" name="kuis_desc" rows="3" minlength="10" maxlength="255" required></textarea>
+                                
+                                    <textarea class="form-control" name="keterangan" rows="3" minlength="10" maxlength="255" required></textarea>
                             </div>
-
                             <div class="row">
                                 <div class="form-group col-6">
-                                    <input type="time" class="form-control" name="times" required>
+                                    <input type="date" class="form-control" name="tgls" required>
                                 </div>
                                 <div class="form-group col-6">
-                                    <input type="time" class="form-control" name="timee" required>
+                                    <input type="date" class="form-control" name="tgle" required>
                                 </div>
                             </div>
                             
@@ -179,7 +177,7 @@
 <div class="modal fade" id="modal-fromleft-edit" tabindex="-1" role="dialog" aria-labelledby="modal-fromleft" aria-hidden="true">
     <div class="modal-dialog modal-dialog-fromleft" role="document">                            
         <div class="modal-content">
-            <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('tambahkuis') }}" method="POST" enctype="multipart/form-data">@csrf                    
+            <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('tambahkuisuraian') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-light">
                         <h3 class="block-title">EDIT</h3>
@@ -205,7 +203,7 @@
                             <div class="form-group">
                                 <label for="name" class="control-label">kuis name</label>
                             
-                                <input type="text" class="form-control" id="kuis_name" name="kuis_name"
+                                <input type="text" class="form-control" id="kuis_name" name="judul"
                                     value="" required>
                             
                             </div>
@@ -213,15 +211,15 @@
                             <div class="form-group">
                                 <label for="name" class="control-label">Deskripsi singkat / catatan </label>
                                 
-                                    <textarea class="form-control" name="kuis_desc" id="kuis_desc" rows="3" minlength="10" maxlength="255" required></textarea>                                    
+                                    <textarea class="form-control" name="keterangan" id="kuis_desc" rows="3" minlength="10" maxlength="255" required></textarea>                                    
                                 
                             </div>
                             <div class="row">
                                 <div class="form-group col-6">
-                                    <input type="time" class="form-control" name="times" id="times" required>
+                                    <input type="date" class="form-control" name="tgls" id="tgls" required>
                                 </div>
                                 <div class="form-group col-6">
-                                    <input type="time" class="form-control" name="timee" id="timee" required>
+                                    <input type="date" class="form-control" name="tgle" id="tgle" required>
                                 </div>
                             </div>                            
                             
@@ -339,8 +337,8 @@
         var kuis_desc = button.data('kuis_desc')
         var kelas_id = button.data('kelas_id')
         var mapel_id = button.data('mapel_id')
-        var times = button.data('times')
-        var timee = button.data('timee')
+        var tgls = button.data('tgls')
+        var tgle = button.data('tgle')
         var modal = $(this)
         modal.find('.block-title').text('EDIT KUIS');        
         modal.find('.block-content #id').val(id);
@@ -349,8 +347,8 @@
         modal.find('.block-content #kuis_desc').val(kuis_desc);
         modal.find('.block-content #kelas_id').val(kelas_id);
         modal.find('.block-content #mapel_id').val(mapel_id);
-        modal.find('.block-content #times').val(times);
-        modal.find('.block-content #timee').val(timee);
+        modal.find('.block-content #tgls').val(tgls);
+        modal.find('.block-content #tgle').val(tgle);
     })
 </script>
 <script>
@@ -381,7 +379,7 @@
         modal.find('.block-content #slug').val(slug);     
     })
 </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     var months  =['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
     var theDays =['Minggu','Senen','Selasa','Rabu','Kamis','Jumat','Sabtu'];
     var date    = new Date();
@@ -393,7 +391,7 @@
     var year    = (yy<1000) ? yy + 1900: yy;
     document.write(thisDay+',' + day + '' + months[month] + '' + year);
     document.getElementById("waktu").innerHTML=(thisDay+', ' + day + '' + months[month] + '' + year);
-</script>
+</script> --}}
 <script>
     function showtime()
     {            

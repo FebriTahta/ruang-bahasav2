@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use App\Kelas;
 use App\Mapel;
+use App\Uraian;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,19 @@ class KuisController extends Controller
         return view('client/konten/kuis', compact('kursus','kuis','user','users','kelass','mapels','kuiss','instruktur'));
     }
 
+    public function myuraiinstruktur($slug)
+    {
+        $user   = Auth::id();
+        $users  = User::find($user);
+        $kuis   = Uraian::where('user_id', $user)->get();
+        $kuiss  = Uraian::all();
+        $mapels = Mapel::all();
+        $kelass = Kelas::all();
+        $kursus = Kursus::where('slug',$slug)->first();
+        $instruktur = User::where('role', 'instruktur')->get();
+        return view('client/konten/uraian', compact('kursus','kuis','user','users','kelass','mapels','kuiss','instruktur'));
+    }
+
     public function store(Request $request)
     {
         $kursus_id      = $request->kursus_id;        
@@ -37,6 +51,8 @@ class KuisController extends Controller
                 'mapel_id'  =>  $request->mapel_id,
                 'kuis_name' =>  $request->kuis_name,
                 'kuis_desc' =>  $request->kuis_desc,
+                'times'     =>  $request->times,
+                'timee'     =>  $request->timee,
                 'slug'=>Str::slug($request->kuis_name)
             ]);
             $data_kuis      = Kuis::find($kuis_id);
@@ -50,6 +66,44 @@ class KuisController extends Controller
             } else {
                 # code...
                 if ($data_kuis  === null) {
+                    # code...
+                    $kursus         = Kursus::find($kursus_id);
+                    $kursus->kuis()->attach($new_kuis);
+                }
+                    $notif = array(
+                                'pesan-sukses' => 'kuis baru berhasil ditambahkan pada kursus',                
+                            );
+                    return redirect()->back()->with($notif);
+            }                                
+    }
+
+    public function store2(Request $request)
+    {
+        $kursus_id          = $request->kursus_id;        
+        $uraian_id          = $request->id;        
+        $cek_uraian         = Uraian::where('slug',$request->slug)->first();                
+            # code...
+            $new_kuis       =   Uraian::updateOrCreate(['id' => $uraian_id],[
+                'user_id'   =>  $request->user_id,            
+                'kelas_id'  =>  $request->kelas_id,
+                'mapel_id'  =>  $request->mapel_id,
+                'judul'     =>  $request->judul,
+                'keterangan'=>  $request->keterangan,
+                'tgls'      =>  $request->tgls,
+                'tgle'      =>  $request->tgle,
+                'slug'      =>  Str::slug($request->judul)
+            ]);
+            $data_uraian    = Uraian::find($uraian_id);
+            //cek jika sudah ada sebelumnya maka hanya update, jika belum add ke kursus
+            if ($kursus_id === null) {
+                # code...
+                $notif = array(
+                    'pesan-sukses' => 'kuis berhasil ditambahkan',                
+                );
+                return redirect()->back()->with($notif);
+            } else {
+                # code...
+                if ($data_uraian  === null) {
                     # code...
                     $kursus         = Kursus::find($kursus_id);
                     $kursus->kuis()->attach($new_kuis);
@@ -87,6 +141,21 @@ class KuisController extends Controller
         $kuis       = Kuis::find($kuis_id);
 
         $kursus->kuis()->detach($kuis);        
+        $notif = array(
+            'pesan-peringatan' => 'kuis tersebut berhasil dihapus',                
+            );
+                        
+        return redirect()->back()->with($notif);   
+    }
+
+    public function removeurai(Request $request)
+    {
+        $uraian_id    = $request->id;
+        $kursus_id  = $request->kursus_id;
+        $kursus     = Kursus::find($kursus_id);
+        $kuis       = Uraian::find($uraian_id);
+
+        $kursus->uraian()->detach($kuis);        
         $notif = array(
             'pesan-peringatan' => 'kuis tersebut berhasil dihapus',                
             );

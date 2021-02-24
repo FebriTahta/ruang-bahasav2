@@ -6,6 +6,7 @@ use App\Mapel;
 use App\Artikel;
 use App\Kursus;
 use App\Book;
+use App\Uraian;
 use Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -82,6 +83,24 @@ class ArtikelController extends Controller
         }
         $notif = array(
             'pesan-sukses' => 'Artikel baru berhasil ditambahkan',                
+        );
+        return redirect()->back()->with($notif);
+    }
+
+    public function salinurai(Request $request)
+    {
+        $id         = $request->kursus_id;
+        $kursus     = Kursus::find($id);
+
+        foreach ($request->uraian_id as $key => $value) {
+            # code...
+            $data   = array (
+                'artikel_id'=>$request->uraian_id[$key]
+            );
+            $kursus->uraian()->syncWithoutDetaching($data);
+        }
+        $notif = array(
+            'pesan-sukses' => 'Uraian baru berhasil ditambahkan',                
         );
         return redirect()->back()->with($notif);
     }

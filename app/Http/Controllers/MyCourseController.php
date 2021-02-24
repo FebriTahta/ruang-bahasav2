@@ -16,7 +16,13 @@ use App\kursus_video;
 use App\kuis_kursus;
 use App\Nilai;
 use App\artikel_kursus;
+use App\kursus_uraian;
+use App\Uraian;
+use App\Soalurai;
+use App\Jawaburai;
 use Auth;
+use App\Notifurai;
+use App\Nilaiurai;
 use App\Mail\PengajuanResetKuis;
 use App\Mail\AccResetKuis;
 use App\Mail\AjuanReset;
@@ -40,7 +46,10 @@ class MyCourseController extends Controller
         //artikel
         $artikel_masuk      = artikel_kursus::where('kursus_id', $data_kursus_id)->pluck('artikel_id')->toArray();
         $filter_artikel     = Artikel::where('kelas_id', $kelas_id)->where('mapel_id', $mapel_id)->whereNotIn('id', $artikel_masuk)->get();
-        return view('client.mycourse.index', compact('data_kursus','filter_video','filter_kuis','filter_artikel'));        
+
+        $uraian_masuk       = kursus_uraian::where('kursus_id', $data_kursus_id)->pluck('uraian_id')->toArray();
+        $filter_uraian      = Uraian::where('kelas_id', $kelas_id)->where('mapel_id', $mapel_id)->whereNotIn('id', $uraian_masuk)->get();
+        return view('client.mycourse.index', compact('filter_uraian','data_kursus','filter_video','filter_kuis','filter_artikel'));        
     }
 
     public function kuisform($id)
@@ -99,7 +108,33 @@ class MyCourseController extends Controller
         }else{            
             return view('client.mykuis.index2', compact('data_kursus','data_pertanyaan','data_kuis','data_result','data_pertanyaan_R','jumlah_soal','salah','benar'));
         }
-    }    
+    }
+     
+    public function kuisform3($slug, $slug2)
+    {
+        // slug 1 untuk kuis dan slug 2 untuk kursus
+        $user_id            = Auth::id();        
+        $data_kuis          = Uraian::where('slug',$slug)->first();        
+        $data_kuis_id       = $data_kuis->id;
+
+        $data_kursus        = Kursus::where('slug',$slug2)->first();
+        // $data_pertanyaan    = Pertanyaan::where('kuis_id', $data_kuis_id)->with('answer')->inRandomOrder()->get();
+        $data_pertanyaan    = Soalurai::where('uraian_id', $data_kuis_id)->get();
+        $data_result        = Result::where('profile_id', $user_id)->where('kuis_id', $data_kuis_id)->get();        
+        $data_pertanyaan_R  = Pertanyaan::where('kuis_id', $data_kuis_id)->get();
+        $profile            = Profile::where('user_id',$user_id)->first();
+        $profile_id         = $profile->id;
+        
+        $data_reset         = reset::where('kuis_id',$data_kuis_id)->where('profile_id', $profile_id)->get();
+
+        $jumlah_soal        = $data_pertanyaan->count();
+        $salah              = Result::where('profile_id', $user_id)->where('kuis_id', $data_kuis_id)->where('myresult','0')->count();
+        $benar              = Result::where('profile_id', $user_id)->where('kuis_id', $data_kuis_id)->where('myresult','1')->count();
+        $hasil              = Nilai::where('profile_id', $user_id)->where('kuis_id', $data_kuis_id)->get();
+                
+        return view('client.mykuis.index3', compact('data_kursus','data_pertanyaan','data_kuis','data_result','data_pertanyaan_R','jumlah_soal','salah','benar'));
+        
+    }
 
     public function detailnilai($kuis,$ke,$profile,$kursus)
     {
@@ -178,6 +213,45 @@ class MyCourseController extends Controller
 
         return redirect()->back()->with($notif);
         
+    }
+
+    public function submitkuis2(Request $request)
+    {
+        $prof = Profile::find($request->profile_id);
+        
+        $urai = Uraian::find($request->uraian_id);
+        $nama = $prof->user->name;
+        $judul= $urai->judul;
+
+        foreach ($request->jawabanuraian as $key => $jawaban) {
+            # code...
+
+            $jawab=Jawaburai::create([
+                'user_id'=>$request->user_id,
+                'profile_id'=>$request->profile_id,
+                'uraian_id'=>$request->uraian_id,
+                'soalurai_id'=>$request->soalurai_id[$key],
+                'jawabanuraian'=>$jawaban
+
+            ]);
+        }
+
+        $notifuraian = Notifurai::create([
+            'user_id'=>$request->user_id,
+            'profile_id'=>$request->profile_id,
+            'uraian_id'=>$request->uraian_id,
+            'kursus_id'=>$request->kursus_id,
+            'dinilai'=>0,
+            'notif'=>'siswa bernama '.$nama.' telah mengerjakan soal uraian berjudul '.$judul.''
+        ]);
+
+        $notif = array(
+            'pesan-info' => 'anda telah menyelesaikan latihan soal uraian',                
+            );
+
+            
+        return redirect()->back()->with($notif);
+
     }
 
     //berubah dan tidak dipakai
@@ -296,7 +370,11 @@ class MyCourseController extends Controller
     {
         $id     = Auth::id();
         $resets = Reset::where('user_id',$id)->get();
-        return view('/instruktur.reset', compact('resets'));
+        $data_urai = Uraian::where('user_id',$id)->get();
+        $belum_dinilai = Notifurai::where('user_id', $id)->where('dinilai', 0)->get();
+        $data_kursus = Kursus::where('user_id', $id)->get();
+        
+        return view('/instruktur.reset', compact('resets','data_urai','belum_dinilai','data_kursus'));
     }
     
     //ajax
@@ -319,5 +397,47 @@ class MyCourseController extends Controller
         $data_kursus = Kursus::where('slug',$kursus)->first();
         $profiles    = Profile::find($profile);
         return view('instruktur.datasiswa',compact('data_kursus','profiles'));
+    }
+
+    public function menilai($kursus_slug,$profile_id,$uraian_id)
+    {
+        $data_kursus = Kursus::where('slug',$kursus_slug)->first();
+        $profiles    = Profile::find($profile_id);
+        $urai        = Uraian::where('id',$uraian_id)->first();
+        $jawaban_uraian = Jawaburai::where('profile_id', $profile_id)->where('uraian_id',$uraian_id)->get();
+        return view('instruktur.menilai',compact('data_kursus','profiles','urai','jawaban_uraian'));
+    }
+
+    public function berinilai(Request $request)
+    {
+        $prof = Profile::find($request->profile_id);
+        $urai = Uraian::find($request->uraian_id);
+        $nama = $prof->user->name;
+        $judul = $urai->judul;
+        $data_p = Notifurai::updateOrCreate(['id'=>$request->notifurai],
+        [
+            'user_id'=>$request->user_id,
+            'profile_id'=>$request->profile_id,
+            'uraian_id'=>$request->uraian_id,
+            'notif'=>'Uraian Soal ' .$judul. ' milik' .$nama. ' telah dinilai',
+            'dinilai'=>1
+        ]);
+
+        foreach ($request->nilaiurai as $key => $nilainya) {
+            # code...
+            $nilai = Nilaiurai::create([
+                'user_id'=>$request->user_id,
+                'profile_id'=>$request->profile_id,
+                'uraian_id'=>$request->uraian_id,
+                'soalurai_id'=>$request->soalurai_id[$key],
+                'jawaburai_id'=>$request->jawaburai_id[$key],
+                'nilaiurai'=>$nilainya
+            ]);
+        }
+       
+        $notif = array(
+            'pesan-info' => 'Latihan Soal Uraian berhasil diberi nilai',                
+            );
+        return redirect()->back()->with($notif);
     }
 }

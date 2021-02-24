@@ -105,6 +105,7 @@ Route::group(['middleware'=>['auth','checkrole:admin,instruktur']], function(){
     Route::post('/addKuis','KuisController@store')->name('addKuis');
     Route::post('/salinKuis','KuisController@salin')->name('salinKuis');
     Route::post('/removeKuis','KuisController@remove')->name('removeKuis');
+    Route::post('/removeUrai','KuisController@removeurai')->name('removeUrai');
     Route::post('/hapusKuisPermanen', 'KuisController@hapusKuisPermanen')->name('hapusKuisPermanen');
     //book
     Route::get('/my-book','BookController@mybook')->name('my-book');
@@ -116,6 +117,7 @@ Route::group(['middleware'=>['auth','checkrole:admin,instruktur']], function(){
     Route::get('/create-soal/{slug}','SoalController@create')->name('createSoal');
     Route::get('/create-soals/{id}','SoalController@creates')->name('createSoals');
     Route::post('/storeSoal','SoalController@store')->name('storeSoal');
+    Route::post('/storeSoalUraian','SoalController@store2')->name('storeSoal2');
     Route::get('/detail-soal/{slug}','SoalController@detail')->name('detailSoal');
     Route::get('/details-soal/{id}','SoalController@details')->name('detailsSoal');
     Route::get('/edit-soal/{id}','SoalController@edit')->name('editSoal');
@@ -140,17 +142,26 @@ Route::group(['middleware'=>['auth','checkrole:siswa,pengunjung,instruktur,admin
     Route::get('/my-course/{slug}','MyCourseController@courseform')->name('myCourse');
     //video
     Route::get('/my-video/instruktur/{slug}','VideoController@myvideoinstruktur')->name('myvidInstruktur');
-    //Kuis
+    //Kuis Multiple
     Route::get('/latihan-soal/instruktur/{slug}','KuisController@mykuisinstruktur')->name('mykuisInstruktur');
     Route::post('/tambah-latihan-soal','KuisController@store')->name('tambahkuis');
     Route::post('/hapus-latihan-soal','KuisController@hapuskuispermanen')->name('hapuskuis');
     Route::get('/kuis-form-latihan-soal/{slug}/{slug2}','MyCourseController@kuisform2')->name('kuisForm');
     Route::get('/detail-latihan-soal/{slug}','SoalController@detailkuiss');//kuis instruktur yang belom dimasukan ke kursus
     Route::get('/detail-latihan-soal/{slug}/{slug2}','SoalController@detailkuis')->name('detailKuis');//kuis instruktur yang sudah dimasukan ke kursus
+    //Kuis Uraian
+    Route::get('/kuis-form-latihan-soal-uraian/{slug}/{slug2}','MyCourseController@kuisform3')->name('kuisForm');
+    Route::get('/latihan-soal-uraian/instruktur/{slug}','KuisController@myuraiinstruktur')->name('myuraiInstruktur');
+    Route::post('/tambah-latihan-soal-uraian','KuisController@store2')->name('tambahkuisuraian');
+    Route::get('/detail-latihan-soal-uraian/{slug}','SoalController@detailkuiss2');//kuis uraian instruktur yang belom dimasukan ke kursus
+    Route::get('/detail-latihan-soal-uraian/{slug}/{slug2}','SoalController@detailkuiss22');
     //soal
     Route::get('/buat-soal/{id}/{slug}','SoalController@createss')->name('buatSoals');
+    Route::get('/buat-soal-uraian/{id}/{slug}','SoalController@createsss')->name('buatSoalss');
     Route::get('/edit-latihan-soal/{id}','SoalController@edits')->name('editSoals');
+    Route::get('/edit-latihan-soal-uraian/{id}','SoalController@edits2')->name('editSoals2');
     Route::post('/update-latihan-soal/{id}','SoalController@updates')->name('updateSoals');
+    Route::post('/update-latihan-soal-uraian','SoalController@updateuraian')->name('updateSoalsU');
     //artikel
     Route::get('/artikel/instruktur/{slug}','ArtikelController@index')->name('myArtikel');
     Route::get('/artikel-create-new-artikel/{slug}','ArtikelController@create')->name('createArtikel');
@@ -158,11 +169,13 @@ Route::group(['middleware'=>['auth','checkrole:siswa,pengunjung,instruktur,admin
     Route::get('/artikel/edit/{slug}/{slug2}','ArtikelController@edit')->name('editArtikel');
     Route::get('/artikel/{id}/{slug}','ArtikelController@detail')->name('artikels');
     Route::post('/add-artikel-kursus','ArtikelController@salin')->name('salinArtikel');
+    Route::post('/add-uraian-kursus','ArtikelController@salinurai')->name('salinUraian');
     Route::post('/remove-artikel','ArtikelController@remove')->name('removeArtikel');
     //book
     Route::post('/add-book','BookController@store')->name('addBook');
     //kuis
-    Route::post('/submit-kuis','MyCourseController@submitkuis')->name('submit-kuis');        
+    Route::post('/submit-kuis','MyCourseController@submitkuis')->name('submit-kuis');
+    Route::post('/submit-kuis-uraian','MyCourseController@submitkuis2')->name('submit-kuis-uraian');
     Route::get('/akun','AkunController@index')->name('akun');
     Route::post('/ajukan-reset', 'MyCourseController@ajukanreset')->name('ajukan-reset');
     route::get('/landing/land', 'ProfileController@landing')->name('landing');
@@ -170,4 +183,7 @@ Route::group(['middleware'=>['auth','checkrole:siswa,pengunjung,instruktur,admin
     route::get('/form-reset-kuis', 'MyCourseController@formreset')->name('formreset');
     //getnilai
     Route::get('/get-nilai/{kuis_id}/{profile_id}', 'MyCourseController@getnilai');
+    //menilai
+    Route::get('/menilai-uraian-ganda/{kursus_slug}/{profile_id}/{uraian_id}','MyCourseController@menilai');
+    Route::post('/beri-nilai','MyCourseController@berinilai')->name('berinilai');
 });

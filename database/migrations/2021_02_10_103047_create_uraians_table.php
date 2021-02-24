@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKuisTable extends Migration
+class CreateUraiansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateKuisTable extends Migration
      */
     public function up()
     {
-        Schema::create('kuis', function (Blueprint $table) {
-            $table->bigIncrements('id');            
+        Schema::create('uraians', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('kelas_id');
             $table->unsignedBigInteger('mapel_id');
-            $table->string('kuis_name');
-            $table->string('kuis_desc');
-            $table->time('times');
-            $table->time('timee');
-            $table->string('slug');
+            $table->text('judul');
+            $table->text('keterangan');
+            $table->date('tgls');
+            $table->date('tgle');
+            $table->longText('slug');
             $table->timestamps();
-        });        
+        });
     }
 
     /**
@@ -34,6 +34,6 @@ class CreateKuisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kuis');
+        Schema::dropIfExists('uraians');
     }
 }

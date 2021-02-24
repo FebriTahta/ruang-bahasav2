@@ -54,4 +54,14 @@ class Kursus extends Model
     {
         return $this->belongsToMany(Book::class);
     }
+
+    public function uraian()
+    {
+        return $this->belongsToMany(Uraian::class);
+    }
+
+    public function notifurai()
+    {
+        return $this->hasMany(Notifurai::class);
+    }
 }

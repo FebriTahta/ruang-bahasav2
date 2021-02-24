@@ -7,6 +7,8 @@ use App\Kursus;
 use App\Kuis;
 use Auth;
 use App\User;
+use App\Uraian;
+use App\Soalurai;
 use App\Mapel;
 use App\Kelas;
 use Illuminate\Support\Str;
@@ -40,6 +42,15 @@ class SoalController extends Controller
         $datas= $data->kursus->first();
         return view('client.mykuis.create', compact('data_slug','data','data_id','datas','data_kuis'));
     }
+    //uraian
+    public function createsss($id , $slug){
+        $data_kuis = Uraian::where('slug', $slug)->first();
+        $data = Uraian::find($id);
+        $data_id = $data->id;//id kuis
+        $data_slug = $data->slug;//slug kuis        
+        $datas= $data->kursus->first();
+        return view('client.mykuis.createuraian', compact('data_slug','data','data_id','datas','data_kuis'));
+    }
  
     public function store(Request $request)
     {
@@ -56,6 +67,20 @@ class SoalController extends Controller
                 $addpertanyaan->save();
             }
         $answer = (new Answer)->storeAnswer($data,$pertanyaans);//insert dari model answer
+        $notif = array(
+            'pesan-sukses' => 'soal baru berhasil ditambahkan'
+        );
+        return redirect()->back()->with($notif);        
+    }
+
+    public function store2(Request $request)
+    {
+        $user = Auth::id();
+        Soalurai::create([
+            'user_id'=>$user,
+            'uraian_id'=>$request->uraian_id,
+            'soaluraian'=>$request->soaluraian
+        ]);
         $notif = array(
             'pesan-sukses' => 'soal baru berhasil ditambahkan'
         );
@@ -106,6 +131,27 @@ class SoalController extends Controller
         return view('client.mykuis.detail',compact('data_pertanyaan','data_kuis','total_soal'));
     }
 
+    public function detailkuiss2($slug)
+    {                
+        $data_kuis          = Uraian::where('slug',$slug)->first();
+        $data1              = $data_kuis->id;
+        $data_pertanyaan    = Soalurai::where('uraian_id',$data1)->get();
+        $total_soal         = $data_pertanyaan->count();
+        // $datas = $data_kuis->kursus->first();
+        return view('client.mykuis.detailuraian',compact('data_pertanyaan','data_kuis','total_soal'));
+    }
+
+    public function detailkuiss22($slug, $slug2)
+    {                
+        $data_kursus        = Kursus::where('slug', $slug2)->first();
+        $data_kuis          = Uraian::where('slug',$slug)->first();
+        $data1              = $data_kuis->id;
+        $data_pertanyaan    = Soalurai::where('uraian_id',$data1)->get();
+        $total_soal         = $data_pertanyaan->count();
+        // $datas = $data_kuis->kursus->first();
+        return view('client.mykuis.detailuraian',compact('data_pertanyaan','data_kuis','total_soal'));
+    }
+
     public function edit($id)
     {
         $data_1     = Pertanyaan::find($id);
@@ -124,6 +170,15 @@ class SoalController extends Controller
         $data_x     = $data_1->kuis_id;
         $data_kuis  = Kuis::find($data_x);
         return view('client.mykuis.edit',compact('data_1','data_2','data_kuis'));
+    }
+
+    public function edits2($id)
+    {
+        $data_1     = Soalurai::find($id);
+        $data_id    = $data_1->id;
+        $data_x     = $data_1->uraian_id;
+        $data_kuis  = Uraian::find($data_x);
+        return view('client.mykuis.edituraian',compact('data_1','data_kuis'));
     }
 
     public function update(Request $request, $id)
@@ -159,5 +214,27 @@ class SoalController extends Controller
         );
         
         return redirect('/detail-latihan-soal/'.$data_5)->with($notif);
+    }
+
+    public function updateuraian(Request $request)
+    {
+
+        // $data_kuis = Uraian::where('slug', $slug)->first();
+        // $data = Uraian::find($id);
+        // $data_id = $data->id;//id kuis
+        // $data_slug = $data->slug;//slug kuis        
+        // $datas= $data->kursus->first();
+        // return view('client.mykuis.createuraian', compact('data_slug','data','data_id','datas','data_kuis'));
+        $uraian = Uraian::where('id', $request->uraian_id)->first();
+        $slug   = $uraian->slug;
+        $data_uraian = Soalurai::updateOrCreate(['id'=> $request->id],[
+            'uraian_id'=> $request->uraian_id,
+            'soaluraian'=>$request->soaluraian
+        ]);
+        // dd($data_uraian);
+        $notif = array(
+            'pesan-sukses' => 'soal uraian berhasil diperbarui'
+        );
+        return redirect('/detail-latihan-soal-uraian/'.$slug)->with($notif);
     }
 }
