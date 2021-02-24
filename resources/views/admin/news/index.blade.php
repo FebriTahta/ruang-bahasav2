@@ -9,7 +9,7 @@
         </div>
     </div>
 </div>
-<!-- END Hero -->
+<!-- END Hero --> 
 <div class="content">
     <h2 class="content-heading">News | <small>tampilkan berita pada menu utama</small></h2>
         @if (Session::has('message'))

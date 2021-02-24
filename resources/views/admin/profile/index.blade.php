@@ -9,7 +9,7 @@
     </div>
 </div>
 <!-- END Hero -->
-
+ 
 <div class="content">
     <div class="row">
         @if ($data_profile->user->role=='instruktur')

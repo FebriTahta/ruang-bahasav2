@@ -10,6 +10,7 @@
     </div>
 </div>
 <!-- END Hero -->
+
 <div class="content">
     @if (auth()->user()->role=='admin')
     <div class="row">

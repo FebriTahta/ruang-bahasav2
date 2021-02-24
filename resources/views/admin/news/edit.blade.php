@@ -8,7 +8,7 @@
             <h5 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Welcome to your News page!</h5>
         </div>
     </div>
-</div>
+</div> 
 <!-- END Hero -->
 <div class="content">
     <h2 class="content-heading"><a href="{{ route('news') }}"> News </a>| <small>tampilkan berita pada menu utama</small></h2>

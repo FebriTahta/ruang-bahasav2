@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 <!-- END Hero -->
     <div class="content">
         <div class="content-heading"><label>DAFTAR VIDEO</label></div>            

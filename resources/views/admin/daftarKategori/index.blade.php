@@ -1,6 +1,6 @@
 @extends('layouts.admin_layouts.master')
 
-@section('content')
+@section('content') 
 <!-- Hero -->
 <div class="bg-image bg-image-bottom" style="background-image: url({{ asset('assets/media/photos/photo34@2x.jpg') }});">
     <div class="bg-primary-dark-op">

@@ -13,7 +13,7 @@
     </div>
 </div>
 <!-- END Hero -->
-
+ 
     <div class="content">
         <div class="col-12">
             <div class="content-heading"><label>DAFTAR BUKU</label></div>            

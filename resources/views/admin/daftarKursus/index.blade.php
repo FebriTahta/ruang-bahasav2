@@ -14,8 +14,9 @@
                 <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Welcome to your Kursus management page!</h2>
             </div>
         </div>
-    </div>
+    </div> 
 </div>
+
 <!-- END Hero -->
 <div class="content">
     <!-- Files Filtering -->

@@ -10,7 +10,7 @@
     </div>
 </div>
 <!-- END Hero -->
-
+  
 <div class="content">
     <div class="col-xl-12">
         <h2 class="content-heading">KURSUS <small>form control untuk memanajemen konten ({{ $data_kursus->user->name }})</small></h2>
