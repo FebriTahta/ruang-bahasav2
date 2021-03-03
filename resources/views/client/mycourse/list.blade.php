@@ -161,7 +161,7 @@
                         <div class="row">
                             <div class="col-sm-5 position-relative">
                                 <a href="{{ route('myCourse',$item->slug) }}" class="image-mobile" >
-                                    <img class="card-img-bottom d-block radius-image-full" style="min-height: 160px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="Card image cap">
+                                    <img class="card-img-bottom d-block radius-image-full" style="height: 160px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="col-sm-7 card-body blog-details align-self">
