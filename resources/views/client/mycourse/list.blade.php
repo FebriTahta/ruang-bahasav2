@@ -41,7 +41,7 @@
                             <p class="text-muted">
                                 @if (auth()->user()->role=='instruktur')
                                     @if (count(auth()->user()->kursus)==0)
-                                        Anda belum memiliki kelas. Segera hubungi Admin untuk mendapatkan kelas
+                                        Anda belum memiliki kelas. Segera hubungi Admin untuk mendapatkan kelas. <br>
                                     @else
                                         Anda Mempunyai <strong>{{ count(auth()->user()->kursus) }} kelas</strong>.<br>
                                         <small>Silahkan periksa dan atur materi pada daftar kelas anda </small><br>
