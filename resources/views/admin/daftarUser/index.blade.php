@@ -71,7 +71,7 @@
                         <select class="js-select2 form-control js-select2-enabled select2-hidden-accessible" id="val-select22" name="role" style="width: 100%;" data-placeholder="Choose one.." data-select2-id="val-select22" tabindex="-1" aria-hidden="true" required>
                             <option data-select2-id="5"></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                             <option value="admin">admin</option>
-                            <option value="instruktur">instruktur</option>
+                            <option value="instruktur">guru</option>
                             <option value="siswa">siswa</option>
                             
                         </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="4" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-val-select22-container"><span class="select2-selection__rendered" id="select2-val-select22-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Choose one..</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
@@ -98,8 +98,8 @@
                             <tr>
                                 {{-- <th>#</th> --}}
                                 <th>nama</th>
-                                <th>role</th>
-                                <th>status</th>                                
+                                <th>akses</th>
+                                <th>status</th>
                                 <th>email</th>
                                 <th>aksi</th>
                             </tr>
@@ -111,7 +111,13 @@
                                 <tr>
                                     {{-- <td>{{ $num }}</td> --}}
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->role }}</td>
+                                    <td>
+                                        @if ($item->role=='instruktur')
+                                        guru
+                                        @else
+                                        {{ $item->role }}
+                                        @endif 
+                                    </td>
                                     <td>
                                         {{-- <label class="css-control css-control-success css-switch">
                                             <input data-id="{{ $item->id }}" type="checkbox" class="css-control-input" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $item->stat ? 'checked' : '' }}>
@@ -181,7 +187,7 @@
                             <select name="role" id="role" class="form-control" required>
                                 <option value=""> == pilih role == </option>
                                 <option value="admin">admin</option>
-                                <option value="instruktur">instruktur</option>
+                                <option value="instruktur">guru</option>
                                 <option value="siswa">siswa</option>
                             </select>
                         </div>
@@ -230,7 +236,7 @@
                             <select name="role" id="role" class="form-control" required>
                                 <option value=""> == pilih role == </option>
                                 <option value="admin">admin</option>
-                                <option value="instruktur">instruktur</option>
+                                <option value="instruktur">guru</option>
                                 <option value="siswa">siswa</option>
                             </select>
                         </div>

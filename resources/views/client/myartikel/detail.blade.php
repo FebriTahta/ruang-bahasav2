@@ -59,7 +59,7 @@
             <div class="block block-transparent">
                 <div class="block-header">
                     <h3 class="block-title text-uppercase">
-                        <i class="fa fa-fw fa-university mr-5"></i> Kursus lain anda
+                        <i class="fa fa-fw fa-university mr-5"></i> Kelas lain anda
                     </h3>
                 </div>
                 <div class="block-content block-content-full">

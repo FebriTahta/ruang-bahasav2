@@ -20,7 +20,7 @@
 <!-- END Hero -->
 <div class="content">
     <!-- Files Filtering -->
-    <h2 class="content-heading">KURSUS <small>tambahkan kursus dan instruktur baru pada kategori yang ada</small></h2>
+    <h2 class="content-heading">KATEGORI KELAS <small> tambahkan dan Gutu baru pada kategori yang ada</small></h2>
     @if (Session::has('message'))
         <div class="alert alert-danger text-bold">{{ Session::get('message') }}</div>                
     @endif
@@ -63,7 +63,7 @@
                 <div class="col-md-4 col-xl-12 mb-10 " data-category="{{ $item_k->kelas_name }}|{{ $item_m->mapel_name }}" style="display: none">
                     <button class="btn btn-alt-primary" data-toggle="modal" data-target="#modal-fromleft"
                     data-kelas_id="{{ $item_k->id }}" data-mapel_id="{{ $item_m->id }}" data-slug="{{ $slug }}"
-                    ><i class="fa fa-plus"></i> instruktur</button>
+                    ><i class="fa fa-plus"></i> Guru</button>
                 </div><br>
                 @endforeach
             @endforeach
@@ -77,14 +77,14 @@
                     <div class="block block-rounded block-shadow">
                         <div class="block-content p-0 overflow-hidden">
                             <a class="img-link" href="{{ route('kursus', $item->slug) }}">
-                                <img class="rounded-top" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="" height="285px">
+                                <img class="rounded-top" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="" height="285px" width="100%">
                             </a>                    
                         </div>
                         <div class="block-content border-bottom">
                             <h4 class="font-size-h5 mb-10"> {{ $item->kelas->kelas_name }}</h4>
                             <h5 class="font-size-h1 font-w300 mb-5"> {{ $item->mapel->mapel_name }}</h5>
                             <p class="text-muted">
-                                <i class="fa fa-map-pin mr-5"></i> Instruktur : {{ $item->user->name }}
+                                <i class="fa fa-map-pin mr-5"></i> Guru : {{ $item->user->name }}
                             </p>
                             @if ($item->status=='aktif')                            
                             <form action="{{ route('nonaktifkan') }}" method="POST">@csrf
@@ -171,13 +171,13 @@
             @if ($data_kursus==null)
                 <div class="col-md-12 col-xl-12" data-category="info">                
                     <div class="block block-content bg-transparent text-center">
-                        <h5>belum ada kategori kursus yang tersedia. silahakan buat kategori kursus berdasarkan mapel dan kelas yang ada</h5>
+                        <h5>belum ada kategori kelas yang tersedia. silahakan buat kategori berdasarkan mapel dan kelas yang ada</h5>
                     </div>
                 </div>
                 @else
                 <div class="col-md-12 col-xl-12" data-category="info">                
                     <div class="block block-content bg-transparent text-center">
-                        <h5>Tambahkan Instruktur pada setiap kategori yang ada dan aktifkan kursus tersebut agar dapat ditampilkan dihalaman depan</h5>
+                        <h5>Tambahkan Guru pada setiap kategori yang ada dan aktifkan kategori kelas yang ada agar dapat diakses oleh siswa</h5>
                     </div>
                 </div>            
             @endif
@@ -194,7 +194,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('addKursus') }}" method="POST" enctype="multipart/form-data">@csrf
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-dark">
-                        <h3 class="block-title">menambahkan instruktur pada kursus</h3>
+                        <h3 class="block-title">menambahkan guru pada kategori kelas</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -212,7 +212,7 @@
                             </div>                            
                             <div class="col-sm-12 form-group">
                                 <select name="user_id" id="" class="form-control" required>
-                                    <option value=""> == pilih instruktur == </option>
+                                    <option value=""> == pilih guru aktif == </option>
                                     @foreach ($data_instruktur as $item_i)
                                         <option value="{{ $item_i->id }}" checked>{{ $item_i->name }}</option>
                                     @endforeach
@@ -243,7 +243,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('removeKursus') }}" method="POST" enctype="multipart/form-data">@csrf
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-dark">
-                        <h3 class="block-title">menambahkan instruktur pada kursus</h3>
+                        <h3 class="block-title">menambahkan guru pada kategori kelas</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -287,7 +287,7 @@
             var mapel_id = button.data('mapel_id')
             var slug = button.data('slug')
             var modal = $(this)
-            modal.find('.block-title').text('add instruktur untuk kursus');        
+            modal.find('.block-title').text('add Guru untuk Kelas');        
             modal.find('.block-content #kelas_id').val(kelas_id);
             modal.find('.block-content #mapel_id').val(mapel_id);
             modal.find('.block-content #slug').val(slug);
@@ -299,7 +299,7 @@
         var button = $(event.relatedTarget)        
         var id = button.data('id')                
         var modal = $(this)
-        modal.find('.block-title').text('HAPUS KURSUS');        
+        modal.find('.block-title').text('HAPUS GURU PADA KELAS');        
         modal.find('.block-content #id').val(id);
     }) 
 </script>

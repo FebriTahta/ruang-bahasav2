@@ -50,7 +50,7 @@
                                         <a >{{ $data_kursus->user->name }}</a> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> {{ $data_kursus->user->role }} </span>. <span class="meta-value ml-2"><span class="fa fa-check"></span></span>
+                                        <span class="meta-value"> Guru </span>. <span class="meta-value ml-2"><span class="fa fa-check"></span></span>
                                     </li>
                                 </ul>
                             </div>

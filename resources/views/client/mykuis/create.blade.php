@@ -44,7 +44,7 @@
                                         <a >{{ $data_kuis->user->name }}</a> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> {{ $data_kuis->user->role }} </span>. <span class="meta-value ml-2"></span> <span class="fa fa-check"> owner latihan soal</span>
+                                        <span class="meta-value"> @if($data_kuis->user->role=='instruktur') Guru @else {{ $data_kuis->user->role }} @endif </span>. <span class="meta-value ml-2"></span> <span class="fa fa-check"> owner latihan soal</span>
                                     </li>
                                 </ul>
                             </div>

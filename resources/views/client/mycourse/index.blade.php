@@ -20,7 +20,7 @@
             @if (Session::has('pesan-sukses'))
                 <div class="alert alert-info text-bold">{{ Session::get('pesan-sukses') }}</div>
             @endif
-            <h3 class="section-title-left mb-4"> My Course</h3>
+            <h3 class="section-title-left mb-4"> My Class</h3>
             <div class="left-right">
                 <small id="waktu"></small>
                 <small class="section-right" id="jam"></small>
@@ -66,7 +66,7 @@
                                         <a >{{ $data_kursus->user->name }}</a> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> {{ $data_kursus->user->role }} </span>. <span class="meta-value ml-2"><span class="fa fa-check"></span></span>
+                                        <span class="meta-value">@if($data_kursus->user->role=='instruktur') Guru @else {{ $data_kursus->user->role }} @endif  </span>. <span class="meta-value ml-2"><span class="fa fa-check"></span></span>
                                     </li>
                                 </ul>
                             </div>
@@ -79,13 +79,13 @@
                     <a class="topics-list hover-box" onclick="videoscroll()">
                         <div class="list1">
                             <span class="fa fa-play"></span>
-                            <h4><u>{{ $data_kursus->video->count() }}</u> Video Kursus</h4>
+                            <h4><u>{{ $data_kursus->video->count() }}</u> Materi Video</h4>
                         </div>
                     </a>
                     <a class="topics-list mt-3 hover-box" onclick="artikelscroll()">
                         <div class="list1" >
                             <span class="fa fa-book"></span>
-                            <h4><u>{{ $data_kursus->artikel->count() }}</u> Artikel & Buku Kursus</h4>
+                            <h4><u>{{ $data_kursus->artikel->count() }}</u> Artikel & Buku</h4>
                         </div>
                     </a>
                     <a  class="topics-list mt-3 hover-box" onclick="kuisscroll()">
@@ -98,7 +98,7 @@
                         class="topics-list mt-3 hover-box">
                         <div class="list1">
                             <span class="fa fa-pie-chart"></span>
-                            <h4><u>{{ $data_kursus->profile->count() }}</u> Peserta Didik</h4>
+                            <h4><u>{{ $data_kursus->profile->count() }}</u> Siswa</h4>
                         </div>
                     </a>
                 </div>                            
@@ -157,7 +157,7 @@
                 <div class="row">
                     @if (count($data_kursus->video)==null)
                         <div class="col-12 col-xl-12 text-center" style="max-height: 100px">
-                            <p class="text-danger">Belum Ada Video Kursus Yang Tersedia</p>
+                            <p class="text-danger">Belum Ada Materi Video Yang Tersedia</p>
                         </div>
                     @else
                         @foreach ($data_kursus->video as $key=>$item)
@@ -232,7 +232,7 @@
                 <div class="col-12">
                     @if (count($data_kursus->kuis)==null)
                         <div class="col-12 col-xl-12 text-center" style="max-height: 100px">
-                            <p class="text-danger">Belum Ada Latihan SOal Yang Tersedia</p>
+                            <p class="text-danger">Belum Ada Latihan Soal Yang Tersedia</p>
                         </div>
                     @else
                         <div class="bg-clr-white">
@@ -240,7 +240,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">#</th>
-                                        <th style="width: 30%">Kuis</th>
+                                        <th style="width: 30%">Pilihan Ganda</th>
                                         <th style="width: 10%">start</th>
                                         <th style="width: 10%">end</th>
                                         @if (auth()->user()->role=='siswa')
@@ -269,10 +269,10 @@
                                                 @endif
                                             @endif                                    
                                         </td>
-                                        <td>{{ $item->times }}</td>
-                                        <td>{{ $item->timee }}</td>
+                                        <td style="width: 10%">{{ $item->times }}</td>
+                                        <td  style="width: 10%">{{ $item->timee }}</td>
                                         @if (auth()->user()->role=='siswa')
-                                            <td class="text-center " style="width: 15%">
+                                            <td class="text-center">
                                                 
                                                 @if ($sudah_dikerjakan==null)
                                                     <p class="badge badge-danger text-uppercase float-right">belum</p>&nbsp;&nbsp;&nbsp;
@@ -315,7 +315,7 @@
                 @endif
                     <hr>
                 
-                <p>{{ $date->format('Y-m-d') }}</p>
+                {{-- <p>{{ $date->format('Y-m-d') }}</p> --}}
                 <div class="row">
                     @if (count($data_kursus->uraian)==null)
                         <div class="col-12 col-xl-12 text-center" style="max-height: 100px">
@@ -351,7 +351,7 @@
                                                     $blmdinilai     = App\Nilaiurai::where('user_id', $data_kursus->user->id)->where('profile_id', auth()->user()->profile->id)->where('uraian_id',$item->id)->first();
                                                 ?>
                                                 <a
-                                                @if ($date->format('Y-m-d') > $item->tgls && $date->format('Y-m-d') == $item->tgle || $date->format('Y-m-d') == $item->tgls && $date->format('Y-m-d') < $item->tgle || $sudah_dikerjakan)
+                                                @if ($date->format('Y-m-d') > $item->tgls || $date->format('Y-m-d') == $item->tgls && $date->format('Y-m-d') == $item->tgle || $date->format('Y-m-d') == $item->tgls && $date->format('Y-m-d') < $item->tgle || $sudah_dikerjakan)
                                                     
                                                     href="/kuis-form-latihan-soal-uraian/{{ $item->slug }}/{{ $data_kursus->slug }}" class="text-primary"    
                                                     

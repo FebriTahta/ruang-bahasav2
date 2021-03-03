@@ -10,11 +10,11 @@
                         <div class="item">
                             <div class="row slider-info">
                                 <div class="col-lg-8 message-info align-self">
-                                    <span class="label-blue mb-sm-4 mb-3">Course Goal</span>
+                                    <span class="label-blue mb-sm-4 mb-3">Study Goal</span>
                                     <h3 class="title-big mb-4">Dapatkanlah materi bergengsi dan jadi juara kelas.
                                     </h3>
-                                    <p class="message">Kursus kami menyediakan materi terbaru dan ter-update yang disampaikan
-                                        oleh para instruktur profesional dari Universitas bergengsi.
+                                    <p class="message">Sekolah kami menyediakan materi terbaru dan ter-update yang disampaikan
+                                        oleh para pengajar profesional dari Universitas bergengsi.
                                         Materi dikemas dengan padat dan menarik dalam bentuk video dan dokumen sehingga mudah dipahami.</p>
                                 </div>
                                 <div class="col-lg-4 col-md-8 img-circle mt-lg-0 mt-4">
@@ -25,7 +25,7 @@
                         <div class="item">
                             <div class="row slider-info">
                                 <div class="col-lg-8 message-info align-self">
-                                    <span class="label-blue mb-sm-4 mb-3">Course Goal</span>
+                                    <span class="label-blue mb-sm-4 mb-3">Study Goal</span>
                                     <h3 class="title-big mb-4">Dapatkan kemudahan akses belajar dimanapun dan kapanpun.
                                     </h3>
                                     <p class="message">Anda dapat mengakses seluruh materi dari kami dengan ponsel anda.
@@ -44,286 +44,13 @@
             <!-- /main-slider -->
         </section>              
 
-        <div class="w3l-homeblock2 py-5">
-            <div class="container py-lg-5 py-md-4">
-                <!-- block -->
-                <div class="left-right">
-                    <h3 class="section-title-left mb-sm-4 mb-2"> Recent Course</h3>
-                    <a href="{{ route('allkursus') }}" class="more btn btn-small mb-sm-0 mb-4">View More</a>
-                </div>
-                <div class="row">
-                    @foreach ($recent_course as $item)
-                        <!--instruktur-->
-                        @auth
-                            @if (auth()->user()->role=='instruktur')
-                                <div class="col-lg-4 col-md-6 item" style="margin-top: 50px">
-                                    <div class="card">
-                                        <div class="card-header p-0 position-relative">
-                                            
-                                            <a @if (auth()->user()->id == $item->user_id) href="{{ route('myCourse',$item->slug) }}" @endif >
-                                                <img class="card-img-bottom d-block radius-image-full" style="max-height: 250px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}"
-                                                    alt="Card image cap">
-                                            </a>
-                                        </div>
-                                        <div class="card-body blog-details">
-                                            @if (auth()->user()->id == $item->user_id)
-                                                <span class="label-blue"> kursus anda </span><br>
-                                            @else
-                                                <span class="label-blue text-danger"> bukan kursus anda </span><br>
-                                            @endif
-                                            <a @if (auth()->user()->id == $item->user_id) href="{{ route('myCourse',$item->slug) }}" @endif class="blog-desc">{{ $item->mapel->mapel_name }} | {{ $item->kelas->kelas_name }}
-                                            </a>
-                                            <div class="author align-items-center">
-                                                <img 
-                                                    @if ($item->user->profile->photo==null)
-                                                            src="{{ asset('assets/assets/images/a1.jpg') }}"
-                                                        @else
-                                                            src="{{ asset('photo/'.$item->user->profile->photo) }}"
-                                                    @endif 
-                                                alt="" class="img-fluid rounded-circle" />
-                                                <ul class="blog-meta">
-                                                    <li>
-                                                        <a  @if (auth()->user()->id == $item->user_id) href="{{ route('myCourse',$item->slug) }}" @endif >{{ $item->user->name }}</a> </a>
-                                                    </li>
-                                                    <li class="meta-item blog-lesson">
-                                                        {{-- <div class="row"> --}}
-                                                            <div class="meta-value">
-                                                                <div class="row">
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->video->count() }} video</span>
-                                                                    </div>
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->artikel->count() }} book</span>
-                                                                    </div>
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->kuis->count() }} kuis</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {{-- </div> --}}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--siswa-->
-                            @elseif(auth()->user()->role=='siswa')
-                                <?php $punya = App\kursus_profile::where('kursus_id', $item->id)->where('profile_id', auth()->user()->profile->id)->first()?>
-                                <div class="col-lg-4 col-md-6 item" style="margin-top: 50px">
-                                    <div class="card">
-                                        <div class="card-header position-relative">
-                                            
-                                            <a @if ($punya !== null) href="{{ route('myCourse',$item->slug) }}" @endif >
-                                                <img class="card-img-bottom d-block radius-image-full" style="max-height: 250px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}"
-                                                    alt="Card image cap">
-                                            </a>
-                                        </div>
-                                        <div class="card-body blog-details">
-                                            @if ($punya !== null)
-                                                <span class="label-blue"> kursus anda </span><br>
-                                            @else
-                                                <span class="label-blue text-danger"> bukan kursus anda </span><br>
-                                            @endif
-                                            <a @if ($punya !==null ) href="{{ route('myCourse',$item->slug) }}" @endif class="blog-desc">{{ $item->mapel->mapel_name }} | {{ $item->kelas->kelas_name }}
-                                            </a>
-                                            <div class="author align-items-center">
-                                                <img 
-                                                    @if ($item->user->profile->photo==null)
-                                                            src="{{ asset('assets/assets/images/a1.jpg') }}"
-                                                        @else
-                                                            src="{{ asset('photo/'.$item->user->profile->photo) }}"
-                                                    @endif 
-                                                alt="" class="img-fluid rounded-circle" />
-                                                <ul class="blog-meta">
-                                                    <li>
-                                                        <a  @if ($punya !== null) href="{{ route('myCourse',$item->slug) }}" @endif >{{ $item->user->name }}</a> </a>
-                                                    </li>
-                                                    <li class="meta-item blog-lesson">
-                                                        {{-- <div class="row"> --}}
-                                                            <div class="meta-value">
-                                                                <div class="row">
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->video->count() }} video</span>
-                                                                    </div>
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->artikel->count() }} book</span>
-                                                                    </div>
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->kuis->count() }} kuis</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {{-- </div> --}}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <!--admin-->
-                            @elseif(auth()->user()->role=='admin')
-                                <div class="col-lg-4 col-md-6 item" style="margin-top: 50px">
-                                    <div class="card">
-                                        <div class="card-header position-relative">
-                                            
-                                            <a href="{{ route('myCourse',$item->slug) }}" >
-                                                <img class="card-img-bottom d-block radius-image-full" style="max-height: 250px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}"
-                                                    alt="Card image cap">
-                                            </a>
-                                        </div>
-                                        <div class="card-body blog-details">
-                                            <a href="{{ route('myCourse',$item->slug) }}" class="blog-desc">{{ $item->mapel->mapel_name }} | {{ $item->kelas->kelas_name }}
-                                            </a>
-                                            <div class="author align-items-center">
-                                                <img 
-                                                    @if ($item->user->profile->photo==null)
-                                                            src="{{ asset('assets/assets/images/a1.jpg') }}"
-                                                        @else
-                                                            src="{{ asset('photo/'.$item->user->profile->photo) }}"
-                                                    @endif 
-                                                alt="" class="img-fluid rounded-circle" />
-                                                <ul class="blog-meta">
-                                                    <li>
-                                                        <a href="{{ route('myCourse',$item->slug) }}" >{{ $item->user->name }}</a> </a>
-                                                    </li>
-                                                    <li class="meta-item blog-lesson">
-                                                        {{-- <div class="row"> --}}
-                                                            <div class="meta-value">
-                                                                <div class="row">
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->video->count() }} video</span>
-                                                                    </div>
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->artikel->count() }} book</span>
-                                                                    </div>
-                                                                    <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->kuis->count() }} kuis</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {{-- </div> --}}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <!--pengunjung-->
-                            @elseif(auth()->user()->role=='pengunjung')
-                            <?php $punya = App\kursus_profile::where('kursus_id', $item->id)->where('profile_id', auth()->user()->profile->id)->first()?>
-                            <div class="col-lg-4 col-md-6 item" style="margin-top: 50px">
-                                <div class="card">
-                                    <div class="card-header position-relative" >
-                                        
-                                        <a @if ($punya !== null) href="{{ route('myCourse',$item->slug) }}" @endif >
-                                            <img class="card-img-bottom d-block radius-image-full" style="max-height: 250px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}"
-                                                alt="Card image cap">
-                                        </a>
-                                    </div>
-                                    <div class="card-body blog-details">
-                                        @if ($punya !== null)
-                                            <span class="label-blue"> kursus anda </span><br>
-                                        @else
-                                            <span class="label-blue text-danger"> bukan kursus anda </span><br>
-                                        @endif
-                                        <a @if ($punya !==null ) href="{{ route('myCourse',$item->slug) }}" @endif class="blog-desc">{{ $item->mapel->mapel_name }} | {{ $item->kelas->kelas_name }}
-                                        </a>
-                                        <div class="author align-items-center">
-                                            <img 
-                                                @if ($item->user->profile->photo==null)
-                                                        src="{{ asset('assets/assets/images/a1.jpg') }}"
-                                                    @else
-                                                        src="{{ asset('photo/'.$item->user->profile->photo) }}"
-                                                @endif 
-                                            alt="" class="img-fluid rounded-circle" />
-                                            <ul class="blog-meta">
-                                                <li>
-                                                    <a  @if ($punya !== null) href="{{ route('myCourse',$item->slug) }}" @endif >{{ $item->user->name }}</a> </a>
-                                                </li>
-                                                <li class="meta-item blog-lesson">
-                                                    {{-- <div class="row"> --}}
-                                                        <div class="meta-value">
-                                                            <div class="row">
-                                                                <div class="col-4 col-sm-4">
-                                                                    <span>{{ $item->video->count() }} video</span>
-                                                                </div>
-                                                                <div class="col-4 col-sm-4">
-                                                                    <span>{{ $item->artikel->count() }} book</span>
-                                                                </div>
-                                                                <div class="col-4 col-sm-4">
-                                                                    <span>{{ $item->kuis->count() }} kuis</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {{-- </div> --}}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                        <!--tidak login-->
-                        @else
-                            <div class="col-lg-4 col-md-6 item" style="margin-top: 50px">
-                                <div class="card">
-                                    <div class="card-header p-0 position-relative">
-                                        
-                                        <a>
-                                            <img class="card-img-bottom d-block radius-image-full" style="max-height: 250px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}"
-                                                alt="Card image cap">
-                                        </a>
-                                    </div>
-                                    <div class="card-body blog-details">
-                                            <span class="label-blue text-danger"> bukan kursus anda </span><br>
-                                        <a class="blog-desc">{{ $item->mapel->mapel_name }} | {{ $item->kelas->kelas_name }}
-                                        </a>
-                                        <div class="author align-items-center">
-                                            <img 
-                                                @if ($item->user->profile->photo==null)
-                                                        src="{{ asset('assets/assets/images/a1.jpg') }}"
-                                                    @else
-                                                        src="{{ asset('photo/'.$item->user->profile->photo) }}"
-                                                @endif 
-                                            alt="" class="img-fluid rounded-circle" />
-                                            <ul class="blog-meta">
-                                                <li>
-                                                    <a >{{ $item->user->name }}</a> </a>
-                                                </li>
-                                                <li class="meta-item blog-lesson">
-                                                    {{-- <div class="row"> --}}
-                                                        <div class="meta-value">
-                                                            <div class="row">
-                                                                <div class="col-4 col-sm-4">
-                                                                    <span>{{ $item->video->count() }} video</span>
-                                                                </div>
-                                                                <div class="col-4 col-sm-4">
-                                                                    <span>{{ $item->artikel->count() }} book</span>
-                                                                </div>
-                                                                <div class="col-4 col-sm-4">
-                                                                    <span>{{ $item->kuis->count() }} kuis</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {{-- </div> --}}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endauth
-                    @endforeach
-                </div>
-            </div>
-        </div>                
+                        
     </div>
     <div class="w3l-homeblock2 w3l-homeblock5 py-5">
         <div class="container py-lg-5 py-md-4">
             <!-- block -->
             <div class="left-right">
-                <h3 class="section-title-left mb-sm-4 mb-2"> INSTRUKTUR</h3>
+                <h3 class="section-title-left mb-sm-4 mb-2"> Guru</h3>
                 <a href="{{ route('allinstruktur') }}" class="more btn btn-small mb-sm-0 mb-4">View more</a>
             </div>
             <div class="row">

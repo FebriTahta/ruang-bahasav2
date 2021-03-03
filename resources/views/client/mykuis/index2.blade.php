@@ -124,12 +124,14 @@
                                 <?php $tes = App\Nilai::where('kuis_id',$data_kuis->id)->where('profile_id',auth()->user()->id)->get()?>
                                 UJI KE#{{ count($tes)+1 }}
                             </h5>
-                            @if ($tes==null)
+                            @if (auth()->user()->role=='siswa')
                             <div class="form">
+                                @if ($tes->count()==null)
                                 <form action="{{ route('submit-kuis') }}" method="POST">@csrf
                                     <?php $i=1 ?>
                                     <input type="hidden" name="user_id" value="{{ $data_kursus->user->id }}">
                                     @foreach ($data_pertanyaan as $pertanyaan_item)
+                                        
                                         <div class="row">
                                             <div class="form-group">
                                                 <div class="form-group ml-10 mt-10">
@@ -156,7 +158,34 @@
                                     <div class="form-group  text-right">
                                         <button type="submit" class="btn btn-outline-primary">submit</button>
                                     </div>                                
-                                </form>
+                                </form>     
+                                @else
+                                <form action="{{ route('submit-kuis') }}" method="POST">@csrf
+                                    <?php $i=1 ?>
+                                    <input type="hidden" name="user_id" value="{{ $data_kursus->user->id }}">
+                                    @foreach ($data_pertanyaan as $pertanyaan_item)
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="form-group ml-10 mt-10">
+                                                    <strong># <?=$i?>.<br /></strong>
+                                                    <div class="pertanyaan" style="margin-left: 35px" style="width: 500px">
+                                                        <p>{!! $pertanyaan_item->pertanyaan_name !!}</p>
+                                                    </div>
+                                                    @foreach($pertanyaan_item->answer as $key=>$ans)
+                                                    <div class="jawaban" style="margin-left: 35px; max-width: 500px;">
+                                                        <label class="css-control css-control-info css-radio" >
+                                                            <label>{{ $key+1 }} &nbsp;&nbsp;&nbsp;{!! nl2br($ans->answer) !!}</label>
+                                                            @if ($ans->is_correct)  &nbsp; &nbsp; &nbsp;<span class="badge badge-success">kunci jawaban</span>@endif
+                                                        </label><br>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php $i++ ?>
+                                    @endforeach                                
+                                </form>         
+                                @endif
                             </div>
                                 @else
                                 <div class="form">

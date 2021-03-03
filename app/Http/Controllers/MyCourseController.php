@@ -191,28 +191,21 @@ class MyCourseController extends Controller
                 'ke'            => $request->ke
             ]);
         }
-
         $total              = Result::where('profile_id', Auth::id())->where('kuis_id', $request->kuis_id)->where('ke',$request->ke)->count();
         $salah              = Result::where('profile_id', Auth::id())->where('kuis_id', $request->kuis_id)->where('myresult','0')->where('ke',$request->ke)->count();
         $benar              = Result::where('profile_id', Auth::id())->where('kuis_id', $request->kuis_id)->where('myresult','1')->where('ke',$request->ke)->count();
         $dikalikan          = 100/$total; 
         $nilai              = $benar * $dikalikan;
-        
-        // return 'nilai :'.$nilai.'total'.$total.'benar'.$benar.'dikalikan'.$dikalikan;
         Nilai::create([
             'profile_id'    => Auth::id(),
             'kuis_id'       => $request->kuis_id,
             'nilai'         => $nilai,
             'ke'            => $request->ke
         ]);
-        
-
         $notif = array(
             'pesan-sukses' => 'anda telah menyelesaikan kuis',                
             );
-
         return redirect()->back()->with($notif);
-        
     }
 
     public function submitkuis2(Request $request)

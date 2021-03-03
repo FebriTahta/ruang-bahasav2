@@ -80,8 +80,8 @@
                         <div class="mb-20">
                             <i class="fa fa-group fa-3x text-success"></i>
                         </div>
-                        <div class="font-size-h4 font-w600">{{ $data_instruktur->count() }} Instruktur</div>
-                        <div class="text-muted">Instruktur</div>
+                        <div class="font-size-h4 font-w600">{{ $data_instruktur->count() }} Guru</div>
+                        <div class="text-muted">Guru</div>
                         <div class="pt-20">
                             <a class="btn btn-rounded btn-alt-success" href="{{ route('daftar_user.index') }}">
                                 <i class="fa fa-check mr-5"></i> cek detail

@@ -16,7 +16,7 @@
             @if (Session::has('pesan-sukses'))
                 <div class="alert alert-info text-bold">{{ Session::get('pesan-sukses') }}</div>
             @endif
-            <h3 class="section-title-left mb-4"> Detail Instruktur</h3>
+            <h3 class="section-title-left mb-4"> Detail Guru</h3>
         <div class="row">
             <div class="col-lg-6 mb-50">
                 <div class="bg-clr-white" style="min-height: 270px">
@@ -38,7 +38,7 @@
                                         <a >{{ $instruktur->name }}</a> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                        <p>{{ $instruktur->role }} | ALUMNI : {{ $instruktur->profile->alumni }}</p>
+                                        <p>Guru | ALUMNI : {{ $instruktur->profile->alumni }}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -52,13 +52,13 @@
                     <a class="topics-list hover-box" onclick="videoscroll()">
                         <div class="list1">
                             <span class="fa fa-play"></span>
-                            <h4><u>{{ $instruktur->video->count() }}</u> Video Kursus</h4>
+                            <h4><u>{{ $instruktur->video->count() }}</u> Materi Video</h4>
                         </div>
                     </a>
                     <a class="topics-list mt-3 hover-box" onclick="artikelscroll()">
                         <div class="list1" >
                             <span class="fa fa-book"></span>
-                            <h4><u>{{ $instruktur->artikel->count() }}</u> Artikel & Buku Kursus</h4>
+                            <h4><u>{{ $instruktur->artikel->count() }}</u> Artikel & Buku </h4>
                         </div>
                     </a>
                     <a  class="topics-list mt-3 hover-box" onclick="kuisscroll()">
@@ -83,8 +83,8 @@
     <div class="container py-lg-5 py-md-4">
         <!-- block -->
         <div class="left-right">
-            <h3 class="section-title-left mb-sm-4 mb-2 text-uppercase"> KURSUS YANG DIMILIKI {{ $instruktur->name }}</h3>
-            <a href="{{ route('allkursus') }}" class="more btn btn-small mb-sm-0 mb-4">KURSUS LAIN</a>
+            <h3 class="section-title-left mb-sm-4 mb-2 text-uppercase"> KELAS YANG DI AJAR "{{ $instruktur->name }}"</h3>
+            <a href="{{ route('allkursus') }}" class="more btn btn-small mb-sm-0 mb-4">KELAS LAIN</a>
         </div>
         <div class="row">
             @foreach ($instruktur->kursus as $item)

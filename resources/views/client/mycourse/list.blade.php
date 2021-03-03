@@ -25,7 +25,7 @@
                                         <a >{{ auth()->user()->name }}</a> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                        <p>{{ auth()->user()->role }} </p>
+                                        <p>@if(auth()->user()->role=='instruktur') Guru @else {{ auth()->user()->role }} @endif</p>
                                     </li>
                                 </ul>
                             </div>
@@ -41,19 +41,19 @@
                             <p class="text-muted">
                                 @if (auth()->user()->role=='instruktur')
                                     @if (count(auth()->user()->kursus)==0)
-                                        Anda belum memiliki kursus. Segera hubungi Admin untuk mendapatkan kursus
+                                        Anda belum memiliki kelas. Segera hubungi Admin untuk mendapatkan kelas
                                     @else
-                                        Anda Mempunyai <strong>{{ count(auth()->user()->kursus) }} Kursus</strong>.<br>
-                                        <small>Silahkan periksa dan atur materi pada daftar kursus anda</small><br>
-                                        <button style="margin-top: 30px" class="btn btn-sm btn-success" onclick="scrollfu()">Daftar kursus anda</button>
+                                        Anda Mempunyai <strong>{{ count(auth()->user()->kursus) }} kelas</strong>.<br>
+                                        <small>Silahkan periksa dan atur materi pada daftar kelas anda </small><br>
+                                        <button style="margin-top: 30px" class="btn btn-sm btn-success" onclick="scrollfu()">Daftar kelas anda</button>
                                     @endif
                                 @else
                                     @if (count(auth()->user()->profile->kursus)==0)
-                                        <small> Anda belum memiliki kursus. Segera hubungi Admin untuk mendapatkan kursus dan akses materi bergengsi kami</small><br>
+                                        <small> Anda belum memiliki kelas. Segera hubungi Admin untuk mendapatkan kelas dan akses materi bergengsi kami</small><br>
                                     @else
-                                        Anda telah berlangganan <strong>{{ count(auth()->user()->profile->kursus) }} Kursus</strong>.<br>
-                                        <small>Terimakasih telah berlangganan kursus pada kami. Selamat Belajar!^^</small>
-                                        <button style="margin-top: 30px" class="btn btn-sm btn-success" onclick="scrollfu()">Daftar kursus anda</button>
+                                        Anda telah berlangganan <strong>{{ count(auth()->user()->profile->kursus) }} Kelas</strong>.<br>
+                                        <small>Terimakasih telah mengikuti kelas kami. Selamat Belajar!^^</small><br>
+                                        <button style="margin-top: 30px" class="btn btn-sm btn-success" onclick="scrollfu()">Daftar kelas anda</button>
                                     @endif
                                 @endif
                                 <button type="button" onclick="scrollfu2()" class="btn btn-sm btn-primary" style="margin-top: 30px">
@@ -103,7 +103,7 @@
                 <a href="#kursus">
                     <div class="area-box">
                         <span class="fa fa-university"></span>
-                        <h4 class="title-head text-uppercase"><u>{{ count(auth()->user()->kursus) }}</u> kursus</h4>
+                        <h4 class="title-head text-uppercase"><u>{{ count(auth()->user()->kursus) }}</u> kelas</h4>
                     </div>
                 </a>
             </div>
@@ -120,7 +120,7 @@
             @if (auth()->user()->role=='pengunjung')
             @else
                 <div class="left-right">
-                    <h3 class="section-title-left mb-sm-4 mb-2"> MY COURSE</h3>
+                    <h3 class="section-title-left mb-sm-4 mb-2"> MY CLASS</h3>
                 </div> 
             @endif
         @endauth
@@ -145,7 +145,7 @@
                                             <a href="{{ route('myCourse',$item->slug) }}">{{ $item->user->name }}</a> 
                                         </li>
                                         <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> {{ $item->user->role }} </span>. 
+                                            <span class="meta-value"> Guru </span>. 
                                         </li>
                                     </ul>
                                 </div>

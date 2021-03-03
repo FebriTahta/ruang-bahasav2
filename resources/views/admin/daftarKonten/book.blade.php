@@ -6,7 +6,7 @@
     <div class="bg-primary-dark-op">
         <div class="content content-top text-center overflow-hidden">
             <div class="pb-10">
-                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">DAFTAR BUKU</h1>
+                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">DAFTAR ARTIKEL</h1>
                 <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp"></h2>
             </div>
         </div>
@@ -16,7 +16,7 @@
  
     <div class="content">
         <div class="col-12">
-            <div class="content-heading"><label>DAFTAR BUKU</label></div>            
+            <div class="content-heading"><label>DAFTAR ARTIKEL</label></div>            
                 @if (Session::has('pesan'))
                     <div class="alert alert-info text-bold">{{ Session::get('pesan') }}</div>
                 @endif
@@ -32,7 +32,7 @@
             <!--end alert-->
 
             @if ($users->role === 'instruktur')
-            <button class="btn btn-outline-info fa fa-plus mb-10" data-toggle="modal" data-target="#modal-fromright_book"> UPLOAD</button>
+            {{-- <button class="btn btn-outline-info fa fa-plus mb-10" data-toggle="modal" data-target="#modal-fromright_book"> UPLOAD</button> --}}
             <div class="block block-rounded">
                 <div class="block-header block-header-default">
                     <div class="block-content text-center">
@@ -43,7 +43,7 @@
                     <table table class="table table-stripped" id="table_book_kursus">
                         <thead>
                             <tr>
-                                <th>BOOK NAME</th>
+                                <th>ARTIKEL NAME</th>
                                 <th>KATEGORI</th>
                                 <th class="text-right">ACTION</th>
                             </tr>
@@ -66,7 +66,7 @@
                 </div>                
             </div>
             @else            
-            <button class="btn btn-outline-info fa fa-plus mb-10" data-toggle="modal" data-target="#modal-fromright_book"> UPLOAD</button>
+            {{-- <button class="btn btn-outline-info fa fa-plus mb-10" data-toggle="modal" data-target="#modal-fromright_book"> UPLOAD</button> --}}
             <div class="block block-rounded">                
                 <div class="block-header block-header-default">
                     <div class="block-content text-center">
@@ -77,7 +77,7 @@
                     <table table class="table table-stripped" id="table_book_kursuss">
                         <thead>
                             <tr>
-                                <th>BOOK NAME</th>
+                                <th>ARTIKEL NAME</th>
                                 <th>KATEGORI</th>
                                 <th>UPLOADER</th>
                                 <th class="text-right">ACTION</th>

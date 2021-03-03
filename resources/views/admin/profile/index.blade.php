@@ -243,7 +243,7 @@
                                 <label for="val-alamat">Alamat</label>
                             </div>
                             <div class="form-material mb-10">
-                                <input type="number" class="form-control" id="val-telp" name="telp" placeholder="Nomor Telepon" value="{{ $data_profile->telp }}" >
+                                <input type="text" class="form-control" id="val-telp" name="telp" placeholder="Nomor Telepon" value="{{ $data_profile->telp }}" >
                                 <label for="val-telp">No.Telp</label>
                             </div>
                             <div class="form-material mb-10">

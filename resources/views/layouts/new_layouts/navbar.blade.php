@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name','Course Academy') }}</title>
+        <title>{{ config('app.name','Ruang Bahasa') }}</title>
         <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
@@ -36,7 +36,7 @@
 	<!--/nav-->
 	<nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-sm-3 px-0">
 			<a class="navbar-brand" href="/">
-				<span class="fa fa-newspaper-o"></span> Course Academy</a>
+				<span class="fa fa-newspaper-o"></span> Ruang Bahasa</a>
 			<!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.html">
 							<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />

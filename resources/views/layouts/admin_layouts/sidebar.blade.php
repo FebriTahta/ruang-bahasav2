@@ -27,7 +27,7 @@
                 <div class="content-header-item">
                     <a class="link-effect font-w700" href="/">
                         <i class="si si-fire text-primary"></i>
-                        <span class="font-size-xl text-dual-primary-dark">course</span><span class="font-size-xl text-primary">academy</span>
+                        <span class="font-size-xl text-dual-primary-dark">ruang</span><span class="font-size-xl text-primary">bahasa</span>
                     </a>
                 </div>
                 <!-- END Logo -->
@@ -88,7 +88,7 @@
                                     <a href="{{ route('daftarKategori') }}">daftar kategori</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('daftarKursus') }}">daftar kursus</a>
+                                    <a href="{{ route('daftarKursus') }}">daftar kelas</a>
                                 </li>
                             </ul>
                             @endif
@@ -99,7 +99,7 @@
                                     <a href="{{ route('my-video') }}">Daftar Video</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('my-book') }}">Daftar Buku</a>
+                                    <a href="{{ route('my-book') }}">Daftar Artikel</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('my-kuis') }}">Daftar Kuis</a>
@@ -113,7 +113,7 @@
                                     <a href="{{ route('my-video') }}">Video Saya</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('my-book') }}">Buku Saya</a>
+                                    <a href="{{ route('my-book') }}">Artikel Saya</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('my-kuis') }}">Kuis Saya</a>

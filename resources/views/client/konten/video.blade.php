@@ -43,7 +43,7 @@
                                         <a >{{ auth()->user()->name }}</a> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> {{ auth()->user()->role }} </span>. <span class="meta-value ml-2"><span class="fa fa-check"></span></span>
+                                        <span class="meta-value"> Guru </span>. <span class="meta-value ml-2"><span class="fa fa-check"></span></span>
                                     </li>
                                 </ul>
                             </div>
@@ -57,7 +57,7 @@
                     <div class="row">                        
                         <div class="col-sm-12 card-body blog-details align-self">
                             <div class="pad" style="margin-left: 10%">
-                                <p class="blog-desc"> Anda memiliki {{ count(auth()->user()->kursus) }} kursus sebagai berikut :</p>
+                                <p class="blog-desc"> Anda memiliki {{ count(auth()->user()->kursus) }} kelas sebagai berikut :</p>
                                 @foreach (auth()->user()->kursus as $item)
                                 <ul>
                                     <ol class="fa fa-check"> <a href="{{ route('myCourse',$item->slug) }}">{{ $item->mapel->mapel_name }} | {{ $item->kelas->kelas_name }}</a></ol>

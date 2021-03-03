@@ -6,9 +6,9 @@
     <div class="container py-lg-5 py-md-4">
         <!-- block -->
         <div class="left-right" style="margin-bottom: 20px">
-            <h3 class="section-title-left mb-sm-4 mb-2"> Daftar Instruktur</h3>
+            <h3 class="section-title-left mb-sm-4 mb-2"> Daftar Guru</h3>
             {{-- <a href="{{ route('allkursus') }}" class="more btn btn-small mb-sm-0 mb-4">Lihat lebih banyak kursus</a> --}}
-            <p><small>Terdapat {{ count($instruktur) }} instuktur aktif </small></p>
+            <p><small>Terdapat {{ count($instruktur) }} Guru aktif </small></p>
         </div>
         <div class="row">
             @foreach ($instruktur as $item)
