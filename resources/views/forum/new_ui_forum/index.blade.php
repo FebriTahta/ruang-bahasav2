@@ -146,9 +146,9 @@
                 @endforeach
             @elseif(auth()->user()->role=='admin')
                 @foreach ($data_mapel as $item_m)
-                    @foreach ($item_m->kelas as $item_k)
+                    @foreach ($item_m->kelas as $item_k) 
                     <div class="col-lg-3 col-6 grids-feature" style="margin-bottom: 10px">
-                        <a href="/forums-daftar-pertanyaan/premium/{{ $item->kelas->slug }}/{{ $item->mapel->slug }}">
+                        <a href="/forums-daftar-pertanyaan/premium/{{ $item_k->slug }}/{{ $item_m->slug }}">
                             <div class="area-box">
                                 <span class="fa fa-university"></span>
                                 <h4 class="title-head text-uppercase">{{ $item_m->mapel_name }} {{ $item_k->kelas_name }}</h4>

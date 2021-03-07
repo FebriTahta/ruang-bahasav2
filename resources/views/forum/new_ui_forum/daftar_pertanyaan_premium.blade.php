@@ -5,6 +5,15 @@
 
 @section('content')
 <div class="w3l-homeblock2 w3l-homeblock6 ">
+    @if (Session::has('message'))
+        <div class="alert alert-danger text-bold">{{ Session::get('message') }}</div>                
+        @endif
+        @if (Session::has('pesan-peringatan'))
+                <div class="alert alert-warning text-bold">{{ Session::get('pesan-peringatan') }}</div>                
+        @endif
+        @if (Session::has('pesan-sukses'))
+            <div class="alert alert-info text-bold">{{ Session::get('pesan-sukses') }}</div>
+        @endif
     <div class="container-fluid px-sm-5" style="padding: 5%">
         <div class="left-right" id="forum">
             <p class="section-title-left mb-sm-4"> FORUM </p>
@@ -34,6 +43,8 @@
                                             <a class="font-w600 collapsed" data-toggle="collapse" data-parent="#accordion" href="#accordion_<?=$i?>" aria-expanded="false" aria-controls="accordion_q1">{{ $item->judul_pertanyaan }} </a> 
                                         </div>
                                         <div id="accordion_<?=$i?>" class="card-body collapse" role="tabpanel" aria-labelledby="accordion_h1" data-parent="#accordion" style="max-width: 100%">
+                                            <div class="block-content col-3 col-md-6"><small>From : {{ $item->user->name }}</small></div>
+                                            <div class="block-content col-3 col-md-6"><small class="badge badge-primary">{{ $item->user->role }}</small></div>
                                             <div class="block-content col-12 col-md-12" style="text-align: justify;">
                                                 {!! nl2br($item->desc_pertanyaan) !!}
                                             </div>
@@ -79,6 +90,7 @@
                                         <div class="card block-bordered block-rounded mb-2" style="margin-bottom: 10px; padding: 3%">
                                             <div class="block-header" role="tab" id="" style="margin-bottom: 5px">
                                                 <a class="font-w600 collapsed" href="{{ route('forums-detail',$item->slug) }}" aria-expanded="false" aria-controls="accordion_q1"> #{{ $key+1 }} . {{ $item->judul_pertanyaan }} </a> 
+                                                <button class="float-right fa fa-trash btn btn-danger" data-target="#modal-fromleft-remove" data-toggle="modal" data-forum_id="{{ $item->id }}"></button>
                                             </div>
                                             <div id="" class="card-body collapse" role="tabpanel" aria-labelledby="" data-parent="" style="max-width: 100%">
                                                 <div class="block-content col-12 col-md-12" style="text-align: justify;">
@@ -117,9 +129,54 @@
     </div>
 </div>
 
+<!--modal remove forum pertanyaan-->
+<div class="modal fade" id="modal-fromleft-remove" tabindex="-1" role="dialog" aria-labelledby="modal-fromleft" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-fromleft" role="document">                            
+        <div class="modal-content">
+            <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('removeP') }}" method="POST" enctype="multipart/form-data">@csrf                    
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-danger">
+                        <h3 class="block-title text-center text-white">HAPUS</h3>
+                        {{-- <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="si si-close"></i>
+                            </button>
+                        </div> --}}
+                    </div>
+                    <div class="block-content">                            
+                        <div class="form-group">
+                            <input type="hidden" id="id" name="id"><br>
+                            <div class="form-group text-danger text-center border-bottom">
+                                <p>Pertanyaan & Komentar Anda Pada Forum Akan Dihapus</p>
+                            </div>
+                            <div class="form-group text-center">
+                                <p>Yakin akan menghapus kuis ini ?</p>
+                                <input type="hidden" name="forum_id" id="forum_id">
+                            </div>                            
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-outline-danger fa fa-trash" type="submit"> HAPUS</button>
+                        </div>
+                    </div>                                                               
+                </div>                        
+            </form>                   
+        </div>            
+    </div>
+</div>
+<!--end modal remove forum pertanyaan-->
+
 @endsection
 
 @section('script')
+<script>
+    $('#modal-fromleft-remove').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)        
+        var forum_id = button.data('forum_id')        
+        var modal = $(this)
+        modal.find('.block-title').text('HAPUS');        
+        modal.find('.block-content #forum_id').val(forum_id);        
+    })
+</script>
 <script>
     function komentarscroll()
     {

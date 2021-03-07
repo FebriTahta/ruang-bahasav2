@@ -18,7 +18,8 @@
                     <div class="block-content">
                         <p class="text-center" style="margin-bottom: 20px" > <small id="jam"></small></p>
                         <div class="block-content" style="padding: 3%; margin-bottom: 10px; margin-top: 10px; min-height: 300px; max-width: 100%">
-                            <h5 class="text-uppercase" style="margin-bottom: 20px">{{ $data_pertanyaan_forum->judul_pertanyaan }}</h5>
+                            <strong>From : {{ $data_pertanyaan_forum->user->name }} </strong> <small class="badge badge-primary"> {{ $data_pertanyaan_forum->user->role }}</small>
+                            <p></p><h5 class="text-uppercase" style="margin-bottom: 20px">{{ $data_pertanyaan_forum->judul_pertanyaan }}</h5>
                             <p>{!! $data_pertanyaan_forum->desc_pertanyaan !!}</p>
                         </div>
                         <div class="block-content" style="padding: 3%; margin-bottom: 10px; margin-top: 10px; min-height: 100px; max-width: 100%">
@@ -49,8 +50,8 @@
                                         @endauth
                                     </div>                            
                                     <div class="col-10 col-sm-10 border-bottom flex-box">
-                                        <label><u>{{ $item->user->name }}</u> <small>< {{ $item->user->role }} ></small></label>                                        
-                                        <p> <small>{!! $item->komen !!} </small></p>                                         
+                                        <label><u>{{ $item->user->name }}</u> <small>< {{ $item->user->role }} ></small> @if($item->user->id == auth()->user()->id) <button class="btn btn-sm fa fa-trash text-danger" data-toggle="modal" data-target="#modal-fromleft-remove" data-komen_id="{{ $item->id }}"></button> @endif</label>                                        
+                                        <p> <small>{!! $item->komen !!} </small></p>                                        
                                     </div>
                                     @endforeach    
                                 @endif                        
@@ -150,9 +151,52 @@
         @endauth                                                                                    
     </div>
 </div>
+
+<div class="modal fade" id="modal-fromleft-remove" tabindex="-1" role="dialog" aria-labelledby="modal-fromleft" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-fromleft" role="document">                            
+        <div class="modal-content">
+            <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('removeK') }}" method="POST" enctype="multipart/form-data">@csrf                    
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-danger">
+                        <h3 class="block-title text-center text-white">HAPUS</h3>
+                        {{-- <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="si si-close"></i>
+                            </button>
+                        </div> --}}
+                    </div>
+                    <div class="block-content">                            
+                        <div class="form-group">
+                            <input type="hidden" id="id" name="id"><br>
+                            <div class="form-group text-danger text-center border-bottom">
+                                
+                            </div>
+                            <div class="form-group text-center">
+                                <p>Yakin akan menghapus komentar ini ?</p>
+                                <input type="hidden" name="komen_id" id="komen_id">
+                            </div>                            
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-outline-danger fa fa-trash" type="submit"> HAPUS</button>
+                        </div>
+                    </div>                                                               
+                </div>                        
+            </form>                   
+        </div>            
+    </div>
+</div>
 @endsection
 
 @section('script')
+<script>
+    $('#modal-fromleft-remove').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)        
+        var komen_id = button.data('komen_id')        
+        var modal = $(this)
+        modal.find('.block-title').text('HAPUS');        
+        modal.find('.block-content #komen_id').val(komen_id);        
+    })
+</script>
 <script>
     $(function(){
         $('.css-control-input').change(function(){

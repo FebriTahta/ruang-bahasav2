@@ -186,4 +186,8 @@ Route::group(['middleware'=>['auth','checkrole:siswa,pengunjung,instruktur,admin
     //menilai
     Route::get('/menilai-uraian-ganda/{kursus_slug}/{profile_id}/{uraian_id}','MyCourseController@menilai');
     Route::post('/beri-nilai','MyCourseController@berinilai')->name('berinilai');
+    //removePertanyaan
+    Route::post('/forum-pertanyaan-remove','ForumController@removeP')->name('removeP');
+    //removeKomen
+    Route::post('/forum-komentar-remove','ForumController@removeK')->name('removeK');
 });

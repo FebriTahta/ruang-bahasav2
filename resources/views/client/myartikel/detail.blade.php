@@ -107,7 +107,7 @@
                             <input type="text" class="form-control" name="book_name" placeholder="JUDUL BUKU" required>
                         </div>
                         <div class="form-group">
-                            <input type="file" class="form-control" name="book_file" placeholder="FILES BUKU" accept=".docx,.pdf" required>
+                            <input type="file" class="form-control" name="book_file" placeholder="FILES BUKU" required>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"> UPLOAD</button>

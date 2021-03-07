@@ -66,9 +66,9 @@
                                         @endif
                                     </td>
                                     <td class="text-right border-bottom"><i></i>&nbsp;
-                                        <a href="#" type="button" class="fa fa-check text-success" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}"> serahkan</a>&nbsp;&nbsp;&nbsp;                             
+                                        <a href="#" type="button" class="fa fa-check text-success" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}" data-times="{{ $kuis_item->times }}" data-timee="{{ $kuis_item->timee }}"> serahkan</a>&nbsp;&nbsp;&nbsp;                             
                                         <a href="#" type="button" class="fa fa-trash text-danger" data-toggle="modal" data-target="#modal-fromleft-remove" data-id="{{ $kuis_item->id }}"> hapus</a> &nbsp;&nbsp;&nbsp;
-                                        <a href="#" type="button" class="fa fa-pencil text-warning" data-toggle="modal" data-target="#modal-fromleft-edit" data-id="{{ $kuis_item->id }}" data-user_id="{{ $kuis_item->user_id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}"> edit</a> &nbsp;&nbsp;&nbsp;
+                                        <a href="#" type="button" class="fa fa-pencil text-warning" data-toggle="modal" data-target="#modal-fromleft-edit" data-id="{{ $kuis_item->id }}" data-user_id="{{ $kuis_item->user_id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-times="{{ $kuis_item->times }}" data-timee="{{ $kuis_item->timee }}"> edit</a> &nbsp;&nbsp;&nbsp;
                                         <a href="{{ route('createSoals',$kuis_item->id) }}" class="fa fa-plus"> soal</a>                                        
                                     </td>
                                 </tr>
@@ -100,9 +100,9 @@
                                     <td class="border-bottom"><i class="fa fa-fw fa-edit"></i> {{ $kuis_item->pertanyaan->count() }} soal &nbsp; <a href="{{ route('detailsSoal', $kuis_item->id) }}"> {{ $kuis_item->kuis_name }}</a></td>
                                     <td class="border-bottom">{{ $kuis_item->mapel->mapel_name }} {{ $kuis_item->kelas->kelas_name }}</td>                                    
                                     <td class="text-right border-bottom"><i></i>&nbsp;
-                                        <a href="#" type="button" class="fa fa-check text-success" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}"> serahkan</a>&nbsp;&nbsp;&nbsp;
+                                        <a href="#" type="button" class="fa fa-check text-success" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}" data-times="{{ $kuis_item->times }}" data-timee="{{ $kuis_item->timee }}"> serahkan</a>&nbsp;&nbsp;&nbsp;
                                         <a href="#" type="button" class="fa fa-trash text-danger" data-toggle="modal" data-target="#modal-fromleft-remove" data-id="{{ $kuis_item->id }}"> hapus</a> &nbsp;&nbsp;&nbsp;
-                                        <a href="#" type="button" class="fa fa-pencil text-warning" data-toggle="modal" data-target="#modal-fromleft-edit" data-id="{{ $kuis_item->id }}" data-user_id="{{ $kuis_item->user_id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}"> edit</a> &nbsp;&nbsp;&nbsp;
+                                        <a href="#" type="button" class="fa fa-pencil text-warning" data-toggle="modal" data-target="#modal-fromleft-edit" data-id="{{ $kuis_item->id }}" data-user_id="{{ $kuis_item->user_id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}" data-times="{{ $kuis_item->times }}" data-timee="{{ $kuis_item->timee }}"> edit</a> &nbsp;&nbsp;&nbsp;
                                         <a href="{{ route('createSoals',$kuis_item->id) }}" class="fa fa-plus"> soal</a>                                        
                                     </td>
                                 </tr>
@@ -160,7 +160,15 @@
                             <label for="name" class="control-label">Deskripsi Kuis</label>
                             
                                 <textarea class="form-control" name="kuis_desc" id="kuis_desc" cols="30" rows="10"> Pesan / Deskripsi seputar kuis yang akan dibuat</textarea>
-                            <input type="hidden" id="slug" name="slug">
+                            <input type="hidden" id="slug" name="slug"><br>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <input class="form-control" type="time" name="times">
+                                </div>
+                                <div class="form-group col-6">
+                                    <input class="form-control" type="time" name="timee">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group float-right">
                             <button class="btn btn-outline-primary fa fa-plus" type="submit"> UPLOAD</button>
@@ -233,6 +241,8 @@
                                 <input type="hidden" name="mapel_id" id="mapel_id">
                                 <input type="hidden" name="kuis_name" id="kuis_name">
                                 <input type="hidden" name="kuis_desc" id="kuis_desc">
+                                <input type="hidden" name="times" id="times">
+                                <input type="hidden" name="timee" id="timee">
                                 <input type="hidden" name="slug" id="slug">
                             </div>                            
                             <div class="form-group text-center">
@@ -302,6 +312,15 @@
                                 <input type="hidden" class="form-control" id="slug" name="slug"
                                 value="" required>
                             </div>
+
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <input class="form-control" type="time" id="times" name="times">
+                                </div>
+                                <div class="form-group col-6">
+                                    <input class="form-control" type="time" name="timee" id="timee">
+                                </div>
+                            </div>
                         <div class="form-group float-right">
                             <button class="btn btn-outline-primary fa fa-plus" type="submit"> EDIT</button>
                         </div>
@@ -338,6 +357,8 @@
         var mapel_id = button.data('mapel_id')
         var kuis_name = button.data('kuis_name')
         var kuis_desc = button.data('kuis_desc')
+        var times = button.data('times')
+        var timee = button.data('timee')
         var slug = button.data('slug')
         var modal = $(this)
         modal.find('.block-title').text('BERIKAN KUIS');        
@@ -346,7 +367,9 @@
         modal.find('.block-content #mapel_id').val(mapel_id);
         modal.find('.block-content #kuis_name').val(kuis_name);
         modal.find('.block-content #kuis_desc').val(kuis_desc);
-        modal.find('.block-content #slug').val(slug);     
+        modal.find('.block-content #slug').val(slug);
+        modal.find('.block-content #times').val(times);
+        modal.find('.block-content #timee').val(timee);
     })
 </script>
 <script>
@@ -358,6 +381,8 @@
         var mapel_id = button.data('mapel_id')
         var kuis_name = button.data('kuis_name')
         var kuis_desc = button.data('kuis_desc')
+        var times = button.data('times')
+        var timee = button.data('timee')
         var slug = button.data('slug')
         var modal = $(this)
         modal.find('.block-title').text('EDIT KUIS');        
@@ -367,6 +392,8 @@
         modal.find('.block-content #mapel_id').val(mapel_id);
         modal.find('.block-content #kuis_name').val(kuis_name);
         modal.find('.block-content #kuis_desc').val(kuis_desc);
+        modal.find('.block-content #times').val(times);
+        modal.find('.block-content #timee').val(timee);
         modal.find('.block-content #slug').val(slug);
     })
 </script>

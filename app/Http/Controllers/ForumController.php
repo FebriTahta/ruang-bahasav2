@@ -161,4 +161,44 @@ class ForumController extends Controller
             );
         return redirect()->back()->with($notif);                    
     }
+
+    public function removeP(Request $request)
+    {
+        $forum_id   = $request->forum_id;
+        $komen      = Komentar::where('forum_id', $forum_id);
+        $forums     = Forum::find($forum_id);
+        if ($forum_id == null) {
+            $notif = array(
+                'pesan-sukses' => 'tidak ditemukan pertanyaan tersebut',                
+                );
+            return redirect()->back()->with($notif);
+            # code...
+        }else{
+            $komen->delete();
+            $forums->delete();
+            $notif = array(
+                'pesan-sukses' => 'Pertanyaan anda berhasil di hapus',                
+                );
+            return redirect()->back()->with($notif);
+        }
+    }
+
+    public function removeK(Request $request)
+    {
+        $forum_id   = $request->komen_id;
+        $komen      = Komentar::find($forum_id);
+        if ($forum_id == null) {
+            $notif = array(
+                'pesan-sukses' => 'tidak ditemukan pertanyaan tersebut',                
+                );
+            return redirect()->back()->with($notif);
+            # code...
+        }else{
+            $komen->delete();
+            $notif = array(
+                'pesan-sukses' => 'Pertanyaan anda berhasil di hapus',                
+                );
+            return redirect()->back()->with($notif);
+        }
+    }
 }

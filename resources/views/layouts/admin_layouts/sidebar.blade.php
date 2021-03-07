@@ -69,7 +69,7 @@
             <ul class="nav-main">
                 <li>                    
                     <a href="{{ route('dashboard') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>                    
-                    <a href="{{ route('forum') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Forum</span></a>
+                    <a href="{{ route('forums') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Forum</span></a>
                     @if (auth()->user()->role=='admin')
                     <a href="{{ route('news') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">News</span></a>
                     @endif                    
