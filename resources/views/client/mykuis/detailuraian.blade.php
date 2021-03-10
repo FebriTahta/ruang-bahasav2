@@ -2,6 +2,7 @@
 
 @section('head')
 <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
+<link rel="stylesheet" id="css-main" href="{{ asset('assets/assets/css/fab.css') }}">
 @endsection
 
 @section('content')
@@ -106,6 +107,19 @@
                     </div>                                   
                 </div>   
             </div>
+        </div>
+        <div class="fab-container">
+            <div class="fab fab-icon-holder">
+                <i class="fa fa-question"></i>
+            </div>
+            <ul class="fab-options">
+                <li>
+                    <span class="fab-label">Kembali</span>
+                    <a class="fab-icon-holder" href="/latihan-soal-uraian/instruktur/{{ $kursus_slug }}">
+                        <i class="fa fa-undo"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

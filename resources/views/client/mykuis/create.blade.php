@@ -3,6 +3,7 @@
 @section('head')
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables/dataTables.bootstrap4.css') }}">
 <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
+<link rel="stylesheet" id="css-main" href="{{ asset('assets/assets/css/fab.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/summernote/summernote-bs4.css') }}">
 @endsection
 
@@ -28,6 +29,9 @@
                         <div class="col-sm-1"></div>
                         <div class="col-sm-5 card-body blog-details align-self">
                             <span class="label-blue">Latihan Soal</span>
+                            <?php $kursus_s = App\Kursus::where('user_id', $data_kuis->user_id)->where('kelas_id',$data_kuis->kelas->id)->where('mapel_id', $data_kuis->mapel->id)->first();
+                            $kursus_slug=$kursus_s->slug;
+                            ?>
                             <a class="blog-desc">{{ $data_kuis->mapel->mapel_name }} | {{ $data_kuis->kelas->kelas_name }}
                             </a>
                             {{-- <p>Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Quis
@@ -123,6 +127,19 @@
                 </form>                
             </div>   
         </div>
+    </div>
+    <div class="fab-container">
+        <div class="fab fab-icon-holder">
+            <i class="fa fa-question"></i>
+        </div>
+        <ul class="fab-options">
+            <li>
+                <span class="fab-label">Kembali</span>
+                <a class="fab-icon-holder" href="/latihan-soal/instruktur/{{ $kursus_slug }}">
+                    <i class="fa fa-undo"></i>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 @endsection

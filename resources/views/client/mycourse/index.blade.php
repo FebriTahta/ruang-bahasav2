@@ -114,16 +114,16 @@
 </div>
 
 <!--filter-->
-<div class="w3l-homeblock2 w3l-homeblock6 " id="daftarvideo">
+<div class="content" id="daftarvideo">
     <div class="container-fluid px-sm-5 py-lg-5 py-md-4 mb-200">
-        <div class="js-filter" data-speed="400">
+        <div class="js-filter " data-speed="400">
             <!--filter-->
-            <div class="p-10 bg-white">
+            <div class="p-10 block block-rounded bg-white">
                 <div class="block-header border-bottom push">                            
                     <div class="col-3 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">                        
                             <a class="nav-link active" href="#" data-category-link="videos">
-                            <i class="fa fa-fw fa-info-circle mr-5"></i>video</a>
+                            <i class="fa fa-fw fa-info-circle mr-5"></i>vidio</a>
                         </div>                    
                     </div>
                     <div class="col-3 col-xl-3 nav nav-pills">
@@ -135,13 +135,13 @@
                     <div class="col-3 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="latihansoal">
-                            <i class="fa fa-fw fa-edit mr-5"></i>pilihan</a>
+                            <i class="fa fa-fw fa-edit mr-5"></i>ganda</a>
                         </div>                    
                     </div>
                     <div class="col-3 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="uraian">
-                            <i class="fa fa-fw fa-newspaper mr-5"></i>uraian</a>
+                            <i class="fa fa-fw fa-newspaper mr-5"></i>urai</a>
                         </div>                    
                     </div>                                                                               
                 </div>                                              
@@ -222,55 +222,59 @@
 
             <!--latihan soal-->
             <?php  $date    = new \DateTime(); date_default_timezone_set("Asia/Jakarta");?>
-            <div class="" data-category="latihansoal" style="display: none">
+
+            <div class="ganda" data-category="latihansoal" style="display: none; padding: 1%">
                 @if (auth()->user()->role=='instruktur')
-                <h5 class="mb-4" style="margin-top: 20px"> <span class="fa fa-plus label-blue btn hover-box" data-toggle="modal" data-target="#addkuiss"></span></h5>    
+                    <h5 class="mb-4" style="margin-top: 20px"> <span class="fa fa-plus label-blue btn hover-box" data-toggle="modal" data-target="#addkuiss"></span></h5>    
                 @else
-                    <h5 class="mb-4" style="margin-top: 20px"> <span class="label-blue text-uppercase"> latihan soal</span></h5>
+                    <h5 class="mb-4" style="margin-top: 20px"> <span class="label-blue text-uppercase"> Pilihan Ganda</span></h5>
                 @endif
-                <hr>
-                <div class="col-12">
+                <div class="row">
                     @if (count($data_kursus->kuis)==null)
                         <div class="col-12 col-xl-12 text-center" style="max-height: 100px">
-                            <p class="text-danger">Belum Ada Latihan Soal Yang Tersedia</p>
+                            <p class="text-danger">Belum Ada Latihan Soal Pilihan Ganda Yang Tersedia</p>
                         </div>
                     @else
-                        <div class="bg-clr-white">
-                            <table class="table table-borderless table-vcenter">
+                        <div class="col-12 block block-rounded table table-responsive" style="padding: 3%">
+                            <table class="table table-striped" id="tes-table">
                                 <thead>
                                     <tr>
-                                        <th style="width: 5%">#</th>
-                                        <th style="width: 30%">Pilihan Ganda</th>
-                                        <th style="width: 10%">start</th>
-                                        <th style="width: 10%">end</th>
-                                        @if (auth()->user()->role=='siswa')
-                                            <th class="text-center float-right">Status </th>
-                                        @endif                                
-                                        {{-- <th class="float-right"></th> --}}
+                                        <th style="width: 3%">#</th>
+                                        <th style="width: 30%">judul</th>
+                                        <th style="width: 5%">start</th>
+                                        <th style="width: 5%">end</th>
+                                        <th>
+                                            @if (auth()->user()->role=='siswa')
+                                            Status 
+                                            @else
+                                            <i class="fa fa-info"></i>
+                                            @endif
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data_kursus->kuis as $key=>$item)
                                     <tr><?php $sudah_dikerjakan = App\Result::where('profile_id', auth()->user()->id)->where('kuis_id', $item->id)->first()?>
-                                        <td style="width: 5%">{{ $key+1 }}</td>
+                                        <td style="width: 3%">{{ $key+1 }}</td>
                                         <td style="width: 30%">
-                                            @if (auth()->user()->role=='instruktur')
-                                                <a href="/detail-latihan-soal/{{ $item->slug }}/{{ $data_kursus->slug }}">({{ $item->pertanyaan->count() }} soal) {{ $item->kuis_name }}</a>
-                                            @elseif(auth()->user()->role=='admin')
-                                                <a href="/detail-latihan-soal/{{ $item->slug }}/{{ $data_kursus->slug }}">({{ $item->pertanyaan->count() }} soal) {{ $item->kuis_name }}</a>
-                                            @else
+                                            @if (auth()->user()->role=='siswa')
                                                 @if ($item->pertanyaan->count()!==0)
                                                     <a 
                                                     @if (date('H:i:s') > $item->times || date('H:i:s') == $item->times && date('H:i:s') < $item->timee || $sudah_dikerjakan) 
-                                                    href="/kuis-form-latihan-soal/{{ $item->slug }}/{{ $data_kursus->slug }}" class="text-primary"
-                                                    @else href="#belumwaktunya" @endif>({{ $item->pertanyaan->count() }} soal) {{ $item->kuis_name }}</a>
+                                                        href="/kuis-form-latihan-soal/{{ $item->slug }}/{{ $data_kursus->slug }}" class="text-primary"
+                                                    @else 
+                                                        href="#belumwaktunya" 
+                                                    @endif
+                                                    >({{ $item->pertanyaan->count() }} soal) <br> {{ $item->kuis_name }}</a>
                                                 @else
-                                                    <a href="#{{ $item->kuis_name }}" class="text-danger">({{ $item->pertanyaan->count() }} soal) {{ $item->kuis_name }}</a>
+                                                    <a href="#{{ $item->kuis_name }}" class="text-danger">({{ $item->pertanyaan->count() }} soal) <br> {{ $item->kuis_name }}</a>
                                                 @endif
+                                            @else
+                                                <a href="/detail-latihan-soal/{{ $item->slug }}/{{ $data_kursus->slug }}">({{ $item->pertanyaan->count() }} soal) <br> {{ $item->kuis_name }}</a>
                                             @endif                                    
                                         </td>
-                                        <td style="width: 10%">{{ $item->times }}</td>
-                                        <td  style="width: 10%">{{ $item->timee }}</td>
+                                        <td >{{ $item->times }}</td>
+                                        <td >{{ $item->timee }}</td>
                                         @if (auth()->user()->role=='siswa')
                                             <td class="text-center">
                                                 
@@ -280,23 +284,19 @@
                                                     <p class="badge badge-success text-uppercase float-right btn text-white hover-box" data-toggle="modal" data-target="#modalNilai" data-kuis_id="{{ $item->id }}" data-profile_id="{{ auth()->user()->id }}" id="btnNilai">SELESAI</p>&nbsp;&nbsp;&nbsp;
                                                 @endif
                                             </td>
-                                        @endif
-        
-                                        @if (auth()->user()->role=='instruktur')
-                                            @if (auth()->user()->id==$data_kursus->user->id)
+                                        @else
+                                        @if (auth()->user()->id==$data_kursus->user->id)
                                                 @if (auth()->user()->id !== $item->user_id)
-                                                    <td class="float-right">
-                                                        <a href="#" data-id="{{ $item->id }}" data-kursus_id="{{ $data_kursus->id }}" data-toggle="modal" data-target="#hapuskuis" class="fa fa-trash text-danger"> hapus</a>
+                                                    <td >
+                                                        <a href="#" data-id="{{ $item->id }}" data-kursus_id="{{ $data_kursus->id }}" data-toggle="modal" data-target="#hapuskuis" class="fa fa-trash text-danger"></a>
                                                     </td>    
                                                 @else
-                                                    <td class="float-right">
+                                                    <td>
                                                         {{-- <a href="/buat-soal/{{ $item->id }}/{{ $item->slug }}"><i class="fa fa-plus"></i> soal</a> --}}
-                                                        <a href="#" data-id="{{ $item->id }}" data-kursus_id="{{ $data_kursus->id }}" data-toggle="modal" data-target="#hapuskuis" class="fa fa-trash text-danger"> hapus</a>
+                                                        <a href="#" data-id="{{ $item->id }}" data-kursus_id="{{ $data_kursus->id }}" data-toggle="modal" data-target="#hapuskuis" class="fa fa-trash text-danger"></a>
                                                     </td>
                                                 @endif
-                                            @endif                                 
-                                        @else                                
-                                        
+                                            @endif
                                         @endif
                                     </tr>
                                     @endforeach                    
@@ -307,62 +307,57 @@
                 </div>
             </div>
             <!---->
-            <div class="" data-category="uraian" style="display: none">
+            <div class="uraian" data-category="uraian" style="display: none; padding:1%">
                 @if (auth()->user()->role=='instruktur')
                     <h5 class="mb-4" style="margin-top: 20px"> <span class="fa fa-plus label-blue btn hover-box" data-toggle="modal" data-target="#adduraian"></span></h5>    
                 @else
                     <h5 class="mb-4" style="margin-top: 20px"> <span class="label-blue text-uppercase"> uraian</span></h5>
                 @endif
-                    <hr>
-                
-                {{-- <p>{{ $date->format('Y-m-d') }}</p> --}}
                 <div class="row">
                     @if (count($data_kursus->uraian)==null)
                         <div class="col-12 col-xl-12 text-center" style="max-height: 100px">
                             <p class="text-danger">Belum Ada Soal uraian</p>                            
                         </div>
                     @else
-                    <div class="col-12 bg-clr-white">
-                        <table class="table table-borderless table-vcenter">
+                    <div class="col-12 block block-rounded table table-responsive"style="padding: 3%">
+                        <table class="table table-striped" id="daftaruraians" >
                             <thead>
                                 <tr>
-                                    <th style="width: 5%">#</th>
+                                    <th style="width: 3%">#</th>
                                     <th style="width: 30%">Judul</th>
-                                    <th style="width: 10%">Start</th>
-                                    <th style="width: 10%">End</th>
-                                    @if (auth()->user()->role=='siswa')
-                                        <th class="text-center float-right">Status </th>
-                                    @endif                                
-                                    {{-- <th class="float-right"></th> --}}
+                                    <th style="width: 5%">Start</th>
+                                    <th style="width: 5%">End</th>
+                                    <th>
+                                        @if (auth()->user()->role=='siswa') 
+                                        Status
+                                        @else
+                                        <i class="fa fa-info"></i>
+                                        @endif
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data_kursus->uraian as $key=>$item)
                                 <tr>
-                                    <td style="width: 5%">{{ $key+1 }}</td>
+                                    <td style="width: 3%">{{ $key+1 }}</td>
                                     <td style="width: 30%">
-                                        @if (auth()->user()->role=='instruktur')
-                                            <a href="/detail-latihan-soal-uraian/{{ $item->slug }}/{{ $data_kursus->slug }}">({{ $item->soalurai->count() }} soal) {{ $item->judul }}</a>
-                                        @elseif(auth()->user()->role=='admin')
-                                            <a href="/detail-latihan-soal-uraian/{{ $item->slug }}/{{ $data_kursus->slug }}">({{ $item->soalurai->count() }} soal) {{ $item->judul }}</a>
-                                        @else
+                                        @if (auth()->user()->role=='siswa')
                                             @if ($item->soalurai->count()!==0)
                                                 <?php $sudah_dikerjakan = App\Jawaburai::where('profile_id', auth()->user()->profile->id)->where('uraian_id', $item->id)->first();
                                                     $blmdinilai     = App\Nilaiurai::where('user_id', $data_kursus->user->id)->where('profile_id', auth()->user()->profile->id)->where('uraian_id',$item->id)->first();
                                                 ?>
                                                 <a
                                                 @if ($date->format('Y-m-d') > $item->tgls || $date->format('Y-m-d') == $item->tgls && $date->format('Y-m-d') == $item->tgle || $date->format('Y-m-d') == $item->tgls && $date->format('Y-m-d') < $item->tgle || $sudah_dikerjakan)
-                                                    
-                                                    href="/kuis-form-latihan-soal-uraian/{{ $item->slug }}/{{ $data_kursus->slug }}" class="text-primary"    
-                                                    
+                                                    href="/kuis-form-latihan-soal-uraian/{{ $item->slug }}/{{ $data_kursus->slug }}" class="text-primary"
                                                 @else
                                                     href="#bukan-waktunya"
                                                 @endif 
-                                                
-                                                > ({{ $item->soalurai->count() }} soal) {{ $item->judul }}</a>
+                                                > ({{ $item->soalurai->count() }} soal) <br> {{ $item->judul }}</a>
                                             @else
-                                                <a href="#{{ $item->judul }}" class="text-danger">({{ $item->soalurai->count() }} soal) {{ $item->judul }}</a>
+                                                <a href="#{{ $item->judul }}" class="text-danger">({{ $item->soalurai->count() }} soal)<br> {{ $item->judul }}</a>
                                             @endif
+                                        @else
+                                            <a href="/detail-latihan-soal-uraian/{{ $item->slug }}/{{ $data_kursus->slug }}">({{ $item->soalurai->count() }} soal)<br> {{ $item->judul }}</a>
                                         @endif                                    
                                     </td>
                                     <td>{{ $item->tgls }}</td>
@@ -372,11 +367,9 @@
                                           $blmdinilai     = App\Nilaiurai::where('user_id', $data_kursus->user->id)->where('profile_id', auth()->user()->profile->id)->where('uraian_id',$item->id)->first();
                                     ?>
                                         <td class="text-center " style="width: 15%">
-                                             {{--  --}}
                                             @if ($sudah_dikerjakan==null)
                                                 <span class="badge badge-danger text-uppercase float-right">BELUM</span>
                                             @else
-                                                {{-- <p class="badge badge-success text-uppercase float-right btn text-white hover-box" data-toggle="modal" data-target="#modalNilai" data-kuis_id="{{ $item->id }}" data-profile_id="{{ auth()->user()->id }}" id="btnNilai">SELESAI</p>&nbsp;&nbsp;&nbsp; --}}
                                                 @if ($blmdinilai==null)
                                                     <span class="badge badge-success float-right"> SUDAH </span> &nbsp; <span class="badge badge-warning float-right"> BELUM DINILAI </span>
                                                 @else
@@ -384,23 +377,16 @@
                                                 @endif
                                             @endif
                                         </td>
-                                    @endif
-    
-                                    @if (auth()->user()->role=='instruktur')
+                                    @else
                                         @if (auth()->user()->id==$data_kursus->user->id)
+                                        <td>
                                             @if (auth()->user()->id !== $item->user_id)
-                                                <td class="float-right">
-                                                    <a href="#" data-id="{{ $item->id }}" data-kursus_id="{{ $data_kursus->id }}" data-toggle="modal" data-target="#hapusuraian" class="fa fa-trash text-danger"> hapus</a>
-                                                </td>    
+                                            <a href="#" data-id="{{ $item->id }}" data-kursus_id="{{ $data_kursus->id }}" data-toggle="modal" data-target="#hapusuraian" class="fa fa-trash text-danger"> </a>
                                             @else
-                                                <td class="float-right">
-                                                    {{-- <a href="/buat-soal/{{ $item->id }}/{{ $item->slug }}"><i class="fa fa-plus"></i> soal</a> --}}
-                                                    <a href="#" data-id="{{ $item->id }}" data-kursus_id="{{ $data_kursus->id }}" data-toggle="modal" data-target="#hapusuraian" class="fa fa-trash text-danger"> hapus</a>
-                                                </td>
+                                            <a href="#" data-id="{{ $item->id }}" data-kursus_id="{{ $data_kursus->id }}" data-toggle="modal" data-target="#hapusuraian" class="fa fa-trash text-danger"> </a>
                                             @endif
-                                        @endif                                 
-                                    @else                                
-                                    
+                                        </td>
+                                        @endif
                                     @endif
                                 </tr>
                                 @endforeach                    
@@ -414,12 +400,8 @@
         <!-- block -->
     </div>        
 </div>
-<!--floating button-->
-
-
-
-
-        @if (auth()->user()->role=='instruktur')
+<div class="floating-btn">
+    @if (auth()->user()->role=='instruktur')
             @if (auth()->user()->id == $data_kursus->user->id)
             <div class="fab-container">
                 <div class="fab fab-icon-holder">
@@ -427,27 +409,27 @@
                 </div>
                 <ul class="fab-options">
                     <li>
-                        <span class="fab-label">Manage Video Kursus</span>
+                        <span class="fab-label">Manage Materi Video</span>
                         <a class="fab-icon-holder" href="{{ route('myvidInstruktur',$data_kursus->slug) }}">                
-                            <i class="fa fa-plus"> <i class="fa fa-play"></i></i>
+                            <i class="fa fa-forward"></i>
                         </a>
                     </li>
                     <li>
-                        <span class="fab-label">Manage Artikel</span>
+                        <span class="fab-label">Manage Materi Artikel</span>
                         <a class="fab-icon-holder" href="{{ route('myArtikel',$data_kursus->slug) }}">
-                            <i class="fas fa fa-plus"> <i class="fas fa fa-book"></i></i>
+                            <i class="fas fa fa-book"></i>
                         </a>
                     </li>        
                     <li>
                         <span class="fab-label">Manage Pilihan Ganda</span>
                         <a class="fab-icon-holder" href="{{ route('mykuisInstruktur',$data_kursus->slug) }}">                
-                            <i class="fa fa-plus"> <i class="fa fa-pencil-square"></i></i>
+                            <i class="fa fa-pencil-square"></i>
                         </a>
                     </li>
                     <li>
                         <span class="fab-label">Manage Uraian Soal</span>
                         <a class="fab-icon-holder" href="{{ route('myuraiInstruktur',$data_kursus->slug) }}">                
-                            <i class="fa fa-plus"> <i class="fa fa-newspaper"></i></i>
+                            <i class="fa fa-newspaper"></i>
                         </a>
                     </li>
                 </ul>
@@ -468,7 +450,8 @@
                     </li>
                 </ul>
             </div>
-        @endif                
+        @endif
+</div>
 
 
 <!--modal play video--> 
@@ -492,46 +475,6 @@
     </div>
 </div>
 <!--end modal play video-->
-
-<!--modal view nilai--> 
-<div class="modal fade" id="modalNilai" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="block block-themed block-transparent mb-0">
-                <div class="block-header bg-info">
-                    <h3 class="block-title"></h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
-                            <i class="si si-close"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="block-content">
-                        <div class="form-group">
-                            <table class="table table-hover" id="daftarnilai">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>NILAI</th>
-                                        <th>OPSI</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- nilai retrieve dari ajax --}}
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="form-group">
-                            <p id="nilai">LALALA </p>
-                        </div>
-                    </div>
-                </div>
-            </div>                
-        </div>
-    </div>
-</div>
-<!--end modal view nilai-->
 
 <!--modal add video--> 
 <div class="modal fade" id="addvideo" tabindex="-1" role="dialog" aria-labelledby="modal-large" aria-hidden="true">
@@ -888,19 +831,19 @@
     var table3;
     $(document).ready(function(){    
         table3= $('#addartikel').DataTable({});        
-    });
-    var table4;
-    $(document).ready(function(){    
-        table4= $('#daftarnilai').DataTable({});        
-    });
+    });    
     var table5;
     $(document).ready(function(){    
         table5= $('#adduraians').DataTable({});        
     });
-    // var table5;
-    // $(document).ready(function(){    
-    //     table5= $('#daftaruraian').DataTable({});        
-    // });
+    var table7;
+    $(document).ready(function(){    
+        table7= $('#daftaruraians').DataTable({});        
+    });
+    var table6;
+    $(document).ready(function(){    
+        table6= $('#tes-table').DataTable({});        
+    });
 </script>
 
 <script>
@@ -921,53 +864,6 @@
     }
 </script>
 
-<script>
-    $('#modalNilai').on('show.bs.modal', function(event){
-        var button = $(event.relatedTarget)
-        var kuis_id = button.data('kuis_id')
-        var profile_id = button.data('profile_id')
-        console.log(kuis_id);
-        //gajadi dipake
-        $.ajax({  //create an ajax request to display.php
-          type: "GET",
-          url: "http://127.0.0.1:8000/get-nilai/"+kuis_id+"/"+profile_id,       
-          success: function (response) {
-            for(var i=0; i<len; i++){
-            var nilai = response['data'][i].nilai;
-            $("#nilai").html(response['data'][i].nilai);
-            }
-            var len = 0;
-            $('#daftarnilai tbody').empty(); // Empty <tbody>
-            if(response['data'] != null){
-            len = response['data'].length;
-            }
-            if(len > 0){
-            for(var i=0; i<len; i++){
-            var id = response['data'][i].id;
-            var nilai = response['data'][i].nilai;
-            var tr_str = "<tr>" +
-            "<td align='center'>" + (i+1) + "</td>" +
-            "<td align='center'>" + nilai + "</td>" +
-            "</tr>";
-            $("#daftarnilai tbody").append(tr_str);
-            }
-            }else if(response['data'] != null){
-            var tr_str = "<tr>" +
-            "<td align='center'>1</td>" +
-            "<td align='center'>" + response['data'].nilai + "</td>" + 
-            "</tr>";
-            $("#daftarnilai tbody").append(tr_str);
-            }else{
-            var tr_str = "<tr>" +
-            "<td align='center' colspan='4'>No record found.</td>" +
-            "</tr>";
-            $("#daftarnilai tbody").append(tr_str);
-            }
-            
-          }
-        })
-    })
-</script>
 
 <script>
     var data = $("#playvideo").attr('src');
