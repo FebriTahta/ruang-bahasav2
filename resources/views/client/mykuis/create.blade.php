@@ -95,7 +95,7 @@
 
         <div class="col-lg-8">
             <div class="left-right bg-clr-white p-3" style="margin-top: 50px;">                    
-                <form action="{{ route('storeSoal') }}" method="POST" enctype="multipart/form-data">@csrf @method('POST')
+                <form action="{{ route('storeSoal') }}" method="POST" enctype="multipart/form-data">@csrf @method('POST') {{ method_field('POST') }}
                 <div class="form" style="padding: 20px">
                     <div class="form-group">
                         <input type="hidden" name="kuis_id" value="{{ $data->id }}">
