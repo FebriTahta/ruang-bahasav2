@@ -15,7 +15,7 @@
 <div class="content" style="">
     <div class="row">
         <div class="col-lg-9">
-            <form action="{{ route('uploadArtikel') }}" method="POST" enctype="multipart/form-data">@csrf
+            <form action="{{ route('uploadArtikel') }}" method="POST" enctype="multipart/form-data">@csrf @method('post')
                 <div class="form-group">
                     <input type="hidden" class="form-control" name="kursus_id">
                     <input type="hidden" class="form-control" name="id">
