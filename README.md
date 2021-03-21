@@ -7,6 +7,14 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## INSTALLATION
+1. clone
+2. cp .env.example .env
+3. php artisan key:generate
+4. setup .env with app key from ur gmail for broadcast / notif in email (*penting)
+5. setup db 
+6. serve
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
