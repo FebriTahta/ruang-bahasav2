@@ -76,6 +76,7 @@
 							<a class="dropdown-item @@b__active" href="{{ route('forums') }}">Daftar Forum</a>
 							<a class="dropdown-item @@fa__active" href="{{ route('allinstruktur') }}">Daftar Instruktur</a>
 							<a class="dropdown-item @@fa__active" href="{{ route('allkursus') }}">Daftar Kursus</a>
+							<a class="dropdown-item @@fa__active" href="{{ route('about') }}">Tentang Kami </a>
 						</div>
 					</li>					
 					@auth

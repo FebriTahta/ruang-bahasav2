@@ -31,7 +31,9 @@
                     <input type="text" class="form-control" name="artikel_title" placeholder="JUDUL ARTIKEL" value="{{ $artikel->artikel_title }}" required>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control js-summernote" name="artikel_text" id="artikel_text" cols="30" rows="10">{!! $artikel->artikel_text !!}</textarea>
+                    <textarea class="form-control js-summernote" name="artikel_text" id="artikel_text" cols="30" rows="10">                        
+                        {!! $artikel->artikel_text !!}
+                    </textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary"> UPLOAD</button>

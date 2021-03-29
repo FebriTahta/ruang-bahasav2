@@ -94,59 +94,9 @@
             <div class="block-content">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" id="daftar_user" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                {{-- <th>#</th> --}}
-                                <th>nama</th>
-                                <th>akses</th>
-                                <th>status</th>
-                                <th>email</th>
-                                <th>aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody><?php $num=1?>                    
-                            @foreach ($data_user as $key => $item)
-                                @if ($item->email_verified_at ===null)
-                                @else
-                                <tr>
-                                    {{-- <td>{{ $num }}</td> --}}
-                                    <td>{{ $item->name }}</td>
-                                    <td>
-                                        @if ($item->role=='instruktur')
-                                        guru
-                                        @else
-                                        {{ $item->role }}
-                                        @endif 
-                                    </td>
-                                    <td>
-                                        {{-- <label class="css-control css-control-success css-switch">
-                                            <input data-id="{{ $item->id }}" type="checkbox" class="css-control-input" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $item->stat ? 'checked' : '' }}>
-                                            <span class="css-control-indicator"></span>
-                                        </label> --}}
-                                        @if ($item->stat==1)
-                                            <span class="badge badge-primary">aktif</span>
-                                        @else
-                                            <span class="badge badge-danger">non aktif</span>
-                                        @endif
-                                    </td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>
-                                        @if ($item->role=='admin')
-                                            <button class="btn btn-outline-primary fa fa-pencil" data-toggle="modal" data-target="#modal-fromleft-edit"
-                                            data-id="{{ $item->id }}" data-name="{{ $item->name }}" data-email="{{ $item->email }}" data-stat="{{ $item->stat }}" data-role="{{ $item->role }}"></button>
-                                        @else
-                                            <a href="/profile/{{ $item->id }}" class="btn btn-outline-success fa fa-user"></a>
-                                            <button class="btn btn-outline-primary fa fa-pencil" data-toggle="modal" data-target="#modal-fromleft-edit"
-                                            data-id="{{ $item->id }}" data-name="{{ $item->name }}" data-email="{{ $item->email }}" data-stat="{{ $item->stat }}" data-role="{{ $item->role }}"></button>
-                                            <button class="btn btn-outline-danger fa fa-trash" data-toggle="modal" data-target="#modal-fromleftdel"
-                                            data-name="{{ $item->name }}" data-id="{{ $item->id }}"></button>  
-                                        @endif                                                                              
-                                    </td>
-                                </tr>
-                                @endif
-                                <?php $num++?>                                
-                            @endforeach                                    
-                        </tbody>                        
+                                                      
+                            
+                        
                     </table>
                 </div>
             </div>                                              

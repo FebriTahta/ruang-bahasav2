@@ -43,6 +43,7 @@ Route::get('/berita','NewsController@display')->name('berita');
 Route::get('/semua-kursus','KursusController@allkursus')->name('allkursus');
 Route::get('/semua-instruktur','ProfileController@allinstruktur')->name('allinstruktur');
 Route::get('/instruktur-info/{id}','ProfileController@detailinstruktur')->name('detailInstruktur');
+Route::get('/about-us','AdminDashboardController@about_index')->name('about');
 Route::get('/news-detail/{id}','NewsController@index2')->name('newsDetail');
 
 Route::post('/daftar','AkunController@daftar')->name('daftar');
@@ -132,7 +133,6 @@ Route::group(['middleware'=>['auth','checkrole:admin,instruktur']], function(){
     Route::get('/detail-result/{slug}','MyCourseController@detailresult');
     Route::post('/reset-kuis','MyCourseController@resetkuis')->name('resetkuis');
     Route::get('/getreset','AdminDashboardController@getreset');
-    //forum
     
             
 });

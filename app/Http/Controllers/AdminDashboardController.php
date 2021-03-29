@@ -37,5 +37,15 @@ class AdminDashboardController extends Controller
         
         return view('admin.dashboard.index',compact('pengunjung','belum_verif','kursus_user','data_instruktur','data_siswa','data_user_non_acc','data_kursus','data_video','data_buku','data_kuis'));
     }
+
+    public function about_index()
+    {
+        return view('client.about.index');
+    }
+
+    public function about_create()
+    {
+
+    }
     
 }

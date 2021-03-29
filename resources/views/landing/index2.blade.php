@@ -13,12 +13,10 @@
                                     <span class="label-blue mb-sm-4 mb-3">Study Goal</span>
                                     <h3 class="title-big mb-4">Dapatkanlah materi bergengsi dan jadi juara kelas.
                                     </h3>
-                                    <p class="message">Sekolah kami menyediakan materi terbaru dan ter-update yang disampaikan
-                                        oleh para pengajar profesional dari Universitas bergengsi.
-                                        Materi dikemas dengan padat dan menarik dalam bentuk video dan dokumen sehingga mudah dipahami.</p>
+                                    <p class="message">Universitas Trunojoyo Madura adalah Perguruan Tinggi Negeri yang terletak di Kabupaten Bangkalan (Madura), Provinsi Jawa Timur. Mengapa kuliah di Universitas Trunojoyo Madura? Selain biaya hidup yang bisa dibilang lebih murah, pulau madura juga terkenal dengan berbagai macam tempat wisata dan tradisinya yang unik.</p>
                                 </div>
                                 <div class="col-lg-4 col-md-8 img-circle mt-lg-0 mt-4">
-                                    <img src="{{ ('assets/media/ui/learn.png') }}" class="img-fluid radius-image-full" alt="client image">
+                                    <img src="{{ ('assets/media/ui/trunojoyo3.png') }}" class="img-fluid radius-image-full" alt="client image">
                                 </div>
                             </div>
                         </div>
