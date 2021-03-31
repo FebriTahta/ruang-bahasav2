@@ -69,7 +69,7 @@
 					<li class="nav-item dropdown @@pages__active">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							More <span class="fa fa-angle-down"></span>
+							Menu <span class="fa fa-angle-down"></span>
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							{{-- <a class="dropdown-item @@fa__active" onclick="news()">News</a> --}}

@@ -31,6 +31,15 @@ Route::get('/forum','ForumController@index')->name('forum');
 Route::get('/forum-daftar-pertanyaan/{slug_k}/{slug_m}','ForumController@daftarpertanyaan');
 Route::get('/forum-daftar-pertanyaan/premium/{slug_k}/{slug_m}','ForumController@daftarpertanyaanP');
 // Route::get('/forum-detail-pertanyaan/{slug}','ForumController@detailpertanyaan')->name('forum-detail');
+
+//about
+Route::get('/about-us','AboutController@index')->name('about');
+Route::get('/about-us-index','AdminDashboardController@tentang')->name('aboutUs');
+Route::get('/create-new-about-us','AdminDashboardController@create')->name('aboutCr');
+Route::post('/save-about-us','AdminDashboardController@store')->name('aboutSv');
+Route::get('/edit-about-us/{id}', 'AdminDashboardController@edit')->name('aboutEd');
+Route::patch('/update-about-us/{id}','AdminDashboardController@update')->name('aboutUp');
+Route::delete('/delete-about-us/{id}','AdminDashboardController@destroy')->name('aboutDl');
 //new_ui_forum
 Route::get('/forums','ForumController@index2')->name('forums');
 Route::get('/forums-daftar-pertanyaan/{slug_k}/{slug_m}','ForumController@daftarpertanyaans');
@@ -43,7 +52,7 @@ Route::get('/berita','NewsController@display')->name('berita');
 Route::get('/semua-kursus','KursusController@allkursus')->name('allkursus');
 Route::get('/semua-instruktur','ProfileController@allinstruktur')->name('allinstruktur');
 Route::get('/instruktur-info/{id}','ProfileController@detailinstruktur')->name('detailInstruktur');
-Route::get('/about-us','AdminDashboardController@about_index')->name('about');
+
 Route::get('/news-detail/{id}','NewsController@index2')->name('newsDetail');
 
 Route::post('/daftar','AkunController@daftar')->name('daftar');

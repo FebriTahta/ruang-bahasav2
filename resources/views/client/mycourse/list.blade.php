@@ -95,7 +95,7 @@
                 <a href="#kuis">
                     <div class="area-box">
                         <span class="fa fa-pencil-square"></span>
-                        <h4 class="title-head text-uppercase"><u>{{ count(auth()->user()->kuis) }}</u> Latihan soal</h4>
+                        <h4 class="title-head text-uppercase"><u>{{ count(auth()->user()->kuis) + count(auth()->user()->uraian) }}</u> Latihan soal</h4>
                     </div>
                 </a>
             </div>
@@ -131,8 +131,8 @@
                     <div class="bg-clr-white hover-box">
                         <div class="row">
                             <div class="col-sm-5 position-relative">
-                                <a href="{{ route('myCourse',$item->slug) }}" class="image-mobile" >
-                                    <img class="card-img-bottom d-block radius-image-full" style="min-height: 160px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="Card image cap">
+                                <a href="{{ route('myCourse',$item->slug) }}" class="image-mobile">
+                                    <img class="card-img-bottom d-block radius-image-full" style="min-height: 200px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="col-sm-7 card-body blog-details align-self">
@@ -161,7 +161,7 @@
                         <div class="row">
                             <div class="col-sm-5 position-relative">
                                 <a href="{{ route('myCourse',$item->slug) }}" class="image-mobile" >
-                                    <img class="card-img-bottom d-block radius-image-full" style="height: 160px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="Card image cap">
+                                    <img class="card-img-bottom d-block radius-image-full" style="height: 200px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="Card image cap">
                                 </a>
                             </div>
                             <div class="col-sm-7 card-body blog-details align-self">

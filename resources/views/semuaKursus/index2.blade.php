@@ -55,7 +55,7 @@
                                                                         <span>{{ $item->artikel->count() }} book</span>
                                                                     </div>
                                                                     <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->kuis->count() }} kuis</span>
+                                                                        <span>{{ $item->kuis->count() + $item->uraian->count() }} kuis</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -109,7 +109,7 @@
                                                                         <span>{{ $item->artikel->count() }} book</span>
                                                                     </div>
                                                                     <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->kuis->count() }} kuis</span>
+                                                                        <span>{{ $item->kuis->count() + $item->uraian->count() }} kuis</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -157,7 +157,7 @@
                                                                         <span>{{ $item->artikel->count() }} book</span>
                                                                     </div>
                                                                     <div class="col-4 col-sm-4">
-                                                                        <span>{{ $item->kuis->count() }} kuis</span>
+                                                                        <span>{{ $item->kuis->count() + $item->uraian->count() }} kuis</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -211,7 +211,7 @@
                                                                     <span>{{ $item->artikel->count() }} book</span>
                                                                 </div>
                                                                 <div class="col-4 col-sm-4">
-                                                                    <span>{{ $item->kuis->count() }} kuis</span>
+                                                                    <span>{{ $item->kuis->count() + $item->uraian->count()}} kuis</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -261,7 +261,7 @@
                                                                     <span>{{ $item->artikel->count() }} book</span>
                                                                 </div>
                                                                 <div class="col-4 col-sm-4">
-                                                                    <span>{{ $item->kuis->count() }} kuis</span>
+                                                                    <span>{{ $item->kuis->count() + $item->uraian->count() }} kuis</span>
                                                                 </div>
                                                             </div>
                                                         </div>

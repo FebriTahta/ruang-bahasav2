@@ -5,7 +5,7 @@
     <div class="bg-primary-dark-op">
         <div class="content content-top text-center overflow-hidden">
             <div class="pb-10">
-                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">EDIT ABOUT US BARU</h1>
+                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">CREATE ABOUT US BARU</h1>
                 <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp"></h2>
             </div>
         </div>
@@ -13,7 +13,7 @@
 </div>
 <!-- END Hero -->
 <div class="content">
-    <div class="content-heading"><label>EDIT PROFILE</label></div>            
+    <div class="content-heading"><label>CREATE PROFILE</label></div>            
                 @if (Session::has('pesan'))
                     <div class="alert alert-info text-bold">{{ Session::get('pesan') }}</div>
                 @endif
@@ -28,13 +28,13 @@
                 @endif   
 
     <div class="form">
-        <form action="{{ route('aboutUp', $ab->id) }}" method="POST" enctype="multipart/form-data"> @csrf @method('PATCH')
+        <form action="{{ route('aboutSv') }}" method="POST" enctype="multipart/form-data"> @csrf
             <div class="form-group">
-                <input type="text" class="form-control" name="judul" placeholder="Judul.." value="{{ $ab->judul }}" required>
+                <input type="text" class="form-control" name="judul" placeholder="Judul.." required>
             </div>
             <div class="form-group">
                 <textarea name="konten" id="js-summernote" class="js-summernote" cols="30" rows="10">
-                    {!! $ab->konten !!}
+                    Konten..
                 </textarea>
             </div>
             <div class="form-group">

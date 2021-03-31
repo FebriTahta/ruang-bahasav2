@@ -86,7 +86,7 @@
                             <div class="mb-5 font-size-sm text-muted">{{ $item->video->count() }} &nbsp;<i class="si si-control-play"></i>  Video</div>
                         </div>
                         <div class="col-4">
-                            <div class="mb-5 font-size-sm text-muted">{{ $item->kuis->count() }} &nbsp;<i class="fa fa-pencil"></i> Kuis</div>
+                            <div class="mb-5 font-size-sm text-muted">{{ $item->kuis->count() + $item->uraian->count() }} &nbsp;<i class="fa fa-pencil"></i> Kuis</div>
                         </div>
                     </div>
                 </div>

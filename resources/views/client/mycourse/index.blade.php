@@ -91,7 +91,7 @@
                     <a  class="topics-list mt-3 hover-box" onclick="kuisscroll()">
                         <div class="list1">
                             <span class="fa fa-pencil-square"></span>
-                            <h4><u>{{ $data_kursus->kuis->count() }}</u> Latihan Soal</h4>
+                            <h4><u>{{ $data_kursus->kuis->count() + $data_kursus->uraian->count() }}</u> Latihan Soal</h4>
                         </div>
                     </a>
                     <a href="{{ route('detailsiswa',$data_kursus->slug) }}"

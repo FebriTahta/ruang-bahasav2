@@ -4,11 +4,11 @@
     <div class="footer-bg-layer">
       <div class="container py-lg-3">
         <div class="row footer-top-28">
-          <div class="col-lg-4 footer-list-28 copy-right mb-lg-0 mb-sm-5 mt-sm-0 mt-4">
+          <div class="col-lg-12 footer-list-28 copy-right mb-lg-0 mb-sm-5 mt-sm-0 mt-4">
             <a class="navbar-brand mb-3" href="#">
               <span class="fa fa-newspaper-o"></span> Ruang Bahasa</a>            
-            <p class="mt-2">Design by <small><a href="https://w3layouts.com/">W3Layouts</a></small> </p>
-            
+              <p class="mt-2">Design by <small><a href="https://w3layouts.com/">W3Layouts</a></small></p>
+              <p class="mt-2">CP : <small><a href="https://w3layouts.com/">dianacaem.banget@gmail.com / </a> 082-143-463-253 </small></p>
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@
 </script>
 <script type="text/javascript">
   var months  =['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-  var theDays =['Minggu','Senen','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+  var theDays =['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
   var date    = new Date();
   var day     = date.getDate();
   var month   = date.getMonth();
@@ -123,7 +123,7 @@
   var yy      = date.getYear();
   var year    = (yy<1000) ? yy + 1900: yy;
   // document.write(thisDay+',' + day + '' + months[month] + '' + year);
-  document.getElementById("waktu").innerHTML=(thisDay+', ' + day + '' + months[month] + '' + year);
+  document.getElementById("waktu").innerHTML=(thisDay+', ' + day + ' ' + months[month] + ' ' + year);
 </script>
 <script>
   function showtime()

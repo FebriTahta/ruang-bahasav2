@@ -8,6 +8,7 @@ use App\Book;
 use App\User;
 use App\Result;
 use App\reset;
+use App\About;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -38,14 +39,82 @@ class AdminDashboardController extends Controller
         return view('admin.dashboard.index',compact('pengunjung','belum_verif','kursus_user','data_instruktur','data_siswa','data_user_non_acc','data_kursus','data_video','data_buku','data_kuis'));
     }
 
-    public function about_index()
+    public function tentang()
     {
-        return view('client.about.index');
+        $ab = About::all();
+        return view('admin.about.index', compact('ab'));
     }
 
-    public function about_create()
+    public function create()
+    {
+        $dt = About::limit(1);
+        if ($dt==null) {
+            # code...
+            return view('admin.about.create');
+        }
+        else{
+            $notif = array(
+                'pesan-peringatan' => 'Terdapat Data Profile, Ubah data yang ada atau hapus data tersebut terlbih dahulu',                
+                );
+            return redirect()->back()->with($notif);
+        }
+        
+    }
+
+    public function store(Request $request)
+    {
+        $ab = new About;
+        $ab->user_id = Auth::id();
+        $ab->judul = $request->judul;
+        $ab->konten = $request->konten;
+        $ab->status = 'terbit';
+        $ab->save();
+        $notif = array(
+            'pesan-sukses' => 'Profile tersebut berhasil tambahkan',                
+            );
+        return redirect('/about-us-index');
+
+    }
+
+    public function view()
     {
 
+    }
+
+    public function edit(Request $request ,$id)
+    {
+        
+        
+            $ab = About::find($id);
+            return view('admin.about.edit',compact('ab'));
+       
+       
+    }
+
+    public function update(Request $request, $id)
+    {
+        About::where('id', $id)->update(
+            [
+                'user_id' => Auth::id(),
+                'judul' => $request->judul,
+                'konten' => $request->konten,
+                'status' => 'terbit',
+            ]
+        );
+        $notif = array(
+            'pesan-info' => 'Profile tersebut berhasil ubah',                
+            );
+        return redirect('/about-us-index');
+    }
+
+    public function destroy($id)
+    {
+        About::find($id)->delete();
+        $notif = array(
+            'pesan-bahaya' => 'Profile tersebut berhasil dihapus',                
+            );
+                        
+        return redirect()->back()->with($notif);   
     }
     
 }

@@ -90,6 +90,9 @@
                                 <li>
                                     <a href="{{ route('daftarKursus') }}">daftar kelas</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('aboutUs') }}">tentang kami</a>
+                                </li>
                             </ul>
                             @endif
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">KONTEN</span></a>
