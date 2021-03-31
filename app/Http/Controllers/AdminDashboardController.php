@@ -47,7 +47,7 @@ class AdminDashboardController extends Controller
 
     public function create()
     {
-        $dt = About::limit(1);
+        $dt = About::all();
         if ($dt==null) {
             # code...
             return view('admin.about.create');
