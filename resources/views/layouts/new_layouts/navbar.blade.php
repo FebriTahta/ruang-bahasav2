@@ -73,9 +73,9 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							{{-- <a class="dropdown-item @@fa__active" onclick="news()">News</a> --}}
-							<a class="dropdown-item @@b__active" href="{{ route('forums') }}">Daftar Forum</a>
-							<a class="dropdown-item @@fa__active" href="{{ route('allinstruktur') }}">Daftar Instruktur</a>
-							<a class="dropdown-item @@fa__active" href="{{ route('allkursus') }}">Daftar Kursus</a>
+							<a class="dropdown-item @@b__active" href="{{ route('forums') }}">Forum Diskusi</a>
+							<a class="dropdown-item @@fa__active" href="{{ route('allinstruktur') }}">Daftar Guru</a>
+							<a class="dropdown-item @@fa__active" href="{{ route('allkursus') }}">Daftar Kelas</a>
 							<a class="dropdown-item @@fa__active" href="{{ route('about') }}">Tentang Kami </a>
 						</div>
 					</li>					
