@@ -65,7 +65,7 @@
                         <div class="list1">
                             {{-- <span class="fa fa-file-alt"></span> --}}
                             <span class="fa fa-pencil"></span>
-                            <h4><u>{{ $instruktur->kuis->count() + $data_kursus->uraian->count()}}</u> Latihan Soal</h4>
+                            <h4><u>{{ $instruktur->kuis->count() + $instruktur->uraian->count()}}</u> Latihan Soal</h4>
                         </div>
                     </a>
                     <a  class="topics-list mt-3 hover-box">
@@ -150,7 +150,7 @@
 
 <script type="text/javascript">
     var months  =['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-    var theDays =['Minggu','Senen','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+    var theDays =['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
     var date    = new Date();
     var day     = date.getDate();
     var month   = date.getMonth();
