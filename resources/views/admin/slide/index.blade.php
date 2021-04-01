@@ -84,8 +84,8 @@
                                     
                                     <td>
                                             
-                                            <button class="btn btn-sm btn-outline-primary fa fa-pencil" data-toggle="modal" data-target="#modal-fromleft"
-                                            data-id="{{ $item->id }}" data-name="{{ $item->name }}" data-stat="{{ $item->status }}" data-img="{{ asset('upload/users/comp/'.$item->img) }}"></button>
+                                            {{-- <button class="btn btn-sm btn-outline-primary fa fa-pencil" data-toggle="modal" data-target="#modal-fromleft"
+                                            data-id="{{ $item->id }}" data-name="{{ $item->name }}" data-stat="{{ $item->status }}" data-img="{{ asset('upload/users/comp/'.$item->img) }}"></button> --}}
                                             <button class="btn btn-sm btn-outline-danger fa fa-trash" data-toggle="modal" data-target="#modal-fromleftdel"
                                             data-name="{{ $item->name }}" data-id="{{ $item->id }}"></button>
                                     </td>
