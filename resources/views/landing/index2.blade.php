@@ -4,7 +4,7 @@
 <style>
 /* .mySlides {display:none;} */
 .slideshow-container {
-    max-width: 1000px;
+    max-width: 1250px;
     position: relative;
     margin: auto
 }
@@ -84,6 +84,35 @@
 </style>
 @endsection
 @section('content')
+<div class="slideshow-container position-relative">
+                
+    <div class="slideshow-inner" >
+    
+        
+    @foreach ($sl as $item)
+  <div class="mySlides">
+   
+    <img  src="{{ asset('upload/users/comp/'.$item->img) }}" style="border-radius: 10px; max-width: 100%; height: 500px" width="100%"  alt="sally lightfoot crab"/>
+                          
+  </div>
+  @endforeach
+  </div>
+ 
+
+
+    <a class="prev" onclick='plusSlides(-1)'>&#10094;</a>
+    <a class="next" onclick='plusSlides(1)'>&#10095;</a>
+
+  
+</div>
+<br/>
+
+
+<div style='text-align: center; margin-top: 90px'>
+    @foreach ($sl as$key=> $item)
+    <span class="dot" onclick='currentSlide($key+1)'></span>      
+    @endforeach
+</div>
     <div class="content">
         
         {{-- <section class="w3l-testimonials py-sm-5 py-4" id="testimonials"> --}}
@@ -95,38 +124,6 @@
                 <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
                 <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
             </div> --}}
-            
-            <div class="slideshow-container position-relative">
-                
-                    <div class="slideshow-inner">
-                    
-                        
-                    @foreach ($sl as $item)
-                  <div class="mySlides">
-                   
-                    <img  src="{{ asset('upload/users/comp/'.$item->img) }}" style="border-radius: 10px; max-width: 100%; height: 500px" width="100%"  alt="sally lightfoot crab"/>
-                                          
-                  </div>
-                  @endforeach
-                  </div>
-                 
-                
-                
-                    <a class="prev" onclick='plusSlides(-1)'>&#10094;</a>
-                    <a class="next" onclick='plusSlides(1)'>&#10095;</a>
-                
-                  
-            </div>
-                <br/>
-                
-                
-                <div style='text-align: center; margin-top: 90px'>
-                    @foreach ($sl as$key=> $item)
-                    <span class="dot" onclick='currentSlide($key+1)'></span>      
-                    @endforeach
-                </div>
-                
-                
             
             {{-- <div class="testimonials pt-2 pb-5">
                 <div class="container pb-lg-5">

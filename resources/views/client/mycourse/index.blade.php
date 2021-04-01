@@ -416,25 +416,25 @@
                 </div>
                 <ul class="fab-options">
                     <li>
-                        <span class="fab-label">Manage Materi Video</span>
+                        <span class="fab-label">Atur Materi Video</span>
                         <a class="fab-icon-holder" href="{{ route('myvidInstruktur',$data_kursus->slug) }}">                
                             <i class="fa fa-forward"></i>
                         </a>
                     </li>
                     <li>
-                        <span class="fab-label">Manage Materi Artikel</span>
+                        <span class="fab-label">Atur Materi Artikel</span>
                         <a class="fab-icon-holder" href="{{ route('myArtikel',$data_kursus->slug) }}">
                             <i class="fas fa fa-book"></i>
                         </a>
                     </li>        
                     <li>
-                        <span class="fab-label">Manage Pilihan Ganda</span>
+                        <span class="fab-label">Atur Pilihan Ganda</span>
                         <a class="fab-icon-holder" href="{{ route('mykuisInstruktur',$data_kursus->slug) }}">                
                             <i class="fa fa-pencil-square"></i>
                         </a>
                     </li>
                     <li>
-                        <span class="fab-label">Manage Uraian Soal</span>
+                        <span class="fab-label">Atur Uraian Soal</span>
                         <a class="fab-icon-holder" href="{{ route('myuraiInstruktur',$data_kursus->slug) }}">                
                             <i class="fa fa-newspaper"></i>
                         </a>

@@ -28,10 +28,10 @@
                 <p>{!! $news->news_desc !!}</p>
             </div>
         </div>
-        <div class="col-lg-3">
+        {{-- <div class="col-lg-3">
             <h4>INFO PENTING</h4><br>
-            <p>Jangan lewatkan informasi menarik mengenai "Course Academy" yang rutin dikirimkan ke email anda dengan mendaftar dan menjadi anggota keluarga kami</p>
-        </div>
+            <p>Jangan lewatkan informasi menarik mengenai "Ruang Bahasa" yang rutin dikirimkan ke email anda dengan mendaftar dan menjadi anggota keluarga kami</p>
+        </div> --}}
     </div>    
 </div>
 @endsection
