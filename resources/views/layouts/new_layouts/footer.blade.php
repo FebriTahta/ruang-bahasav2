@@ -1,15 +1,28 @@
 <!-- footer-28 block -->
 <section class="app-footer mt-100">
-  <footer class="footer-28 py-5">
+  <footer class="bg-dark text-white py-5">
     <div class="footer-bg-layer">
       <div class="container py-lg-3">
         <div class="row footer-top-28">
-          <div class="col-lg-12 footer-list-28 copy-right mb-lg-0 mb-sm-5 mt-sm-0 mt-4">
-            <a class="navbar-brand mb-3" href="#">
-              <span class="fa fa-newspaper-o"></span> Ruang Bahasa</a>            
-              <p class="mt-2">Design by <small><a href="https://w3layouts.com/">W3Layouts</a></small></p>
-              <p class="mt-2">CP : <small><a href="https://w3layouts.com/">dianacaem.banget@gmail.com / </a> 082-143-463-253 </small></p>
+          <div class="col-lg-4 footer-list-28 copy-right mb-lg-0 mb-sm-5 mt-sm-0 mt-4">
+            <a class="navbar-brand mb-3 text-white" href="index.html">
+              <span class="fa fa-newspaper-o"></span> Ruang Bahasa</a>
+            <small class="copy-footer-28"> © 2021. All Rights Reserved. </small><br>
+            <small class="mt-2">Design by <a href="https://w3layouts.com/">W3Layouts</a></small><br>
+            <small class="mt-2">Jl. Raya Telang Kamal-Bangkalan Universitas Trunojoyo</small><br>
+            <small class="mt-2">Email : dianacaem.banget@gmail.com</small>
           </div>
+          <div class="col-sm-8 col-12 footer-list-28 mt-sm-0 mt-4 ">
+            <h6 class="footer-title-28 text-white">Social Media</h6>
+            <ul class="social-icons">
+              <li class="facebook">
+                <a href="https://m.facebook.com/profile.php?id=100004483652588&ref=content_filter" class="text-white"><span class="fa fa-facebook"></span> Facebook</a></li>
+              <li class="instagram"> <a href="https://instagram.com/dianahere_?igshid=ql7htu1xmt5j" class="text-white"><span class="fa fa-instagram"></span> Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row footer-top-28">
+          
         </div>
       </div>
     </div>

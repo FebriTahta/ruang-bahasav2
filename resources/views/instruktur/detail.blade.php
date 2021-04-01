@@ -71,7 +71,7 @@
                     <a  class="topics-list mt-3 hover-box">
                         <div class="list1">
                             <span class="fa fa-pie-chart"></span>
-                            <h4><u>{{ $instruktur->kursus->count() }}</u> Kursus</h4>
+                            <h4><u>{{ $instruktur->kursus->count() }}</u> Kelas</h4>
                         </div>
                     </a>
                 </div>                            
@@ -158,7 +158,7 @@
         thisDay = theDays[thisDay];
     var yy      = date.getYear();
     var year    = (yy<1000) ? yy + 1900: yy;
-    document.write(thisDay+',' + day + '' + months[month] + '' + year);
+    // document.write(thisDay+',' + day + '' + months[month] + '' + year);
     document.getElementById("waktu").innerHTML=(thisDay+', ' + day + '' + months[month] + '' + year);
 </script>
 <script>

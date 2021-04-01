@@ -14,7 +14,8 @@ Route::get('/', function () {
     $recent_course          = App\Kursus::inRandomOrder()->limit(3)->get();
     $recent_news            = App\News::orderBy('id','DESC')->limit(2)->get();
     $recent_instruktur      = App\User::inRandomOrder()->where('role','instruktur')->where('stat','1')->limit(3)->get();
-    return view('landing.index2', compact('recent_course','recent_news','recent_instruktur'));
+    $sl = App\slide::where('status',1)->get();
+    return view('landing.index2', compact('sl','recent_course','recent_news','recent_instruktur'));
 });
 //testing new layouts
 route::post('/get_search','HomeController@searching')->name('search');
@@ -40,6 +41,10 @@ Route::post('/save-about-us','AdminDashboardController@store')->name('aboutSv');
 Route::get('/edit-about-us/{id}', 'AdminDashboardController@edit')->name('aboutEd');
 Route::patch('/update-about-us/{id}','AdminDashboardController@update')->name('aboutUp');
 Route::delete('/delete-about-us/{id}','AdminDashboardController@destroy')->name('aboutDl');
+Route::get('/slide-index', 'AdminDashboardController@slides')->name('slides');
+Route::post('/add-slide', 'AdminDashboardController@storeslide')->name('slideSt');
+Route::post('/dell-slide','AdminDashboardController@dellslide')->name('slideDl');
+Route::get('/changestatus','AdminDashboardController@changestatus')->name('change');
 //new_ui_forum
 Route::get('/forums','ForumController@index2')->name('forums');
 Route::get('/forums-daftar-pertanyaan/{slug_k}/{slug_m}','ForumController@daftarpertanyaans');

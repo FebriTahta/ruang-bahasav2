@@ -91,6 +91,9 @@
                                     <a href="{{ route('daftarKursus') }}">daftar kelas</a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('slides') }}">daftar slider</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('aboutUs') }}">tentang kami</a>
                                 </li>
                             </ul>

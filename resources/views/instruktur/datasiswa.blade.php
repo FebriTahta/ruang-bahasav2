@@ -63,13 +63,13 @@
                     <a class="topics-list hover-box" onclick="videoscroll()">
                         <div class="list1">
                             <span class="fa fa-play"></span>
-                            <h4><u>{{ $data_kursus->video->count() }}</u> Video Kursus</h4>
+                            <h4><u>{{ $data_kursus->video->count() }}</u> Materi Video</h4>
                         </div>
                     </a>
                     <a class="topics-list mt-3 hover-box" onclick="artikelscroll()">
                         <div class="list1" >
                             <span class="fa fa-book"></span>
-                            <h4><u>{{ $data_kursus->artikel->count() }}</u> Artikel & Buku Kursus</h4>
+                            <h4><u>{{ $data_kursus->artikel->count() }}</u> Artikel & Buku </h4>
                         </div>
                     </a>
                     <a  class="topics-list mt-3 hover-box" onclick="kuisscroll()">
@@ -82,7 +82,7 @@
                         class="topics-list mt-3 hover-box">
                         <div class="list1">
                             <span class="fa fa-pie-chart"></span>
-                            <h4><u>{{ $data_kursus->profile->count() }}</u> Peserta Didik</h4>
+                            <h4><u>{{ $data_kursus->profile->count() }}</u> Siswa</h4>
                         </div>
                     </a>
                 </div>                            

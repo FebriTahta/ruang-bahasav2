@@ -9,6 +9,7 @@ use App\User;
 use App\Result;
 use App\reset;
 use App\About;
+use App\slide;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -115,6 +116,64 @@ class AdminDashboardController extends Controller
             );
                         
         return redirect()->back()->with($notif);   
+    }
+
+    public function slides()
+    {
+        $sl = slide::all();
+        return view('admin.slide.index', compact('sl'));
+    }
+
+    public function storeslide(Request $request)
+    {
+        // $sl = new slide;
+        // $sl -> name = $request->name;
+        // $sl -> status = $request->status;
+        // if($request -> hasFile('img'))
+        //     {
+        //         $request->file('img')->move('upload/users/comp/',$request->file('img')->getClientOriginalName());
+        //         $sl->img = $request->file('img')->getClientOriginalName();
+        //     }
+            
+        // $sl->save(); 
+        $id = $request->id;
+        $post           =   slide::updateOrCreate(['id' => $id],
+                            [
+                                'name' => $request->name,
+                                'img' => $request->img,     
+                                'status' => $request->status,
+                            ]);
+            if($request -> hasFile('img'))
+            {
+                $request->file('img')->move('upload/users/comp/',$request->file('img')->getClientOriginalName());
+                $post->img = $request->file('img')->getClientOriginalName();
+                $post->save();
+            }
+        $notif = array(
+            'pesan-sukses' => 'Slide berhasil ditambahkan'
+        );
+        return redirect()->back()->with($notif);
+    }
+
+    public function dellslide(Request $request)
+    {
+        $id = $request->id;
+        $dl = slide::find($id)->delete();
+
+        $notif = array(
+            'pesan-bahaya' => 'Slide telah dihapus'
+        );
+        return redirect()->back()->with($notif);
+
+    }
+
+    public function changestatus(Request $request)
+    {
+        $sl = slide::find($request->id);
+        $sl->status = $request->status;
+        $sl->save();
+
+        return response()->json($request->status);
     }
     
 }
