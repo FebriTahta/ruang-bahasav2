@@ -202,8 +202,8 @@
             </div>
         </div>
     </div>
-    <div class="w3l-homeblock2 w3l-homeblock5 py-5" >
-        <div class="container py-lg-5 py-md-4">
+    <div class="w3l-homeblock2 w3l-homeblock5" >
+        <div class="container" style="margin-bottom: 100px">
             <!-- block -->
             @if (count($recent_news)!==0)
             <h3 class="section-title-left mb-4"> BERITA </h3>

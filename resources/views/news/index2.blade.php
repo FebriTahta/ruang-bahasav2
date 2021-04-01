@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-2">
         </div>
-        <div class="col-lg-8 mb-100" style="max-width: 750px">
+        <div class="col-lg-8 mb-100" style="max-width: 850px">
             <div class="overflow-hidden rounded mb-10 img-responsive" style="max-height: 350px">
                 {{-- <a class="#img-link" href="#we">
                     <img class="img-fluid" src="{{ asset('news_picture/'.$news->news_pict) }}" alt="">
@@ -21,7 +21,7 @@
                     <i class="fa fa-fw fa-user mr-2"></i>{{ $news->user->name }} ({{ $news->user->role }})
                 </a>
                 <a class="text-muted" href="javascript:void(0)">
-                    <i class="fa fa-fw fa-tag mr-2"></i>NEWS
+                    <i class="fa fa-fw fa-tag mr-2"></i>BERITA
                 </a>
             </div>
             <div class=""style="max-width: 800px">
