@@ -20,7 +20,14 @@
             @if (Session::has('pesan-sukses'))
                 <div class="alert alert-info text-bold">{{ Session::get('pesan-sukses') }}</div>
             @endif
-            <h3 class="section-title-left mb-4"> My Class</h3>
+            @if (auth()->user()->role=='siswa')
+            <h3 class="section-title-left mb-4"> Kelas yang saya ikuti</h3>    
+            @elseif(auth()->user()->role=='instruktur')
+            <h3 class="section-title-left mb-4"> Kelas yang saya miliki</h3>
+            @else
+            <h3 class="section-title-left mb-4"> Kelas milik</h3>
+            @endif
+            
             <div class="left-right">
                 <small id="waktu"></small>
                 <small class="section-right" id="jam"></small>
@@ -129,7 +136,7 @@
                     <div class="col-3 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="artikel">
-                            <i class="fa fa-fw fa-book mr-5"></i>book</a>
+                            <i class="fa fa-fw fa-book mr-5"></i>buku</a>
                         </div>                    
                     </div>
                     <div class="col-3 col-xl-3 nav nav-pills">

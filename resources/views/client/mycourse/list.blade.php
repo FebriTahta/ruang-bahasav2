@@ -51,7 +51,7 @@
                                     @if (count(auth()->user()->profile->kursus)==0)
                                         <small> Anda belum memiliki kelas. Segera hubungi Admin untuk mendapatkan kelas dan akses materi bergengsi kami</small><br>
                                     @else
-                                        Anda telah berlangganan <strong>{{ count(auth()->user()->profile->kursus) }} Kelas</strong>.<br>
+                                        Anda telah mengikuti <strong>{{ count(auth()->user()->profile->kursus) }} Kelas</strong>.<br>
                                         <small>Terimakasih telah mengikuti kelas kami. Selamat Belajar!^^</small><br>
                                         <button style="margin-top: 30px" class="btn btn-sm btn-success" onclick="scrollfu()">Daftar kelas anda</button>
                                     @endif
@@ -60,7 +60,7 @@
                                     PROFILE
                                 </button>
                                 <a class="btn btn-sm btn-danger" href="{{ route('password.request') }}" style="margin-top: 30px">
-                                    {{ __('Forgot / Reset Your Password?') }}
+                                    {{ __('Lupa / Ganti Your Password?') }}
                                 </a>
                             </p>
                         </div>
@@ -118,10 +118,14 @@
         <!-- block -->
         @auth
             @if (auth()->user()->role=='pengunjung')
-            @else
+            @elseif(auth()->user()->role=='instruktur')
                 <div class="left-right">
-                    <h3 class="section-title-left mb-sm-4 mb-2"> MY CLASS</h3>
+                    <h3 class="section-title-left mb-sm-4 mb-2"> Kelas yang saya miliki</h3>
                 </div> 
+            @elseif(auth()->user()->role=='siswa')
+            <div class="left-right">
+                <h3 class="section-title-left mb-sm-4 mb-2"> Kelas yang saya ikuti</h3>
+            </div> 
             @endif
         @endauth
         <div class="row">

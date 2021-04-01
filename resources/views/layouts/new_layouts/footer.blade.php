@@ -10,7 +10,7 @@
             <small class="copy-footer-28"> © 2021. All Rights Reserved. </small><br>
             <small class="mt-2">Design by <a href="https://w3layouts.com/">W3Layouts</a></small><br>
             <small class="mt-2">Jl. Raya Telang Kamal-Bangkalan Universitas Trunojoyo</small><br>
-            <small class="mt-2">Email : dianacaem.banget@gmail.com</small>
+            <small class="mt-2">Email : dianamaharani113@gmail.com</small>
           </div>
           <div class="col-sm-8 col-12 footer-list-28 mt-sm-0 mt-4 ">
             <h6 class="footer-title-28 text-white">Social Media</h6>

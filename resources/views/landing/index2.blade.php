@@ -86,7 +86,7 @@
 @section('content')
     <div class="content">
         
-        <section class="w3l-testimonials py-sm-5 py-4" id="testimonials">
+        {{-- <section class="w3l-testimonials py-sm-5 py-4" id="testimonials"> --}}
             <!-- main-slider -->
             {{-- <div class="w3-content w3-display-container" style="">
                 @foreach ($recent_news as $item)
@@ -126,16 +126,16 @@
                     @endforeach
                 </div>
                 
-                </div>
+                
             
-            <div class="testimonials pt-2 pb-5">
+            {{-- <div class="testimonials pt-2 pb-5">
                 <div class="container pb-lg-5">
                    
                     
                     
                     <div class="owl-testimonial owl-carousel owl-theme mb-md-0 mb-sm-5 mb-4">
                         
-                        {{-- <div class="item">
+                        <div class="item">
                             <div class="row slider-info">
                                 <div class="col-lg-8 message-info align-self">
                                     <span class="label-blue mb-sm-4 mb-3">Study Goal</span>
@@ -163,12 +163,12 @@
                                     <img src="{{ ('assets/media/ui/MobileApp.png') }}" class="img-fluid radius-image-full" alt="client image">
                                 </div>
                             </div>
-                        </div>                         --}}
+                        </div>                        
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- /main-slider -->
-        </section>              
+        {{-- </section>               --}}
 
                         
     </div>
@@ -209,7 +209,7 @@
         <div class="container py-lg-5 py-md-4">
             <!-- block -->
             @if (count($recent_news)!==0)
-            <h3 class="section-title-left mb-4"> NEWS </h3>
+            <h3 class="section-title-left mb-4"> BERITA </h3>
             @endif
             <div class="row" >
                 @foreach ($recent_news as $item)
