@@ -31,7 +31,7 @@
   </head>
   <body>
 <!-- header -->
-<header class="w3l-header  bg-primary text-white">
+<header class="w3l-header text-white" style="background-color: #5A67D8">
 	<div class="container" >
 	<!--/nav-->
 	<nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-sm-3 px-0">
@@ -51,7 +51,7 @@
 				<span class="fa icon-close fa-times"></span>
 			</button>
 
-			<div class="collapse navbar-collapse bg-primary" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse" style="background-color: #5A67D8" id="navbarSupportedContent">
 				<nav class="mx-auto">
 					
 				</nav>
@@ -64,7 +64,7 @@
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Menu <span class="fa fa-angle-down text-white"></span>
 						</a>
-						<div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+						<div class="dropdown-menu" style="background-color: #5A67D8" aria-labelledby="navbarDropdown">
 							{{-- <a class="dropdown-item @@fa__active" onclick="news()">News</a> --}}
 							<a class="dropdown-item @@b__active text-white" href="{{ route('forums') }}">Forum Diskusi</a>
 							<a class="dropdown-item @@fa__active text-white" href="{{ route('allinstruktur') }}">Daftar Guru</a>
