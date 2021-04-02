@@ -126,26 +126,26 @@
         <div class="js-filter " data-speed="400">
             <!--filter-->
             <div class="p-10 block block-rounded bg-white">
-                <div class="block-header border-bottom push">                            
-                    <div class="col-3 col-xl-3 nav nav-pills">
+                <div class="block-header border-bottom push row">                            
+                    <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">                        
                             <a class="nav-link active" href="#" data-category-link="videos">
                             <i class="fa fa-fw fa-info-circle mr-5"></i>vidio</a>
                         </div>                    
                     </div>
-                    <div class="col-3 col-xl-3 nav nav-pills">
+                    <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="artikel">
                             <i class="fa fa-fw fa-book mr-5"></i>buku</a>
                         </div>                    
                     </div>
-                    <div class="col-3 col-xl-3 nav nav-pills">
+                    <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="latihansoal">
                             <i class="fa fa-fw fa-edit mr-5"></i>ganda</a>
                         </div>                    
                     </div>
-                    <div class="col-3 col-xl-3 nav nav-pills">
+                    <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="uraian">
                             <i class="fa fa-fw fa-newspaper mr-5"></i>urai</a>

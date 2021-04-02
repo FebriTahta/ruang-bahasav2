@@ -60,7 +60,7 @@
                                     PROFILE
                                 </button>
                                 <a class="btn btn-sm btn-danger" href="{{ route('password.request') }}" style="margin-top: 30px">
-                                    {{ __('Lupa / Ganti Your Password?') }}
+                                    {{ __('Lupa / Ganti Password Anda?') }}
                                 </a>
                             </p>
                         </div>

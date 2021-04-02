@@ -72,7 +72,7 @@
             <div class="col-lg-8 trending">
                 <div class="left-right bg-clr-white p-3" style="margin-top: 50px;">
                     <div class="block-content">
-                        <h5 class="text-center border-bottom" style="padding: 10px">
+                        <h5 class="text-center border-bottom" style="padding: 5px">
                             DETAIL LATIHAN SOAL
                         </h5>
                     <?php $i=1?> 

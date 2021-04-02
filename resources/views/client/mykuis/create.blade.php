@@ -80,7 +80,7 @@
         <div class="col-lg-4" style="margin-top: 50px">
             <div class="topics">                                   
                 <a class="topics-list hover-box" >
-                    <div class="bg-clr-white" style="padding: 5%">                
+                    <div class="bg-clr-white" style="padding: 2%">                
                         <h4> Total Soal pada Kuis (<u>{{ $data_kuis->pertanyaan->count() }}</u>) Soal</h4>
                     </div>
                 </a><br>

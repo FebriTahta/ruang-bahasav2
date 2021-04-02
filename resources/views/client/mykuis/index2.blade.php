@@ -70,7 +70,7 @@
                 </div>
                 @if (count($data_result)>0)
                 <div class="col-lg-4 trending" style="margin-top: 50px">
-                    <div class="bg-clr-white text-uppercase" style="padding: 5%">                    
+                    <div class="bg-clr-white text-uppercase" style="padding: 2%">                    
                         <h2 class="text-primary">TOTAL : {{ $data_kuis->pertanyaan->count() }} SOAL</h2>
                         <table class="table table-borderless">
                             <thead>
@@ -89,7 +89,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="bg-clr-white text-uppercase" style="padding: 5%; margin-top:10px">
+                    <div class="bg-clr-white text-uppercase" style="padding: 2%; margin-top:10px">
                         {{-- <h2 class="text-primary text-center"> <span @if($hasil->nilai>70) class="badge badge-primary" @else class="badge badge-danger" @endif> NILAI : {{ $hasil->nilai }} </span></h2><hr><br> --}}
                         <table class="table table-borderless"><?php $a=1?>
                             @foreach ($data_result as $item)                        
@@ -109,7 +109,7 @@
                 </div>
                 @else
                 <div class="col-lg-4 trending" style="margin-top: 50px">
-                    <div class="bg-clr-white text-uppercase" style="padding: 5%">                    
+                    <div class="bg-clr-white text-uppercase" style="padding: 2%">                    
                         <h2 class="text-primary">TOTAL : {{ $data_kuis->pertanyaan->count() }} SOAL</h2>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 <div class="col-lg-8 trending">
                     <div class="left-right bg-clr-white p-3" style="margin-top: 50px;">
                         <div class="block-content">
-                            <h5 class="text-center border-bottom" style="padding: 10px">
+                            <h5 class="text-center border-bottom" style="padding: 5px">
                                 LATIHAN SOAL 
                                 <?php $tes = App\Nilai::where('kuis_id',$data_kuis->id)->where('profile_id',auth()->user()->id)->get()?>
                                 UJI KE#{{ count($tes)+1 }}
@@ -146,7 +146,7 @@
                                                     <div class="jawaban" style="margin-left: 35px; max-width: 500px;">
                                                         <label class="css-control css-control-info css-radio" >
                                                             <input type="radio" class="css-control-input" name="answers[{{ $pertanyaan_item->id }}]" value="{{ $ans->id }}" required>
-                                                            <span class="css-control-indicator" style="padding: 10px"></span>&nbsp;&nbsp;&nbsp;{!! nl2br($ans->answer) !!}
+                                                            <span class="css-control-indicator" style="padding: 5px"></span>&nbsp;&nbsp;&nbsp;{!! nl2br($ans->answer) !!}
                                                         </label><br>
                                                     </div>
                                                     @endforeach

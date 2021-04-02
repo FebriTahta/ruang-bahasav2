@@ -1,28 +1,25 @@
 <!-- footer-28 block -->
-<section class="app-footer mt-100">
+<section class="app-footer mt-100 text-white">
   <footer class="bg-dark text-white py-5">
-    <div class="footer-bg-layer">
-      <div class="container py-lg-3">
-        <div class="row footer-top-28">
+    <div class="footer-bg-layer text-white">
+      <div class="container py-lg-3 text-white">
+        <div class="row footer-top-28 text-white">
           <div class="col-lg-4 footer-list-28 copy-right mb-lg-0 mb-sm-5 mt-sm-0 mt-4">
             <a class="navbar-brand mb-3 text-white" href="index.html">
-              <span class="fa fa-newspaper-o"></span> Ruang Bahasa</a>
-            <small class="copy-footer-28"> © 2021. All Rights Reserved. </small><br>
-            <small class="mt-2">Design by <a href="https://w3layouts.com/">W3Layouts</a></small><br>
-            <small class="mt-2">Jl. Raya Telang Kamal-Bangkalan Universitas Trunojoyo</small><br>
-            <small class="mt-2">Email : dianamaharani113@gmail.com</small>
+              <span class="fa fa-newspaper-o text-white"></span> Ruang Bahasa</a>
+            <small class="copy-footer-28 text-white"> © 2021. All Rights Reserved. </small><br>
+            <small class="mt-2 text-white">Design by <a href="https://w3layouts.com/">W3Layouts</a></small><br>
+            <small class="mt-2 text-white">Jl. Raya Telang Kamal-Bangkalan Universitas Trunojoyo</small><br>
+            <small class="mt-2 text-white">Email : dianamaharani113@gmail.com</small>
           </div>
-          <div class="col-sm-8 col-12 footer-list-28 mt-sm-0 mt-4 ">
+          <div class="col-sm-8 col-12 footer-list-28 mt-sm-0 mt-4 text-white">
             <h6 class="footer-title-28 text-white">Social Media</h6>
-            <ul class="social-icons">
-              <li class="facebook">
-                <a href="https://m.facebook.com/profile.php?id=100004483652588&ref=content_filter" class="text-white"><span class="fa fa-facebook"></span> Facebook</a></li>
-              <li class="instagram"> <a href="https://instagram.com/dianahere_?igshid=ql7htu1xmt5j" class="text-white"><span class="fa fa-instagram"></span> Instagram</a></li>
+            <ul class="social-icons text-white">
+              <li class="facebook text-white">
+                <a href="https://m.facebook.com/profile.php?id=100004483652588&ref=content_filter" class="text-white "><span class="text-white fa fa-facebook"></span> Facebook</a></li>
+              <li class="instagram text-white"> <a href="https://instagram.com/dianahere_?igshid=ql7htu1xmt5j" class=" text-white"><span class=" text-white fa fa-instagram"></span> Instagram</a></li>
             </ul>
           </div>
-        </div>
-        <div class="row footer-top-28">
-          
         </div>
       </div>
     </div>

@@ -70,7 +70,7 @@
                 </div>
                 
                 <div class="col-lg-4 trending" style="margin-top: 50px">
-                    <div class="bg-clr-white text-uppercase" style="padding: 5%">
+                    <div class="bg-clr-white text-uppercase" style="padding: 2%">
                         <h2 class="text-primary text-center"> <span @if($hasil->nilai>70) class="badge badge-primary" @else class="badge badge-danger" @endif> NILAI : {{ $hasil->nilai }} </span></h2><hr><br>
                         <table class="table table-borderless"><?php $a=1?>
                             @foreach ($data_result as $item)                        
@@ -92,7 +92,7 @@
                 <div class="col-lg-8 trending">
                     <div class="left-right bg-clr-white p-3" style="margin-top: 50px;">
                         <div class="block-content">
-                            <h5 class="text-center border-bottom" style="padding: 10px">
+                            <h5 class="text-center border-bottom" style="padding: 5px">
                                 LATIHAN SOAL 
                                 UJI KE#
                             </h5>

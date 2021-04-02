@@ -31,12 +31,12 @@
   </head>
   <body>
 <!-- header -->
-<header class="w3l-header">
-	<div class="container">
+<header class="w3l-header  bg-primary text-white">
+	<div class="container" >
 	<!--/nav-->
 	<nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-sm-3 px-0">
-			<a class="navbar-brand" href="/">
-				<span class="fa fa-newspaper-o"></span> Ruang Bahasa</a>
+			<a class="navbar-brand text-white" href="/" >
+				<span class="fa fa-newspaper-o text-white"></span> Ruang Bahasa</a>
 			<!-- if logo is image enable this   
 						<a class="navbar-brand" href="#index.html">
 							<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -51,82 +51,61 @@
 				<span class="fa icon-close fa-times"></span>
 			</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse bg-primary" id="navbarSupportedContent">
 				<nav class="mx-auto">
-					{{-- <div class="search-bar">
-						<div class="search">
-							<input type="search" id="search" class="search__input" name="search" placeholder="cari kursus"
-								onload="equalWidth()" required>
-							<input type="text" id="search" class="search__input">
-							<span class="fa fa-search search__icon"></span>
-						</div>
-					</div> --}}
+					
 				</nav>
-				<ul class="navbar-nav">
+				<ul class="navbar-nav" >
 					{{-- <li class="nav-item active">
 						<a class="nav-link" href="index.html">Home</a>
 					</li> --}}
 					<li class="nav-item dropdown @@pages__active">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Menu <span class="fa fa-angle-down"></span>
+							Menu <span class="fa fa-angle-down text-white"></span>
 						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
 							{{-- <a class="dropdown-item @@fa__active" onclick="news()">News</a> --}}
-							<a class="dropdown-item @@b__active" href="{{ route('forums') }}">Forum Diskusi</a>
-							<a class="dropdown-item @@fa__active" href="{{ route('allinstruktur') }}">Daftar Guru</a>
-							<a class="dropdown-item @@fa__active" href="{{ route('allkursus') }}">Daftar Kelas</a>
-							<a class="dropdown-item @@fa__active" href="{{ route('about') }}">Tentang Kami </a>
+							<a class="dropdown-item @@b__active text-white" href="{{ route('forums') }}">Forum Diskusi</a>
+							<a class="dropdown-item @@fa__active text-white" href="{{ route('allinstruktur') }}">Daftar Guru</a>
+							<a class="dropdown-item @@fa__active text-white" href="{{ route('allkursus') }}">Daftar Kelas</a>
+							<a class="dropdown-item @@fa__active text-white" href="{{ route('about') }}">Tentang Kami </a>
 						</div>
 					</li>					
 					@auth
-						<li class="nav-item @@contact__active">
+						<li class="nav-item @@contact__active ">
 							@if (auth()->user()->role==='admin')
-							<a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+							<a class="nav-link  text-white" href="{{ route('dashboard') }}">Dashboard</a>
 															
 							@elseif(auth()->user()->role==='instruktur')
-								<a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+								<a class="nav-link  text-white" href="{{ route('home') }}">Dashboard</a>
 																
 							@elseif(auth()->user()->role==='siswa')
-								<a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+								<a class="nav-link  text-white" href="{{ route('home') }}">Dashboard</a>
 								
 							@endif
 						</li>
-						@if (auth()->user()->role=='instruktur')
-						<?php 
-							  $notif = App\Notifurai::where('user_id', auth()->user()->id)->where('dinilai',0)->get();
-						
-						?>
-						
-							{{-- @if (count($nilai2)==0) --}}
-							<li class="nav-item @@contact__active">
-								<a class="nav-link fa fa-bell text-danger" href="{{ route('formreset') }}">
-								{{ count($notif) }}
-								</a>
-							</li>
-							{{-- @endif --}}
-						@endif
 					@else
 						<li class="nav-item @@pages__active">
-							<a class="nav-link" href="{{ route('login') }}">login</a>
+							<a class="nav-link  text-white" href="{{ route('login') }}">Masuk</a>
 						</li>
 						<li class="nav-item @@pages__active">
-							<a class="nav-link" href="{{ route('register') }}">register</a>
+							<a class="nav-link  text-white" href="{{ route('register') }}">Daftar</a>
 						</li>
 					@endauth
 					<li class="nav-item ">
 						@auth
 							@if (auth()->user()->role==='admin')
-							<a class="nav-link" href="{{ route('logout') }}">logout</a>
+							<a class="nav-link  text-white" href="{{ route('logout') }}">Keluar</a>
 																
 							@elseif(auth()->user()->role==='instruktur')
-							<a class="nav-link" href="{{ route('logout') }}">logout</a>
+							<a class="nav-link  text-white" href="{{ route('logout') }}">Keluar</a>
 							
 							@elseif(auth()->user()->role==='siswa')
-							<a class="nav-link" href="{{ route('logout') }}">logout</a>
+							<a class="nav-link  text-white" href="{{ route('logout') }}">Keluar</a>
 							
 							@elseif(auth()->user()->role==='pengunjung')
-							<a class="nav-link" href="{{ route('logout') }}">logout</a>
+							<a class="nav-link  text-white" href="{{ route('logout') }}">Keluar</a>
 							@endif	
 						@endauth
 					</li>
@@ -136,14 +115,27 @@
 			<div class="mobile-position">
 				<nav class="navigation">
 					<div class="theme-switch-wrapper">
-						<label class="theme-switch" for="checkbox">
+						@auth
+						@if (auth()->user()->role=='instruktur')
+						<?php 
+							  $notif = App\Notifurai::where('user_id', auth()->user()->id)->where('dinilai',0)->get();
+						
+						?>
+							<label class="theme-switch" for="checkbox">
+								<div class="mode-container" style="width: 20px">
+									<i href="{{ route('formreset') }}" class="fa fa-bell fa-lg">{{ count($notif) }}</i>
+								</div>
+							</label>
+						@endif
+						@endauth
+						<label class="theme-switch" for="checkbox" style="margin-left: 15px">
 							<input type="checkbox" id="checkbox">
 							<div class="mode-container">
 								<i class="gg-sun"></i>
 								<i class="gg-moon"></i>
 							</div>
 						</label>
-					</div>
+					</div>					
 				</nav>
 			</div>
 			<!-- //toggle switch for light and dark theme -->

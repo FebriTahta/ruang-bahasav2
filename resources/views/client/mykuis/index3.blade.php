@@ -71,7 +71,7 @@
                 </div>
                 @if (count($data_result)>0)
                 <div class="col-lg-4 trending" style="margin-top: 50px">
-                    <div class="bg-clr-white text-uppercase" style="padding: 5%">                    
+                    <div class="bg-clr-white text-uppercase" style="padding: 2%">                    
                         <h2 class="text-primary">TOTAL : {{ $data_kuis->soalurai->count() }} SOAL</h2>
                         <table class="table table-borderless">
                             <thead>
@@ -102,17 +102,17 @@
                 ?>
                 
                     <div class="col-lg-4 trending" style="margin-top: 50px">
-                        <div class="bg-clr-white text-uppercase text-center" style="padding: 5%">                    
+                        <div class="bg-clr-white text-uppercase text-center" style="padding: 2%">                    
                             <h2 class="text-primary">TOTAL : {{ $data_kuis->soalurai->count() }} SOAL</h2>
                         </div>
                         @if ($nilais!==0)
-                        <div class="bg-clr-white text-uppercase text-center" style="padding: 5%; margin-top: 20px;">                    
+                        <div class="bg-clr-white text-uppercase text-center" style="padding: 2%; margin-top: 20px;">                    
                             <h2 class="text-primary">" {{ $nilais }} "</h2>
                         </div>
                         @endif
                         
                         @if ($menjawab !== null)
-                        <div class="bg-clr-white text-uppercase" style="padding: 5%; margin-top: 20px;">
+                        <div class="bg-clr-white text-uppercase" style="padding: 2%; margin-top: 20px;">
                             @if ($nilais==0)
                             <h2 class="text-primary">NILAI : BELUM DINILAI</h2>
                             @endif
@@ -137,7 +137,7 @@
                 <div class="col-lg-8 trending">
                     <div class="left-right bg-clr-white p-3" style="margin-top: 50px;">
                         <div class="block-content">
-                            <h5 class="text-center border-bottom" style="padding: 10px">
+                            <h5 class="text-center border-bottom" style="padding: 5px">
                                 LATIHAN SOAL URAIAN
                             </h5>
                             <?php $menjawab = App\Jawaburai::where('user_id', $data_kursus->user->id)
