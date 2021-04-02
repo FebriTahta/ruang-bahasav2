@@ -131,8 +131,8 @@
 						<label class="theme-switch" for="checkbox" style="margin-left: 15px">
 							<input type="checkbox" id="checkbox">
 							<div class="mode-container">
-								<i class="gg-sun"></i>
-								<i class="gg-moon"></i>
+								{{-- <i class="gg-sun"></i>
+								<i class="gg-moon"></i> --}}
 							</div>
 						</label>
 					</div>					
