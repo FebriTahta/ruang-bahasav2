@@ -103,7 +103,7 @@
                                         data-kuis_name="{{ $kuis_item->kuis_name }}" data-user_id="{{ $kuis_item->user_id }}" data-times="{{ $kuis_item->times }}" data-timee="{{ $kuis_item->timee }}"><i class="fa fa-trash"></i> 
                                     </a>
                                     <a href="/buat-soal/{{ $kuis_item->id }}/{{ $kuis_item->slug }}" class="fa fa-plus text-uppercase btn btn-sm btn-success hover-box" type="button"> </a>
-                                    <a href="#" class="fa fa-warning btn btn-sm btn-warning text-uppercase hover-box" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}"> </a>
+                                    <a href="#" class="fa fa-warning btn btn-sm btn-warning text-uppercase hover-box" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-times="{{ $kuis_item->times }}" data-timee="{{ $kuis_item->timee }}" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}"> </a>
                                 </td>
                             </tr>
                             @endforeach                            
@@ -389,7 +389,7 @@
 </script>
 <script type="text/javascript">
     var months  =['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-    var theDays =['Minggu','Senen','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+    var theDays =['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
     var date    = new Date();
     var day     = date.getDate();
     var month   = date.getMonth();
@@ -397,8 +397,8 @@
         thisDay = theDays[thisDay];
     var yy      = date.getYear();
     var year    = (yy<1000) ? yy + 1900: yy;
-    document.write(thisDay+',' + day + '' + months[month] + '' + year);
-    document.getElementById("waktu").innerHTML=(thisDay+', ' + day + '' + months[month] + '' + year);
+    document.write(thisDay+',' + day + ' ' + months[month] + ' ' + year);
+    document.getElementById("waktu").innerHTML=(thisDay+', ' + day + ' ' + months[month] + ' ' + year);
 </script>
 <script>
     function showtime()
