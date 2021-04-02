@@ -100,7 +100,7 @@
                                         data-kuis_name="{{ $kuis_item->kuis_name }}" data-user_id="{{ $kuis_item->user_id }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-kelas_id="{{ $kuis_item->kelas->id }}" data-mapel_id="{{ $kuis_item->mapel->id }}"><i class="fa fa-pencil"></i> 
                                     </a>
                                     <a href="#" class="btn btn-sm btn-danger text-white hover-box" type="button" data-toggle="modal" data-target="#modal-fromleft-remove" data-id="{{ $kuis_item->id }}"
-                                        data-kuis_name="{{ $kuis_item->kuis_name }}" data-user_id="{{ $kuis_item->user_id }}"><i class="fa fa-trash"></i> 
+                                        data-kuis_name="{{ $kuis_item->kuis_name }}" data-user_id="{{ $kuis_item->user_id }}" data-times="{{ $kuis_item->times }}" data-timee="{{ $kuis_item->timee }}"><i class="fa fa-trash"></i> 
                                     </a>
                                     <a href="/buat-soal/{{ $kuis_item->id }}/{{ $kuis_item->slug }}" class="fa fa-plus text-uppercase btn btn-sm btn-success hover-box" type="button"> </a>
                                     <a href="#" class="fa fa-warning btn btn-sm btn-warning text-uppercase hover-box" data-target="#modal-fromleft-serahkan" data-toggle="modal" data-id="{{ $kuis_item->id }}" data-mapel_id="{{ $kuis_item->mapel_id }}" data-kelas_id="{{ $kuis_item->kelas_id }}" data-kuis_name="{{ $kuis_item->kuis_name }}" data-kuis_desc="{{ $kuis_item->kuis_desc }}" data-slug="{{ $kuis_item->slug }}"> </a>
@@ -300,6 +300,8 @@
                                 <input type="hidden" name="mapel_id" id="mapel_id">
                                 <input type="hidden" name="kuis_name" id="kuis_name">
                                 <input type="hidden" name="kuis_desc" id="kuis_desc">
+                                <input type="hidden" name="times" id="times">
+                                <input type="hidden" name="timee" id="timee">
                                 <input type="hidden" name="slug" id="slug">
                             </div>                            
                             <div class="form-group text-center">
@@ -370,6 +372,8 @@
         var mapel_id = button.data('mapel_id')
         var kuis_name = button.data('kuis_name')
         var kuis_desc = button.data('kuis_desc')
+        var times = button.data('times')
+        var timee = button.data('timee')
         var slug = button.data('slug')
         var modal = $(this)
         modal.find('.block-title').text('BERIKAN KUIS');        
@@ -378,6 +382,8 @@
         modal.find('.block-content #mapel_id').val(mapel_id);
         modal.find('.block-content #kuis_name').val(kuis_name);
         modal.find('.block-content #kuis_desc').val(kuis_desc);
+        modal.find('.block-content #times').val(times);
+        modal.find('.block-content #timee').val(timee);
         modal.find('.block-content #slug').val(slug);     
     })
 </script>
