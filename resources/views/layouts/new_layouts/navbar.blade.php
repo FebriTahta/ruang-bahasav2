@@ -121,20 +121,20 @@
 							  $notif = App\Notifurai::where('user_id', auth()->user()->id)->where('dinilai',0)->get();
 						
 						?>
-							<label class="theme-switch" for="checkbox">
-								<div class="mode-container" style="width: 20px">
-									<i href="{{ route('formreset') }}" class="fa fa-bell fa-lg">{{ count($notif) }}</i>
+							<div class="theme-switch" for="checkbox">
+								<div class="mode-container" style="width: 20px; margin-right: 10px">
+									<a href="{{ route('formreset') }}" class="fa fa-bell fa-lg text-white">{{ count($notif) }}</a>
 								</div>
-							</label>
+							</div>
 						@endif
 						@endauth
-						<label class="theme-switch" for="checkbox" style="margin-left: 15px">
+						{{-- <label class="theme-switch" for="checkbox" style="margin-left: 15px">
 							<input type="checkbox" id="checkbox">
 							<div class="mode-container">
-								{{-- <i class="gg-sun"></i>
-								<i class="gg-moon"></i> --}}
+								<i class="gg-sun"></i>
+								<i class="gg-moon"></i>
 							</div>
-						</label>
+						</label> --}}
 					</div>					
 				</nav>
 			</div>
