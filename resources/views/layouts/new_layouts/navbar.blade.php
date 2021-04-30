@@ -75,13 +75,13 @@
 					@auth
 						<li class="nav-item @@contact__active ">
 							@if (auth()->user()->role==='admin')
-							<a class="nav-link  text-white" href="{{ route('dashboard') }}">Dashboard</a>
+							<a class="nav-link  text-white" href="{{ route('dashboard') }}">Papan Instrumen</a>
 															
 							@elseif(auth()->user()->role==='instruktur')
-								<a class="nav-link  text-white" href="{{ route('home') }}">Dashboard</a>
+								<a class="nav-link  text-white" href="{{ route('home') }}">Papan Instrumen</a>
 																
 							@elseif(auth()->user()->role==='siswa')
-								<a class="nav-link  text-white" href="{{ route('home') }}">Dashboard</a>
+								<a class="nav-link  text-white" href="{{ route('home') }}">Papan Instrumen</a>
 								
 							@endif
 						</li>

@@ -18,7 +18,7 @@
                 </div>                
                 <div class="block-content">
                     <h3 class="block-title text-uppercase">
-                        <i class="fa fa-fw fa-book mr-5"></i> DAFTAR BUKU
+                        <i class="fa fa-fw fa-book mr-5"></i> DAFTAR BUKU MATERI
                     </h3>
                     <table class="table table-borderless">
                         <tbody>
@@ -49,7 +49,7 @@
                         <i class="fa fa-fw fa-user mr-5"></i>{{ $artikel->user->name }} ({{ $artikel->user->role }})
                     </a>
                     <a class="text-muted" href="javascript:void(0)">
-                        <i class="fa fa-fw fa-tag mr-5"></i>Artikel
+                        <i class="fa fa-fw fa-tag mr-5"></i>Materi
                     </a>
                 </div>
                 <p>{!! $artikel->artikel_text !!}</p>
@@ -89,7 +89,7 @@
         <div class="modal-content">
             <div class="block block-themed block-transparent mb-0">
                 <div class="block-header bg-info">
-                    <h3 class="block-title">UPLOAD BUKU</h3>
+                    <h3 class="block-title">TAMBAHKAN BUKU</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="si si-close"></i>
@@ -110,7 +110,7 @@
                             <input type="file" class="form-control" name="book_file" placeholder="FILES BUKU" required>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"> UPLOAD</button>
+                            <button type="submit" class="btn btn-primary"> Tambahkan</button>
                         </div>
                     </form>
                 </div>

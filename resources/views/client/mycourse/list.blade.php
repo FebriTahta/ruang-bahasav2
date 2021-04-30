@@ -57,7 +57,7 @@
                                     @endif
                                 @endif
                                 <button type="button" onclick="scrollfu2()" class="btn btn-sm btn-primary" style="margin-top: 30px">
-                                    PROFILE
+                                    PROFIL
                                 </button>
                                 <a class="btn btn-sm btn-danger" href="{{ route('password.request') }}" style="margin-top: 30px">
                                     {{ __('Lupa / Ganti Password Anda?') }}

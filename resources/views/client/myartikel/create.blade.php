@@ -24,7 +24,7 @@
                     <input type="hidden" class="form-control" name="user_id" value="{{ auth()->user()->id }}">
                 </div>
                 <div class="form-group">
-                    <label for="">GAMBAR HEADER ARTIKEL</label>
+                    <label for="">GAMBAR MATERI</label>
                     <input type="file" class="form-control" name="artikel_pict" required>
                 </div>
                 <div class="form-group">
@@ -34,7 +34,7 @@
                     <textarea class="form-control js-summernote" name="artikel_text" id="artikel_text" cols="30" rows="10">TULIS ARTIKEL DISINI & GUNAKAN MODE FULL-SCREEN UNTUK LEBIH DETAIL</textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary"> UPLOAD</button>
+                    <button type="submit" class="btn btn-primary"> TAMBAHKAN</button>
                 </div>
             </form>
         </div>
@@ -42,7 +42,7 @@
             <div class="block block-transparent">
                 <div class="block-header">
                     <h3 class="block-title text-uppercase">
-                        <i class="fa fa-fw fa-university mr-5"></i> Kursus lain anda
+                        <i class="fa fa-fw fa-university mr-5"></i> kelas lain anda
                     </h3>
                 </div>
                 <div class="block-content block-content-full">

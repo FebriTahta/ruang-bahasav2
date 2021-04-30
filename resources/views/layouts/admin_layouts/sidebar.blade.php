@@ -68,10 +68,10 @@
         <div class="content-side content-side-full">
             <ul class="nav-main">
                 <li>                    
-                    <a href="{{ route('dashboard') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>                    
-                    <a href="{{ route('forums') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Forum</span></a>
+                    <a href="{{ route('dashboard') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Papan Instrumen</span></a>                    
+                    <a href="{{ route('forums') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Forum Diskusi</span></a>
                     @if (auth()->user()->role=='admin')
-                    <a href="{{ route('news') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">News</span></a>
+                    <a href="{{ route('news') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Berita</span></a>
                     @endif                    
                 </li>                
                 <li class="nav-main-heading"><span class="sidebar-mini-visible">MU</span><span class="sidebar-mini-hidden">Menu Utama</span></li>                            
@@ -85,7 +85,7 @@
                                     <a href="{{ route('daftar_user.index') }}">daftar pengguna</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('daftarKategori') }}">daftar kategori</a>
+                                    <a href="{{ route('daftarKategori') }}">daftar Pelajaran</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('daftarKursus') }}">daftar kelas</a>
@@ -102,7 +102,7 @@
                             <ul>
                                 @if (auth()->user()->role=='admin')                                
                                 <li>
-                                    <a href="{{ route('my-video') }}">Daftar Video</a>
+                                    <a href="{{ route('my-video') }}">Daftar Vidio</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('my-book') }}">Daftar Artikel</a>
@@ -113,10 +113,10 @@
                                 
                                 @else
                                 <li>
-                                    <a href="{{ route('my-kursus') }}">Kursus Saya</a>
+                                    <a href="{{ route('my-kursus') }}">Kelas Saya</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('my-video') }}">Video Saya</a>
+                                    <a href="{{ route('my-video') }}">Vidio Saya</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('my-book') }}">Artikel Saya</a>

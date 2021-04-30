@@ -78,7 +78,7 @@
                         <thead class="text-uppercase">
                             <tr>
                                 <th class="d-none d-sm-table-cell" style="width: 5%">#</th>
-                                <th>video</th>
+                                <th>vidio</th>
                                 <th>kategori</th>
                                 <th class="text-right">opsi</th>
                             </tr>
@@ -136,7 +136,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('addVideo') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-light">
-                        <h3 class="block-title">UPLOAD</h3>
+                        <h3 class="block-title">TAMBAHKAN</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -155,19 +155,19 @@
                                 <input type="hidden" class="form-control" id="mapel_id" name="mapel_id" value="{{ $kursus->mapel->id }}">
                             </div>
                             <div class="form-group">
-                                <label for="name" class="control-label">video link ( embeded )</label>
+                                <label for="name" class="control-label">vidio link ( sumber )</label>
                                 
                                     <textarea class="form-control" name="video_link" id="video_link" rows="6" minlength="5" maxlength="500" required></textarea>                                    
                                 
                             </div>
-                            <label for="name" class="control-label">video name</label>
+                            <label for="name" class="control-label">nama vidio</label>
                             
                                 <input type="text" class="form-control" id="video_name" name="video_name"
                                     value="" required>
                             
                         </div>
                         <div class="form-group float-right">
-                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> UPLOAD</button>
+                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> TAMBAHKAN</button>
                         </div>
                     </div>                                                               
                 </div>                        
@@ -184,7 +184,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('addVideo') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-dark">
-                        <h3 class="block-title">EDIT</h3>
+                        <h3 class="block-title">SUNTING</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -204,19 +204,19 @@
                                 <input type="hidden" class="form-control" id="mapel_id" name="mapel_id" value="{{ $kursus->mapel->id }}">
                             </div>
                             <div class="form-group">
-                                <label for="name" class="control-label">video link ( embeded )</label>
+                                <label for="name" class="control-label">video link ( sumber )</label>
                                 
                                     <textarea class="form-control" name="video_link" id="video_link" rows="6" minlength="5" maxlength="500" required></textarea>                                    
                                 
                             </div>
-                            <label for="name" class="control-label">video name</label>
+                            <label for="name" class="control-label">nama vidio</label>
                             
                                 <input type="text" class="form-control" id="video_name" name="video_name"
                                     value="" required>
                             
                         </div>
                         <div class="form-group float-right">
-                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> UPLOAD</button>
+                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> Tambahkan</button>
                         </div>
                     </div>                                                               
                 </div>                        

@@ -79,7 +79,7 @@
                         <thead class="text-uppercase">
                             <tr>
                                 <th class="d-none d-sm-table-cell" style="width: 5%">#</th>
-                                <th>artikel</th>
+                                <th>materi</th>
                                 <th>kategori</th>
                                 <th class="text-right">opsi</th>
                             </tr>
@@ -112,7 +112,7 @@
         <div class="modal-content">
             <div class="block block-themed block-transparent mb-0">
                 <div class="block-header bg-info">
-                    <h3 class="block-title">BUAT ARTIKEL</h3>
+                    <h3 class="block-title">BUAT MATERI</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="si si-close"></i>
@@ -144,13 +144,13 @@
                             <input type="file" class="form-control" name="artikel_pict" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="artikel_title" placeholder="JUDUL ARTIKEL" required>
+                            <input type="text" class="form-control" name="artikel_title" placeholder="JUDUL MATERI" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control js-summernote" name="artikel_text" id="artikel_text" cols="30" rows="10">GUNAKAN MODE FULL-SCREEN UNTUK LEBIH DETAIL</textarea>
+                            <textarea class="form-control js-summernote" name="artikel_text" id="artikel_text" cols="30" rows="10">GUNAKAN MODE LAYAR PENUH UNTUK LEBIH DETAIL</textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"> UPLOAD</button>
+                            <button type="submit" class="btn btn-primary"> TAMBAHKAN</button>
                         </div>
                     </form>
                 </div>
@@ -166,7 +166,7 @@
         <div class="modal-content block-content">
             <div class="block block-themed block-transparent mb-0">
                 <div class="block-header bg-info">
-                    <h3 class="block-title">BUAT ARTIKEL</h3>
+                    <h3 class="block-title">BUAT MATERI</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="si si-close"></i>
@@ -198,10 +198,10 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="artikel_title" name="artikel_title" placeholder="JUDUL ARTIKEL" required>
+                            <input type="text" class="form-control" id="artikel_title" name="artikel_title" placeholder="JUDUL MATERI" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control js-summernote" name="artikel_text" id="artikel_text" cols="30" rows="10">GUNAKAN MODE FULL-SCREEN UNTUK LEBIH DETAIL</textarea>
+                            <textarea class="form-control js-summernote" name="artikel_text" id="artikel_text" cols="30" rows="10">GUNAKAN MODE LAYAR PENUH UNTUK LEBIH DETAIL</textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"> UPLOAD</button>

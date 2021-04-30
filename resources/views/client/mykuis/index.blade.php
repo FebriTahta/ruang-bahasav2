@@ -14,7 +14,7 @@
 <div class="container">    
     <div class="row">
         <div class="col-xl-12">
-            <h2 class="content-heading"><a href="{{ route('home') }}"> DASHBOARD </a><small>| Kuis</small></h2>
+            <h2 class="content-heading"><a href="{{ route('home') }}"> PAPAN INSTRUMEN </a><small>| Kuis</small></h2>
             @if (Session::has('message'))
             <div class="alert alert-danger text-bold">{{ Session::get('message') }}</div>                
             @endif

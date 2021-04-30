@@ -8,7 +8,7 @@
 @section('content')
 <div class="w3l-homeblock2 w3l-homeblock6 py-5">
     <div class="container-fluid px-sm-5 py-lg-5 py-md-4">
-        <h3 class="section-title-left mb-4 text-uppercase"> Pilihan Ganda</h3>
+        <h3 class="section-title-left mb-4 text-uppercase"> KUIS</h3>
         {{-- content header --}}
         @if (Session::has('pesan'))
         <div class="alert alert-info text-bold">{{ Session::get('pesan') }}</div>
@@ -80,8 +80,8 @@
                                 <th class="d-none d-sm-table-cell" style="width: 5%">#</th>
                                 <th>Kuis</th>
                                 <th>kategori</th>
-                                <th>start</th>
-                                <th>end</th>
+                                <th>awal</th>
+                                <th>akhir</th>
                                 <th class="d-none d-sm-table-cell">Soal</th>
                                 <th class="text-right">opsi</th>
                             </tr>
@@ -123,7 +123,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('tambahkuis') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-light">
-                        <h3 class="block-title">UPLOAD</h3>
+                        <h3 class="block-title">TAMBAHKAN</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -143,7 +143,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="name" class="control-label">Kuis name</label>
+                                <label for="name" class="control-label">nama kuis</label>
                             
                                 <input type="text" class="form-control" id="kuis_name" name="kuis_name"
                                     value="" required>
@@ -165,7 +165,7 @@
                             
                         </div>
                         <div class="form-group float-right">
-                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> UPLOAD</button>
+                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> TAMBAHKAN</button>
                         </div>
                     </div>                                                               
                 </div>                        
@@ -182,7 +182,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('tambahkuis') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-light">
-                        <h3 class="block-title">EDIT</h3>
+                        <h3 class="block-title">SUNTING</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -203,7 +203,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="control-label">kuis name</label>
+                                <label for="name" class="control-label">nama kuis</label>
                             
                                 <input type="text" class="form-control" id="kuis_name" name="kuis_name"
                                     value="" required>
@@ -227,7 +227,7 @@
                             
                         </div>
                         <div class="form-group float-right">
-                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> UPDATE</button>
+                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> sunting</button>
                         </div>
                     </div>                                                               
                 </div>                        

@@ -40,7 +40,7 @@
                                         <a >{{ $data_kuis->user->name }}</a> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> Guru </span>. <span class="meta-value ml-2 fa fa-check"> owner latihan soal</span>
+                                        <span class="meta-value"> Guru </span>. <span class="meta-value ml-2 fa fa-check"> pemilik latihan soal</span>
                                     </li>
                                 </ul>                                
                             </div>
@@ -77,8 +77,8 @@
                                 <p class="blog-desc jam text-bold" id="jam" ></p>
                                 <p class="blog-desc waktu" id="waktu"> </p>
                             </div>
-                            <h4 class="text-danger">NOTE</h4><br>
-                            <h4 class="text-danger"><small> Hanya (owner / instruktur yang membuat soal) dapat mengubah pertanyaan pada soal tersebut</small></h4>
+                            <h4 class="text-danger">catatan</h4><br>
+                            <h4 class="text-danger"><small> Hanya (pemilik / guru yang membuat soal) dapat mengubah pertanyaan pada soal tersebut</small></h4>
                         </div>
                     </a>                                                          
                 </div>                            

@@ -10,14 +10,14 @@
 <div class="w3l-homeblock2 w3l-homeblock6 py-5">
     <div class="container-fluid px-sm-5 py-lg-5 py-md-4">
         <!-- block -->
-            <h3 class="section-title-left mb-4"> EDIT PERTANYAAN ({{ auth()->user()->name }})</h3>
+            <h3 class="section-title-left mb-4"> SUNTING PERTANYAAN ({{ auth()->user()->name }})</h3>
         <div class="row">
             <div class="col-lg-6" style="margin-bottom: 20px">
                 <div class="bg-clr-white">
                     <div class="row">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-5 card-body blog-details align-self">
-                            <span class="label-blue">EDIT PERTANYAAN</span>
+                            <span class="label-blue">SUNTING PERTANYAAN</span>
                             <a class="blog-desc">{{ $data_kuis->mapel->mapel_name }} | {{ $data_kuis->kelas->kelas_name }}
                             </a>
                             {{-- <p>Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Quis
@@ -34,7 +34,7 @@
                                         <a >{{ $data_kuis->user->name }}</a> 
                                     </li>
                                     <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> Guru </span>. <span class="meta-value ml-2 fa fa-check"> owner latihan soal</span>
+                                        <span class="meta-value"> Guru </span>. <span class="meta-value ml-2 fa fa-check"> pemilik latihan soal</span>
                                     </li>
                                 </ul>                                
                             </div>
@@ -75,8 +75,8 @@
                             <p class="blog-desc jam text-bold" id="jam" ></p>
                             <p class="blog-desc waktu" id="waktu"> </p>
                         </div>
-                        <h4 class="text-danger">NOTE</h4><br>
-                        <h4 class="text-danger"><small> Hanya (owner / instruktur yang membuat soal) dapat mengubah pertanyaan pada soal tersebut</small></h4>
+                        <h4 class="text-danger">catatan</h4><br>
+                        <h4 class="text-danger"><small> Hanya (pemilik / guru yang membuat soal) dapat mengubah pertanyaan pada soal tersebut</small></h4>
                     </div>
                 </a> 
             </div>                            
@@ -98,7 +98,7 @@
                             </div>
                             
                             <div class="form-group text-right">
-                                <button type="submit" class="btn btn-outline-primary text-right"> SUBMIT</button>
+                                <button type="submit" class="btn btn-outline-primary text-right"> ok</button>
                             </div>
                         </div>
                     </form>                                    

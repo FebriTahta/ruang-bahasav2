@@ -78,10 +78,10 @@
                         <thead class="text-uppercase">
                             <tr>
                                 <th class="d-none d-sm-table-cell" style="width: 5%">#</th>
-                                <th>Kuis</th>
+                                <th>evaluasi</th>
                                 <th>kategori</th>
-                                <th class="d-none d-sm-table-cell">start</th>
-                                <th class="d-none d-sm-table-cell">end</th>
+                                <th class="d-none d-sm-table-cell">awal</th>
+                                <th class="d-none d-sm-table-cell">akhir</th>
                                 <th class="text-right">opsi</th>
                             </tr>
                         </thead>
@@ -121,7 +121,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('tambahkuisuraian') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-light">
-                        <h3 class="block-title">UPLOAD</h3>
+                        <h3 class="block-title">Tambahkan</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -163,7 +163,7 @@
                             
                         </div>
                         <div class="form-group float-right">
-                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> UPLOAD</button>
+                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> Tambahkan</button>
                         </div>
                     </div>                                                               
                 </div>                        
@@ -180,7 +180,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('tambahkuisuraian') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-primary-light">
-                        <h3 class="block-title">EDIT</h3>
+                        <h3 class="block-title">Sunting</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -201,7 +201,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="control-label">kuis name</label>
+                                <label for="name" class="control-label">nama evaluasi</label>
                             
                                 <input type="text" class="form-control" id="kuis_name" name="judul"
                                     value="" required>
@@ -225,7 +225,7 @@
                             
                         </div>
                         <div class="form-group float-right">
-                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> UPDATE</button>
+                            <button class="btn btn-outline-primary fa fa-plus" type="submit"> Sunting</button>
                         </div>
                     </div>                                                               
                 </div>                        
@@ -256,10 +256,10 @@
                                 <input type="hidden" id="id" name="id">                                                             
                             </div>                            
                             <div class="form-group text-center text-danger border-bottom">
-                                <p>KUIS AKAN DIHAPUS PERMANEN DARI SISTEM!</p>
+                                <p>EVALUASI AKAN DIHAPUS PERMANEN DARI SISTEM!</p>
                             </div>
                             <div class="form-group text-center">
-                                <p>Yakin akan menghapus kuis ini ?</p>
+                                <p>Yakin akan menghapus evaluasi ini ?</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -291,7 +291,7 @@
                         <div class="form-group">
                             <input type="hidden" id="id" name="id">
                             <div class="form-group text-danger text-center border-bottom">
-                                <p>BERIKAN KUIS ANDA KEPADA INSTRUKTUR LAIN</p>
+                                <p>BERIKAN EVALUASI ANDA KEPADA GURU LAIN</p>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="kelas_id" id="kelas_id">

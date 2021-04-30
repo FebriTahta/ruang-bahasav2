@@ -86,7 +86,7 @@
                 </a><br>
                 <a class="topics-list mt-3 hover-box">
                     <div class="bg-clr-white text-danger" style="padding: 5%">                            
-                        <h4 class="text-danger">NOTE</h4><br>
+                        <h4 class="text-danger">catatan</h4><br>
                         <h4 class="text-danger"><small> Gunakan full-screen untuk lebih detail saat membuat pertanyaan & Resize hingga 50% apabila menambahkan gambar </small></h4>
                     </div>
                 </a>

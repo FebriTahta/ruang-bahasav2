@@ -86,13 +86,13 @@
                     <a class="topics-list hover-box" onclick="videoscroll()">
                         <div class="list1">
                             <span class="fa fa-play"></span>
-                            <h4><u>{{ $data_kursus->video->count() }}</u> Materi Video</h4>
+                            <h4><u>{{ $data_kursus->video->count() }}</u> Materi Vidio</h4>
                         </div>
                     </a>
                     <a class="topics-list mt-3 hover-box" onclick="artikelscroll()">
                         <div class="list1" >
                             <span class="fa fa-book"></span>
-                            <h4><u>{{ $data_kursus->artikel->count() }}</u> Artikel & Buku</h4>
+                            <h4><u>{{ $data_kursus->artikel->count() }}</u> Artikel & Buku Materi</h4>
                         </div>
                     </a>
                     <a  class="topics-list mt-3 hover-box" onclick="kuisscroll()">
@@ -136,19 +136,19 @@
                     <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="artikel">
-                            <i class="fa fa-fw fa-book mr-5"></i>buku</a>
+                            <i class="fa fa-fw fa-book mr-5"></i>buku materi</a>
                         </div>                    
                     </div>
                     <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="latihansoal">
-                            <i class="fa fa-fw fa-edit mr-5"></i>ganda</a>
+                            <i class="fa fa-fw fa-edit mr-5"></i>kuis</a>
                         </div>                    
                     </div>
                     <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="uraian">
-                            <i class="fa fa-fw fa-newspaper mr-5"></i>urai</a>
+                            <i class="fa fa-fw fa-newspaper mr-5"></i>evaluasi</a>
                         </div>                    
                     </div>                                                                               
                 </div>                                              
@@ -195,13 +195,13 @@
                 @if (auth()->user()->role=='instruktur')
                     <h5 class="mb-4" style="margin-top: 20px"> <span class="fa fa-plus label-blue btn hover-box" data-toggle="modal" data-target="#addartikels"></span></h5>    
                 @else
-                    <h5 class="mb-4" style="margin-top: 20px"> <span class="label-blue text-uppercase"> artikel</span></h5>
+                    <h5 class="mb-4" style="margin-top: 20px"> <span class="label-blue text-uppercase"> Materi</span></h5>
                 @endif
                     <hr>        
                 <div class="row">
                     @if (count($data_kursus->artikel)==null)
                         <div class="col-12 col-xl-12 text-center" style="max-height: 100px">
-                            <p class="text-danger">Belum Ada Artikel & Buku Yang Tersedia</p>                            
+                            <p class="text-danger">Belum Ada Materi & Buku Yang Tersedia</p>                            
                         </div>
                     @else
                         @foreach ($data_kursus->artikel as $key=>$item)
@@ -416,25 +416,25 @@
                 </div>
                 <ul class="fab-options">
                     <li>
-                        <span class="fab-label">Atur Materi Video</span>
+                        <span class="fab-label">Atur Video</span>
                         <a class="fab-icon-holder" href="{{ route('myvidInstruktur',$data_kursus->slug) }}">                
                             <i class="fa fa-forward"></i>
                         </a>
                     </li>
                     <li>
-                        <span class="fab-label">Atur Materi Artikel</span>
+                        <span class="fab-label">Atur Materi</span>
                         <a class="fab-icon-holder" href="{{ route('myArtikel',$data_kursus->slug) }}">
                             <i class="fas fa fa-book"></i>
                         </a>
                     </li>        
                     <li>
-                        <span class="fab-label">Atur Pilihan Ganda</span>
+                        <span class="fab-label">Atur Kuis</span>
                         <a class="fab-icon-holder" href="{{ route('mykuisInstruktur',$data_kursus->slug) }}">                
                             <i class="fa fa-pencil-square"></i>
                         </a>
                     </li>
                     <li>
-                        <span class="fab-label">Atur Uraian Soal</span>
+                        <span class="fab-label">Atur Evaluasi</span>
                         <a class="fab-icon-holder" href="{{ route('myuraiInstruktur',$data_kursus->slug) }}">                
                             <i class="fa fa-newspaper"></i>
                         </a>
@@ -489,7 +489,7 @@
         <div class="modal-content">
             <div class="block block-themed block-transparent mb-0">
                 <div class="block-header bg-info">
-                    <h3 class="block-title">DAFTAR VIDEO</h3>
+                    <h3 class="block-title">DAFTAR VIDiO</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="si si-close"></i>
@@ -504,7 +504,7 @@
                                 <tr>
                                     <th style="width: 5%">#</th>
                                     <th>video</th>
-                                    <th>owner</th>
+                                    <th>pemilik</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -524,7 +524,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <button class="btn btn-sm btn-primary" type="submit">sumbit</button>
+                        <button class="btn btn-sm btn-primary" type="submit">tambahkan</button>
                     </form>
                 </div>
             </div>                
@@ -540,7 +540,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('removeVid') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-danger">
-                        <h3 class="block-title">REMOVE VIDEO</h3>
+                        <h3 class="block-title">HAPUS VIDEO</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -551,13 +551,13 @@
                     <div class="block-content">                            
                         <div class="form-group">
                             <div class="col-sm-12 text-center">
-                                <p class="text-uppercase">video tersebut akan dihapus dari kursus anda</p>
+                                <p class="text-uppercase">vidio tersebut akan dihapus dari kelas anda</p>
                                 <input type="hidden" id="kursus_id" name="kursus_id">
                                 <input type="hidden" id="id" name="id">
                             </div>                                                      
                         </div>
                         <div class="col-sm-4 form-group">
-                            <button class="btn btn-danger" type="submit">YES</button>
+                            <button class="btn btn-danger" type="submit">Ya</button>
                         </div>
                     </div>                                                               
                 </div>                        
@@ -588,7 +588,7 @@
                                 <tr>
                                     <th style="width: 5%">#</th>
                                     <th>kuis</th>
-                                    <th>owner</th>
+                                    <th>pemilik</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -613,7 +613,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <button class="btn btn-sm btn-primary" type="submit">sumbit</button>
+                        <button class="btn btn-sm btn-primary" type="submit">tambahkan</button>
                     </form>
                 </div>
             </div>                
@@ -629,7 +629,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('removeKuis') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-danger">
-                        <h3 class="block-title text-uppercase">remove kuis</h3>
+                        <h3 class="block-title text-uppercase">hapus kuis</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -640,13 +640,13 @@
                     <div class="block-content">                            
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <p class="text-uppercase">kuis tersebut akan dihapus dari kursus anda</p>
+                                <p class="text-uppercase">kuis tersebut akan dihapus dari kelas anda</p>
                                 <input type="hidden" id="kursus_id" name="kursus_id">
                                 <input type="hidden" id="id" name="id">
                             </div>                                                      
                         </div>
                         <div class="col-sm-4 form-group">
-                            <button class="btn btn-danger" type="submit">remove</button>
+                            <button class="btn btn-danger" type="submit">hapus</button>
                         </div>
                     </div>                                                               
                 </div>                        
@@ -662,7 +662,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('removeUrai') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-danger">
-                        <h3 class="block-title text-uppercase">remove uraian</h3>
+                        <h3 class="block-title text-uppercase">hapus evaluasi</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -673,13 +673,13 @@
                     <div class="block-content">                            
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <p class="text-uppercase">uraian tersebut akan dihapus dari kursus anda</p>
+                                <p class="text-uppercase">evaluasi tersebut akan dihapus dari kelas anda</p>
                                 <input type="hidden" id="kursus_id" name="kursus_id">
                                 <input type="hidden" id="id" name="id">
                             </div>                                                      
                         </div>
                         <div class="col-sm-4 form-group">
-                            <button class="btn btn-danger" type="submit">remove</button>
+                            <button class="btn btn-danger" type="submit">hapus</button>
                         </div>
                     </div>                                                               
                 </div>                        
@@ -695,7 +695,7 @@
         <div class="modal-content">
             <div class="block block-themed block-transparent mb-0">
                 <div class="block-header bg-info">
-                    <h3 class="block-title">DAFTAR ARTIKEL</h3>
+                    <h3 class="block-title">DAFTAR MATERI</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="si si-close"></i>
@@ -709,8 +709,8 @@
                             <thead>
                                 <tr>
                                     <th style="width: 5%">#</th>
-                                    <th>artikel</th>
-                                    <th>owner</th>
+                                    <th>materi</th>
+                                    <th>pemilik</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -730,7 +730,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <button class="btn btn-sm btn-primary" type="submit">sumbit</button>
+                        <button class="btn btn-sm btn-primary" type="submit">tambahkan</button>
                     </form>
                 </div>
             </div>                
@@ -744,7 +744,7 @@
         <div class="modal-content">
             <div class="block block-themed block-transparent mb-0">
                 <div class="block-header bg-info">
-                    <h3 class="block-title">DAFTAR URAIAN</h3>
+                    <h3 class="block-title">DAFTAR EVALUASI</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="si si-close"></i>
@@ -758,8 +758,8 @@
                             <thead>
                                 <tr>
                                     <th style="width: 5%">#</th>
-                                    <th>uraian</th>
-                                    <th>owner</th>
+                                    <th>evaluasi</th>
+                                    <th>pemilik</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -779,7 +779,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <button class="btn btn-sm btn-primary" type="submit">sumbit</button>
+                        <button class="btn btn-sm btn-primary" type="submit">tambahkan</button>
                     </form>
                 </div>
             </div>                
@@ -795,7 +795,7 @@
             <form id="form-tambah-quiz" name="form-tambah-quiz" class="form-horizontal" action="{{ route('removeArtikel') }}" method="POST" enctype="multipart/form-data">@csrf                    
                 <div class="block block-themed block-transparent mb-0">
                     <div class="block-header bg-danger">
-                        <h3 class="block-title text-uppercase">remove artikel</h3>
+                        <h3 class="block-title text-uppercase">hapus materi</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                 <i class="si si-close"></i>
@@ -806,13 +806,13 @@
                     <div class="block-content">                            
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <p class="text-uppercase">Artikel tersebut akan dihapus dari kursus anda</p>
+                                <p class="text-uppercase">Materi tersebut akan dihapus dari kelas anda</p>
                                 <input type="hidden" id="kursus_id" name="kursus_id">
                                 <input type="hidden" id="id" name="id">
                             </div>                                                      
                         </div>
                         <div class="col-sm-4 form-group">
-                            <button class="btn btn-danger" type="submit">remove</button>
+                            <button class="btn btn-danger" type="submit">hapus</button>
                         </div>
                     </div>                                                               
                 </div>                        

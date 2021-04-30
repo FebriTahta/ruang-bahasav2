@@ -47,7 +47,7 @@
                                             @endif                                        
                                         </li>
                                         <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> Guru </span>. @if(auth()->user()->role=='instruktur')<span class="meta-value ml-2 fa fa-check">owner latihan soal</span>@endif
+                                            <span class="meta-value"> Guru </span>. @if(auth()->user()->role=='instruktur')<span class="meta-value ml-2 fa fa-check">pemilik latihan soal</span>@endif
                                         </li>
                                     </ul>
                                 </div>
@@ -138,7 +138,7 @@
                     <div class="left-right bg-clr-white p-3" style="margin-top: 50px;">
                         <div class="block-content">
                             <h5 class="text-center border-bottom" style="padding: 5px">
-                                LATIHAN SOAL URAIAN
+                                LATIHAN SOAL EVALUASI
                             </h5>
                             <?php $menjawab = App\Jawaburai::where('user_id', $data_kursus->user->id)
                                                            ->where('profile_id', auth()->user()->profile->id)

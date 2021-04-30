@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-                <h2 class="content-heading"><a href="{{ route('home') }}"> DASHBOARD </a><small>| Akun</small></h2>
+                <h2 class="content-heading"><a href="{{ route('home') }}"> PAPAN INSTRUMEN </a><small>| Akun</small></h2>
                 @if (Session::has('message'))
                 <div class="alert alert-danger text-bold">{{ Session::get('message') }}</div>                
                 @endif
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-outline-primary">update</button>
+                                <button type="submit" class="btn btn-outline-primary">sunting</button>
                             </div>
                         </form>
                         {{-- <div class="block-rounded text-danger">
@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="block-content border-bottom">
-                        <p class="text-center">KURSUS SAYA</p>
+                        <p class="text-center">Kelas Saya</p>
                     </div>
                     <div class="block-content">
                         <table class="table table-borderless">

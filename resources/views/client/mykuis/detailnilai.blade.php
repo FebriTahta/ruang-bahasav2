@@ -46,7 +46,7 @@
                                             @endif                                        
                                         </li>
                                         <li class="meta-item blog-lesson">
-                                            <span class="meta-value">@if($data_kuis->user->role=='instruktur') Guru @else {{ $data_kuis->user->role }} @endif </span>. @if(auth()->user()->role=='instruktur')<span class="meta-value ml-2 fa fa-check">owner latihan soal</span>@endif
+                                            <span class="meta-value">@if($data_kuis->user->role=='instruktur') Guru @else {{ $data_kuis->user->role }} @endif </span>. @if(auth()->user()->role=='instruktur')<span class="meta-value ml-2 fa fa-check">pemilik latihan soal</span>@endif
                                         </li>
                                     </ul>
                                 </div>

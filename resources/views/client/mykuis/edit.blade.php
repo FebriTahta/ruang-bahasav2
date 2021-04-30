@@ -10,14 +10,14 @@
 <div class="w3l-homeblock2 w3l-homeblock6 py-5">
     <div class="container-fluid px-sm-5 py-lg-5 py-md-4">
         <!-- block -->
-            <h3 class="section-title-left mb-4"> EDIT PERTANYAAN ({{ auth()->user()->name }})</h3>
+            <h3 class="section-title-left mb-4"> SUNTING PERTANYAAN ({{ auth()->user()->name }})</h3>
         <div class="row">
             <div class="col-lg-6" style="margin-bottom: 20px">
                 <div class="bg-clr-white">
                     <div class="row">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-5 card-body blog-details align-self">
-                            <span class="label-blue">EDIT PERTANYAAN</span>
+                            <span class="label-blue">SUNTING PERTANYAAN</span>
                             <a class="blog-desc">{{ $data_kuis->mapel->mapel_name }} | {{ $data_kuis->kelas->kelas_name }}
                             </a>
                             {{-- <p>Lorem ipsum dolor sit amet consectetur ipsum adipisicing elit. Quis

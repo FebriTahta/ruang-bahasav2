@@ -15,7 +15,7 @@
     @if (auth()->user()->role=='admin')
     <div class="row">
         <div class="col-xl-12">
-            <h2 class="content-heading">DASHBOARD <small> pusat informasi</small></h2>
+            <h2 class="content-heading">PAPAN INSTRUMEN <small> pusat informasi</small></h2>
             @if (Session::has('pesan-bahaya'))
             <div class="alert alert-danger text-bold">{{ Session::get('message') }}</div>                
             @endif
@@ -33,7 +33,7 @@
                         <i class="si si-bar-chart fa-3x text-primary-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white" data-toggle="countTo" data-speed="1000" data-to="{{ $data_kursus->count() }}"></div>
-                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Kursus</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Kelas</div>
                 </div>
             </a>
         </div>
@@ -44,7 +44,7 @@
                         <i class="fa fa-film fa-3x text-earth-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white"><span data-toggle="countTo" data-speed="1000" data-to="{{ $data_video->count() }}"></span></div>
-                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Video</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white-op">vidio</div>
                 </div>
             </a>
         </div>
@@ -66,7 +66,7 @@
                         <i class="fa fa-book fa-3x text-corporate-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white" data-toggle="countTo" data-speed="1000" data-to="{{ $data_buku->count() }}"></div>
-                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Buku</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white-op">materi</div>
                 </div>
             </a>
         </div>
@@ -150,7 +150,7 @@
     @else
     <div class="row">
         <div class="col-xl-12">
-            <div class="content-heading"><a href="/">Homepage </a>| Dashboard</div>
+            <div class="content-heading"><a href="/">Halaman Utama </a>| Papan Instrumen</div>
             @if (Session::has('pesan-bahaya'))
             <div class="alert alert-danger text-bold">{{ Session::get('message') }}</div>                
             @endif
@@ -168,7 +168,7 @@
                         <i class="si si-bar-chart fa-3x text-primary-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white" data-toggle="countTo" data-speed="1000" data-to="{{ auth()->user()->kursus->count() }}"></div>
-                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Kursus</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Kelas</div>
                 </div>
             </a>
         </div>
@@ -179,7 +179,7 @@
                         <i class="fa fa-film fa-3x text-earth-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white"><span data-toggle="countTo" data-speed="1000" data-to="{{ auth()->user()->video->count() }}"></span></div>
-                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Video</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Vidio</div>
                 </div>
             </a>
         </div>
@@ -201,7 +201,7 @@
                         <i class="fa fa-book fa-3x text-corporate-light"></i>
                     </div>
                     <div class="font-size-h3 font-w600 text-white" data-toggle="countTo" data-speed="1000" data-to="{{ auth()->user()->book->count() }}"></div>
-                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Buku</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white-op">Materi</div>
                 </div>
             </a>
         </div>                                                        
@@ -257,7 +257,7 @@
                                     <option value="Perempuan">Perempuan</option>
                                     <option value="Yang lain">Yang Lain</option>
                                 </select>
-                                <label for="val-select2">Gender</label>
+                                <label for="val-select2">Jenis Kelamin</label>
                             </div>
                             <div class="form-material mb-10">
                                 <input type="text" class="form-control" id="val-alumni" name="alumni" placeholder="Alumni / Sekolah" value="{{ auth()->user()->profile->alumni }}" required>
@@ -265,11 +265,11 @@
                             </div>
                             <div class="form-material mb-10">
                                 <input type="file" class="form-control" id="val-photo" name="photo" accept=".jpg,.jpeg,.png">
-                                <label for="val-photo">Photo</label>
+                                <label for="val-photo">Foto</label>
                             </div>
                         </div>
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-outline-primary">update</button>
+                            <button type="submit" class="btn btn-outline-primary">sunting</button>
                         </div>
                     </form>                        
                 </div>
