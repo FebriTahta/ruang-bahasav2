@@ -153,6 +153,7 @@
                     </div>                                                                               
                 </div>                                              
             </div>
+            {{--  --}}
             <!--video-->
             <div class="" data-category="videos">
                 @if (auth()->user()->role=='instruktur')

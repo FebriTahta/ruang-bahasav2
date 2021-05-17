@@ -101,7 +101,7 @@
                         </div>                        
                         <p class="" >{!! $item->soaluraian !!}</p>
                     </div>
-                    
+                    {{--  --}}
                     @endforeach
                 <div class="block-content"></div>
                     </div>                                   
