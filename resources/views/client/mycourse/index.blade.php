@@ -86,7 +86,7 @@
                     <a class="topics-list hover-box" onclick="videoscroll()">
                         <div class="list1">
                             <span class="fa fa-play"></span>
-                            <h4><u>{{ $data_kursus->video->count() }}</u> Materi Vidio</h4>
+                            <h4><u>{{ $data_kursus->video->count() }}</u> Materi video</h4>
                         </div>
                     </a>
                     <a class="topics-list mt-3 hover-box" onclick="artikelscroll()">
@@ -130,7 +130,7 @@
                     <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">                        
                             <a class="nav-link active" href="#" data-category-link="videos">
-                            <i class="fa fa-fw fa-info-circle mr-5"></i>vidio</a>
+                            <i class="fa fa-fw fa-info-circle mr-5"></i>video</a>
                         </div>                    
                     </div>
                     <div class="col-6 col-xl-3 nav nav-pills">
@@ -148,7 +148,7 @@
                     <div class="col-6 col-xl-3 nav nav-pills">
                         <div class="nav-item text-center" style="width: 100%">
                             <a class="nav-link" href="#" data-category-link="uraian">
-                            <i class="fa fa-fw fa-newspaper mr-5"></i>evaluasi</a>
+                            <i class="fa fa-fw fa-pencil mr-5"></i>evaluasi</a>
                         </div>                    
                     </div>                                                                               
                 </div>                                              
@@ -489,7 +489,7 @@
         <div class="modal-content">
             <div class="block block-themed block-transparent mb-0">
                 <div class="block-header bg-info">
-                    <h3 class="block-title">DAFTAR VIDiO</h3>
+                    <h3 class="block-title">DAFTAR video</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="si si-close"></i>
@@ -551,7 +551,7 @@
                     <div class="block-content">                            
                         <div class="form-group">
                             <div class="col-sm-12 text-center">
-                                <p class="text-uppercase">vidio tersebut akan dihapus dari kelas anda</p>
+                                <p class="text-uppercase">video tersebut akan dihapus dari kelas anda</p>
                                 <input type="hidden" id="kursus_id" name="kursus_id">
                                 <input type="hidden" id="id" name="id">
                             </div>                                                      

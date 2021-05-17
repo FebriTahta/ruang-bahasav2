@@ -95,7 +95,7 @@
                         <div class="soal">
                             <p class="border-bottom border-top"><small> soal nomor : {{ $key+1 }}</small>
                                 @if ($data_kuis->user_id == auth()->user()->id)
-                                    <a href="{{ route('editSoals2', $item->id) }}" class="float-right"><i class="fa fa-edit"></i> edit</a>                                                                  
+                                    <a href="{{ route('editSoals2', $item->id) }}" class="float-right"><i class="fa fa-edit"></i> sunting</a>                                                                  
                                 @endif                                
                             </p>                            
                         </div>                        

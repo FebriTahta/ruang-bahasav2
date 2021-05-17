@@ -77,7 +77,7 @@
         <div class="grids-area-hny main-cont-wthree-fea row">
             <div class="col-lg-3 col-6 grids-feature">
                 <a href="#video">
-                    <div class="area-box">
+                    <div class="area-box" style="background-color: rgb(255, 175, 146)">
                         <span class="fa fa-play"></span>
                         <h4 class="title-head text-uppercase"><u>{{ count(auth()->user()->video) }}</u> Video</h4>
                     </div>
@@ -85,7 +85,7 @@
             </div>
             <div class="col-lg-3 col-6 grids-feature">
                 <a href="#kuis">
-                    <div class="area-box">
+                    <div class="area-box" style="background-color: rgb(146, 255, 170)">
                         <span class="fa fa-book"></span>
                         <h4 class="title-head text-uppercase"><u>{{ count(auth()->user()->artikel) }}</u> Artikel</h4>
                     </div>
@@ -93,7 +93,7 @@
             </div>
             <div class="col-lg-3 col-6 grids-feature mt-lg-0 mt-md-4 mt-3">
                 <a href="#kuis">
-                    <div class="area-box">
+                    <div class="area-box" style="background-color: rgb(155, 207, 255)">
                         <span class="fa fa-pencil-square"></span>
                         <h4 class="title-head text-uppercase"><u>{{ count(auth()->user()->kuis) + count(auth()->user()->uraian) }}</u> Latihan soal</h4>
                     </div>
@@ -101,7 +101,7 @@
             </div>
             <div class="col-lg-3 col-6 grids-feature mt-lg-0 mt-md-4 mt-3">
                 <a href="#kursus">
-                    <div class="area-box">
+                    <div class="area-box" style="background-color: rgb(255, 180, 180)">
                         <span class="fa fa-university"></span>
                         <h4 class="title-head text-uppercase"><u>{{ count(auth()->user()->kursus) }}</u> kelas</h4>
                     </div>
@@ -160,25 +160,25 @@
                 @endforeach
             @else
                 @foreach (auth()->user()->kursus as $item)
-                <div class="col-lg-6" style="margin-bottom: 20px">
-                    <div class="bg-clr-white hover-box">
-                        <div class="row">
+                <div class="col-lg-6" style="margin-bottom: 20px" >
+                    <div class="bg-clr-white hover-box"  style="background-color: rgb(252, 194, 173)">
+                        <div class="row" >
                             <div class="col-sm-5 position-relative">
                                 <a href="{{ route('myCourse',$item->slug) }}" class="image-mobile" >
                                     <img class="card-img-bottom d-block radius-image-full" style="height: 200px" src="{{ asset('kursus_picture/'.$item->kursus_pict) }}" alt="Card image cap">
                                 </a>
                             </div>
-                            <div class="col-sm-7 card-body blog-details align-self">
+                            <div class="col-sm-7 card-body blog-details align-self" >
                                 <a href="{{ route('myCourse',$item->slug) }}" class="blog-desc">{{ $item->mapel->mapel_name }}{{ $item->kelas->kelas_name }}
                                 </a>
-                                <div class="author align-items-center">
+                                <div class="author align-items-center" >
                                     <img @if ($item->user->profile->photo==null) src="{{ asset('/assets/assets/images/a2.jpg') }}" @else src="{{ asset('photo/'.$item->user->profile->photo) }}" @endif alt="" class="img-fluid rounded-circle">
                                     <ul class="blog-meta">
                                         <li>
                                             <a href="{{ route('myCourse',$item->slug) }}">{{ $item->user->name }}</a> 
                                         </li>
                                         <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> {{ $item->status }} </span>. 
+                                            <span class="meta-value text-primary"> {{ $item->status }} </span>. 
                                         </li>
                                     </ul>
                                 </div>
@@ -195,7 +195,7 @@
 <div class="content">
     <section class="w3l-homeblock1 py-sm-5 py-4" style="min-height: 800px">
         <div class="container py-lg-5 py-md-4" id="profile">
-            <div class="block bg-clr-white" >
+            <div class="block bg-clr-white"  style="background-color: rgb(252, 194, 173)">
                 <div class="block-header block-header-default">
                     
                 </div>

@@ -81,7 +81,7 @@
                         <div class="soal">
                             <p class="border-bottom border-top">soal nomor : <?=$i?>
                                 @if ($data_kuis->user_id == auth()->user()->id)
-                                    <a href="{{ route('editSoals', $item->id) }}" class="float-right"><i class="fa fa-edit"></i> edit</a>                                                                  
+                                    <a href="{{ route('editSoals', $item->id) }}" class="float-right"><i class="fa fa-edit"></i> sunting</a>                                                                  
                                 @endif                                
                             </p>                            
                         </div>                        
